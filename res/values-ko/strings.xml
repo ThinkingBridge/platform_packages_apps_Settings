@@ -880,6 +880,8 @@
     <string name="usb_ptp_summary" msgid="7673397474756664929">"카메라 소프트웨어를 사용하여 사진을 전송하고, MTP를 지원하지 않는 컴퓨터의 파일을 전송할 수 있습니다."</string>
     <string name="usb_label_installer_cd" msgid="4331173824920630215">"파일 전송 도구 설치"</string>
     <string name="storage_other_users" msgid="808708845102611856">"다른 사용자"</string>
+    <string name="usb_mass_storage_title">대용량 저장 (UMS)</string>
+    <string name="usb_mass_storage_summary">UMS를 사용하여 컴퓨터와 SD카드간에 대용량 파일 전송가능</string>
     <string name="battery_status_title" msgid="9159414319574976203">"배터리 상태"</string>
     <string name="battery_level_title" msgid="2965679202786873272">"배터리 수준"</string>
     <string name="apn_settings" msgid="3743170484827528406">"APN"</string>
