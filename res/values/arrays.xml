@@ -106,8 +106,23 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
+<<<<<<< HEAD
 
     <!-- Security settings.  The delay after screen is turned off until device locks.
+=======
+    
+    <!-- Display settings. The available GPU clock speeds. -->
+    <string-array name="gpu_clock_entries">
+        <item></item>
+    </string-array>
+
+    <!-- Do not translate -->
+    <string-array name="gpu_clock_values" translatable="false">
+        <item></item>
+    </string-array>
+    
+    <!-- Security settings.  The delay after screen is turned off until device locks. 
+>>>>>>> f16a055... Add ThinkingBridge Device Controller
          These are shown in a list dialog. -->
     <string-array name="lock_after_timeout_entries">
         <item>Immediately</item>

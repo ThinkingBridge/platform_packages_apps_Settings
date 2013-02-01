@@ -4448,6 +4448,8 @@
     <!-- Activity titles defined in AndroidManifest.xml -->
     <string name="title_navbar">Navigation</string>
     <string name="title_navring">Navigation Ring</string>
+    
+    <string name="cpu_settings">CPU Settings</string>
 
     <!-- Quiet hours -->
     <string name="quiet_hours_title">Quiet hours</string>
@@ -5848,5 +5850,20 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Network speed -->
     <string name="show_network_speed">Network speed indicator</string>
     <string name="show_network_speed_summary">Show network speed in statsbar</string>
+
+    <!-- CPU settings -->
+    <string name="cpu_governors_title">Governor</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">Min CPU frequency</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">Max CPU frequency</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_schedulers_title">Scheduler</string>
+    <string name="cpu_schedulers_summary">%s</string>
+    <string name="feature_not_supported">Your kernel does not support</string>
+
+    <!-- Display settings -->
+    <string name="gpu_clock_title">GPU clock speed</string>
+    <string name="gpu_clock_summary" translatable="false">%1$s</string>
 
 </resources>

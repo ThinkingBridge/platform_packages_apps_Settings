@@ -63,6 +63,13 @@
             android:key="notification_pulse"
             android:title="@string/notification_pulse_title"
             android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
+        
+        <ListPreference
+                android:key="gpu_clock"
+                android:title="@string/gpu_clock_title"
+                android:summary="@string/gpu_clock_summary"
+                android:entries="@array/gpu_clock_entries"
+                android:entryValues="@array/gpu_clock_values" />
 
         <PreferenceScreen
                 android:key="wifi_display"

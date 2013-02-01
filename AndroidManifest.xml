@@ -817,6 +817,19 @@
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/application_settings" />
         </activity>
+        
+        <service android:name="OnBootCompleted" >
+            <intent-filter>
+                <action android:name="OnBootCompleted">
+                </action>
+            </intent-filter>
+        </service>
+        
+        <receiver android:name="BootCompleteReceiver" android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
         <activity android:name="Settings$LocationSettingsActivity"
                 android:label="@string/location_settings_title"

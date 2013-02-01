@@ -1839,5 +1839,36 @@
     <!-- Network speed -->
     <string name="show_network_speed">네트워크 속도 표시</string>
     <string name="show_network_speed_summary">상단바에 네트워크 속도 표시</string>
+    
+    <!-- ThinkingBridge Device controller -->
+    <string name="cpu_settings">CPU 설정</string>
+
+    <!--  About device screen, Hardware info -->
+    <string name="hardware_info">하드웨어정보</string>
+    <!--  About device Screen, hardware info, rear camera -->
+    <string name="device_rear_camera">후면 카메라</string>
+    <!--  About device Screen, hardware info, front camera -->
+    <string name="device_front_camera">정면 카메라</string>
+    <!--  About device Screen, hardware info, screen res -->
+    <string name="device_screen_resolution">화면 해상도</string>
+    <!--  About device Screen, hardware info, GPU info -->
+    <string name="gpu_info">GPU</string>
+    <!-- About device screen, Cpu info. -->
+    <!-- About device screen, Chipset info -->
+    <string name="chipset_info">칩셋</string>
+    <string name="cpu_info">CPU</string>
+    <!-- About phone screen, Free memory info -->
+    <string name="mem_info">메모리</string>
+    
+    <!-- CPU settings -->
+    <string name="cpu_governors_title">가버너</string>
+    <string name="cpu_governors_summary">%S</string>
+    <string name="cpu_min_freq_title">최소 CPU 클럭</string>
+    <string name="cpu_min_freq_summary">%s</string>
+    <string name="cpu_max_freq_title">최대 CPU 클럭</string>
+    <string name="cpu_max_freq_summary">%s</string>
+    <string name="cpu_schedulers_title">스케쥴러</string>
+    <string name="cpu_schedulers_summary">%s</string>
+    <string name="feature_not_supported">현재커널은 지원하지 않습니다</string>
 
 </resources>

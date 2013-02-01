@@ -21,6 +21,15 @@
 
     <string name="additional_system_update" translatable="false"></string>
     <string name="additional_system_update_menu" translatable="false"></string>
+    
+    <!-- True if GPU clock speed can be modified on device -->
+    <bool name="device_enable_gpu_clock" translatable="false">false</bool>
+
+    <!-- True if device has High Performance Sound support -->
+    <bool name="device_enable_high_perf_sound" translatable="false">false</bool>
+
+    <!-- True if device has BLN support -->
+    <bool name="device_enable_bln" translatable="false">false</bool>
 
     <!-- TODO: This is purely enforced by the interface, and does not affect what
          strings may be inserted into the actual content provider.

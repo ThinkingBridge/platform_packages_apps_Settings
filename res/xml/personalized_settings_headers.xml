@@ -103,6 +103,13 @@
             android:icon="@drawable/ic_settings_applications"
             android:title="@string/applications_settings"
             android:id="@+id/application_settings" />
+            
+    <!-- CPU Settings -->
+    <header
+        android:fragment="com.android.settings.CPUSettings"
+        android:icon="@drawable/ic_settings_cpu"
+        android:title="@string/cpu_settings"
+        android:id="@+id/cpu_settings" />
 
     <!-- Manage users -->
     <header
