@@ -3207,7 +3207,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="cpu_schedulers_title">스케쥴러</string>
     <string name="cpu_schedulers_summary">%s</string>
     <string name="feature_not_supported">현재커널은 지원하지 않습니다</string>
-    
+
     <!-- ListView animation -->
     <string name="listview_animation_title">리스트뷰 애니메이션</string>
     <string name="listview_off">Off</string>
@@ -3231,5 +3231,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="listview_overshoot_interpolator">overshoot_interpolator</string>
     <string name="listview_anticipate_overshoot_interpolator">anticipate_overshoot_interpolator</string>
     <string name="listview_bounce_interpolator">bounce_interpolator</string>
+   
+   <!-- Share ThinkingBridge ROM -->
+   <string name="share_teambridge">ROM 공유하기</string>
+   <string name="share_teambridge">다른 사람에게 ThinkingBridge 를 알려주세요.</string>
+   <string name="share_message">ThinkingBridge ROM 을 써보세요! \n홈페이지 : http://www.tbridge.kr \nIRC 채널 : Freenode IRC #ThinkingBridge \n트위터 : @TbridgeROM \n다운로드 : http://goo.gl/Qc5zB</string>
+   <string name="share_chooser_title">롬을 공유해보세요!</string>
 
 </resources>

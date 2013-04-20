@@ -5919,4 +5919,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="color_five">Color five</string>
     <string name="color_six">Color six</string>
 
+    <!-- Share ThinkingBridge ROM -->
+   <string name="share_teambridge">Share ThinkingBridge ROM</string>
+   <string name="share_teambridge">Let others know about ThinkingBridge</string>
+   <string name="share_message">Use ThinkingBridge ROM! \nHomepage : http://www.tbridge.kr \nIRC : #ThinkingBridge on freenode IRC \nTwitter : @TbridgeROM \nDownload : http://goo.gl/Qc5zB</string>
+   <string name="share_chooser_title">via..</string>
+   
 </resources>

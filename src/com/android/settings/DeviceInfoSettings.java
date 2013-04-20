@@ -38,6 +38,8 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.android.settings.R;
+
 public class DeviceInfoSettings extends SettingsPreferenceFragment {
 
     private static final String LOG_TAG = "DeviceInfoSettings";
@@ -66,6 +68,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
+    private static final String TEAM_BRIDGE_SHARE = "share";
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_DEVICE_CPU = "device_cpu";
@@ -232,6 +235,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 }
             }
         }
+    } else if (preference.getKey().equals(TEAM_BRIDGE_SHARE)) {
+    	Intent intent = new Intent();
+    	intent.setAction(Intent.ACTION_SEND);
+    	intent.setType("text/plain");
+    	intent.putExtra(Intent.EXTRA_TEXT, String.String.format(
+    			getActivity().getString(R.string.share_message));
+    	startActivity(Intent.createChooser(intent, getActivity().getString(R.string.share_chooser_title)));
+    }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
