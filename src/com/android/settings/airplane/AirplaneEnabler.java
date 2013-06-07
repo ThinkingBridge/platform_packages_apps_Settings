@@ -25,7 +25,7 @@ import android.provider.Settings;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.os.SystemProperties;
-
+import android.os.UserHandle;
 
 import com.android.internal.telephony.PhoneStateIntentReceiver;
 import com.android.internal.telephony.TelephonyProperties;
@@ -78,8 +78,8 @@ public class AirplaneEnabler implements CompoundButton.OnCheckedChangeListener {
 	}
 
 	public static boolean isAirplaneModeOn(Context context) {
-		return Settings.System.getInt(context.getContentResolver(),
-				Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+		return Settings.Global.getInt(context.getContentResolver(),
+				Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
 	}
 
 	public void setSwitch(Switch _switch){
@@ -94,7 +94,7 @@ public class AirplaneEnabler implements CompoundButton.OnCheckedChangeListener {
 		mPhoneStateReceiver.registerIntent();
 		mSwitch.setOnCheckedChangeListener(this);
 		mContext.getContentResolver().registerContentObserver(
-				Settings.System.getUriFor(Settings.System.AIRPLANE_MODE_ON),
+				Settings.Global.getUriFor(Settings.Global.AIRPLANE_MODE_ON),
 				true, mAirplaneModeObserver);
 	}
 
@@ -107,15 +107,15 @@ public class AirplaneEnabler implements CompoundButton.OnCheckedChangeListener {
 
 	private void setAirplaneModeOn(boolean enabling) {
 		// Change the system setting
-		Settings.System.putInt(mContext.getContentResolver(),
-				Settings.System.AIRPLANE_MODE_ON, enabling ? 1 : 0);
+		Settings.Global.putInt(mContext.getContentResolver(),
+				Settings.Global.AIRPLANE_MODE_ON, enabling ? 1 : 0);
 		// Update the UI to reflect system setting
 		mSwitch.setChecked(enabling);
 
 		// Post the intent
 		Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
 		intent.putExtra("state", enabling);
-		mContext.sendBroadcast(intent);
+		mContext.sendBroadcastAsUser(intent, UserHandle.ALL);
 	}
 
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
