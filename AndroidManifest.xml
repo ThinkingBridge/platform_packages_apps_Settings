@@ -162,9 +162,7 @@
                 android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.settings.SETTINGS" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
@@ -177,6 +175,48 @@
             android:theme="@style/Theme.CreateShortCut">
             <intent-filter>
                 <action android:name="android.intent.action.CREATE_SHORTCUT" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- ThinkingBridge Settings -->
+        <activity
+                android:name="MainSetting"
+                android:launchMode="singleTask"
+                android:taskAffinity="com.android.settings"
+                android:theme="@android:style/Theme.Holo.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.SETTINGS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="UsedSettings"
+                android:label="@string/settings_label_launcher"
+                android:launchMode="singleTask"
+                android:taskAffinity="com.android.settings" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="PersonalizedSettings"
+                android:label="@string/settings_label_launcher"
+                android:launchMode="singleTask"
+                android:taskAffinity="com.android.settings" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="SystemSettings"
+                android:label="@string/settings_label_launcher"
+                android:launchMode="singleTask"
+                android:taskAffinity="com.android.settings" >
+            <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

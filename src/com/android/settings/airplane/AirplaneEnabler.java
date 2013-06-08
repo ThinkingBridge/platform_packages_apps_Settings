@@ -30,10 +30,14 @@ import android.os.UserHandle;
 import com.android.internal.telephony.PhoneStateIntentReceiver;
 import com.android.internal.telephony.TelephonyProperties;
 
+import com.android.settings.SwitcherHelpers;
+
 public class AirplaneEnabler implements CompoundButton.OnCheckedChangeListener {
 	private final Context mContext;
 	private Switch mSwitch;
 	private boolean mStateMachineEvent;
+
+    private SwitcherHelpers switcherHelpers;
 
 	private PhoneStateIntentReceiver mPhoneStateReceiver;
 
@@ -42,6 +46,8 @@ public class AirplaneEnabler implements CompoundButton.OnCheckedChangeListener {
 	public AirplaneEnabler(Context context, Switch switch_) {
 		mContext = context;
 		mSwitch = switch_;
+
+        switcherHelpers = SwitcherHelpers.getInstance();
 
 		mPhoneStateReceiver = new PhoneStateIntentReceiver(mContext, mHandler);
 		mPhoneStateReceiver.notifyServiceState(EVENT_SERVICE_STATE_CHANGED);
