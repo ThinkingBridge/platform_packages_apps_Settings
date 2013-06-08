@@ -5962,5 +5962,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 	<!-- Delete apn confirmation dialog message -->
     <string name="confirm_delete_apn">The APN will be deleted.</string>
 
-    <!-- **** CARBON ADDITIONS END **** -->
+    <!-- Main setting -->
+    <string name="used_setting">Used</string>
+    <string name="personal_setting">Common</string>
+    <string name="system_setting">System</string>
+
 </resources>
