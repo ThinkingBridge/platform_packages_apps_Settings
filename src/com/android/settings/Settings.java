@@ -124,9 +124,7 @@ public class Settings extends PreferenceActivity
             R.id.account_add,
             R.id.system_section,
             R.id.date_time_settings,
-            R.id.about_settings,
-            R.id.accessibility_settings,
-            R.id.carbon_section
+            R.id.accessibility_settings
     };
 
     private SharedPreferences mDevelopmentPreferences;
@@ -889,7 +887,5 @@ public class Settings extends PreferenceActivity
     public static class QuietHoursSettingsActivity extends Settings { /* empty */ }
     public static class ASSRamBarActivity extends Settings { /* empty */ }
     public static class NotificationShortcutsSettingsActivity extends Settings { /* empty */ }
-    public static class AboutActivity extends Settings { /* empty */ }
     public static class PieActivity extends Settings { /* empty */ }
-    public static class CarbonSettingsActivity extends Settings { /* empty */ }
 }
