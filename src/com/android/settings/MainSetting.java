@@ -213,7 +213,7 @@ public class MainSetting extends Activity {
             currIndex = arg0;
             animation.setFillAfter(true);// True:Image stop at Animation end
             animation.setDuration(300);
-            cursor.startAnimation(animation);
+            //cursor.startAnimation(animation);
         }
 
         @Override
