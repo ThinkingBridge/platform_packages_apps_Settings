@@ -17,14 +17,18 @@
 package com.android.settings;
 
 import com.android.internal.util.ArrayUtils;
+import com.android.settings.ChooseLockGeneric.ChooseLockGenericFragment;
 import com.android.settings.accounts.AccountSyncSettings;
 import com.android.settings.accounts.AuthenticatorHelper;
 import com.android.settings.accounts.ManageAccountsSettings;
+import com.android.settings.applications.InstalledAppDetails;
 import com.android.settings.applications.ManageApplications;
+import com.android.settings.airplane.AirplaneEnabler;
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.deviceinfo.Memory;
 import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.profiles.ProfileEnabler;
+import com.android.settings.vpn2.VpnSettings;
 import com.android.settings.wifi.WifiEnabler;
 
 import android.accounts.Account;
@@ -33,6 +37,7 @@ import android.accounts.OnAccountsUpdateListener;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -42,10 +47,10 @@ import android.os.Bundle;
 import android.os.INetworkManagementService;
 import android.os.RemoteException;
 import android.os.ServiceManager;
-import android.os.UserId;
+import android.os.UserHandle;
+import android.os.UserManager;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceActivity.Header;
 import android.preference.PreferenceFragment;
 import android.text.TextUtils;
 import android.util.Log;
@@ -54,7 +59,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -70,15 +74,19 @@ import java.util.List;
 /**
  * Top-level settings activity to handle single pane and double pane UI layout.
  */
-public class PersonalizedSettings extends PreferenceActivity implements
-        ButtonBarHandler, OnAccountsUpdateListener {
+public class PersonalizedSettings extends PreferenceActivity
+        implements ButtonBarHandler, OnAccountsUpdateListener {
 
     private static final String LOG_TAG = "Settings";
 
-    private static final String META_DATA_KEY_HEADER_ID = "com.android.settings.TOP_LEVEL_HEADER_ID";
-    private static final String META_DATA_KEY_FRAGMENT_CLASS = "com.android.settings.FRAGMENT_CLASS";
-    private static final String META_DATA_KEY_PARENT_TITLE = "com.android.settings.PARENT_FRAGMENT_TITLE";
-    private static final String META_DATA_KEY_PARENT_FRAGMENT_CLASS = "com.android.settings.PARENT_FRAGMENT_CLASS";
+    private static final String META_DATA_KEY_HEADER_ID =
+            "com.android.settings.TOP_LEVEL_HEADER_ID";
+    private static final String META_DATA_KEY_FRAGMENT_CLASS =
+            "com.android.settings.FRAGMENT_CLASS";
+    private static final String META_DATA_KEY_PARENT_TITLE =
+            "com.android.settings.PARENT_FRAGMENT_TITLE";
+    private static final String META_DATA_KEY_PARENT_FRAGMENT_CLASS =
+            "com.android.settings.PARENT_FRAGMENT_CLASS";
 
     private static final String EXTRA_CLEAR_UI_OPTIONS = "settings:remove_ui_options";
 
@@ -93,12 +101,32 @@ public class PersonalizedSettings extends PreferenceActivity implements
     private boolean mInLocalHeaderSwitch;
 
     // Show only these settings for restricted users
-    private int[] SETTINGS_FOR_RESTRICTED = { R.id.wifi_settings,
-            R.id.bluetooth_settings, R.id.sound_settings,
-            R.id.display_settings, R.id.security_settings,
-            R.id.account_settings, R.id.about_settings };
+    private int[] SETTINGS_FOR_RESTRICTED = {
+            R.id.wireless_section,
+            R.id.wifi_settings,
+            R.id.bluetooth_settings,
+            R.id.data_usage_settings,
+            R.id.wireless_settings,
+            R.id.device_section,
+            R.id.sound_settings,
+            R.id.display_settings,
+            R.id.storage_settings,
+            R.id.application_settings,
+            R.id.battery_settings,
+            R.id.personal_section,
+            R.id.location_settings,
+            R.id.security_settings,
+            R.id.language_settings,
+            R.id.user_settings,
+            R.id.account_settings,
+            R.id.account_add,
+            R.id.date_time_settings,
+            R.id.about_settings,
+            R.id.accessibility_settings,
+    };
 
-    private boolean mEnableUserManagement = false;
+    private SharedPreferences mDevelopmentPreferences;
+    private SharedPreferences.OnSharedPreferenceChangeListener mDevelopmentPreferencesListener;
 
     // TODO: Update Call Settings based on airplane mode state.
 
@@ -114,14 +142,12 @@ public class PersonalizedSettings extends PreferenceActivity implements
             getWindow().setUiOptions(0);
         }
 
-        if (android.provider.Settings.Secure.getInt(getContentResolver(),
-                "multiuser_enabled", -1) > 0) {
-            mEnableUserManagement = true;
-        }
-
         mAuthenticatorHelper = new AuthenticatorHelper();
         mAuthenticatorHelper.updateAuthDescriptions(this);
         mAuthenticatorHelper.onAccountsUpdated(this, null);
+
+        mDevelopmentPreferences = getSharedPreferences(DevelopmentSettings.PREF_FILE,
+                Context.MODE_PRIVATE);
 
         getMetaData();
         mInLocalHeaderSwitch = true;
@@ -130,23 +156,20 @@ public class PersonalizedSettings extends PreferenceActivity implements
 
         if (!onIsHidingHeaders() && onIsMultiPane()) {
             highlightHeader(mTopLevelHeaderId);
-            // Force the title so that it doesn't get overridden by a direct
-            // launch of
+            // Force the title so that it doesn't get overridden by a direct launch of
             // a specific settings screen.
             setTitle(R.string.settings_label);
         }
 
         // Retrieve any saved state
         if (savedInstanceState != null) {
-            mCurrentHeader = savedInstanceState
-                    .getParcelable(SAVE_KEY_CURRENT_HEADER);
-            mParentHeader = savedInstanceState
-                    .getParcelable(SAVE_KEY_PARENT_HEADER);
+            mCurrentHeader = savedInstanceState.getParcelable(SAVE_KEY_CURRENT_HEADER);
+            mParentHeader = savedInstanceState.getParcelable(SAVE_KEY_PARENT_HEADER);
         }
 
         // If the current header was saved, switch to it
         if (savedInstanceState != null && mCurrentHeader != null) {
-            // switchToHeaderLocal(mCurrentHeader);
+            //switchToHeaderLocal(mCurrentHeader);
             showBreadCrumbs(mCurrentHeader.title, null);
         }
 
@@ -158,8 +181,7 @@ public class PersonalizedSettings extends PreferenceActivity implements
             });
         }
 
-        // Override up navigation for multi-pane, since we handle it in the
-        // fragment breadcrumbs
+        // Override up navigation for multi-pane, since we handle it in the fragment breadcrumbs
         if (onIsMultiPane()) {
             getActionBar().setDisplayHomeAsUpEnabled(false);
             getActionBar().setHomeButtonEnabled(false);
@@ -183,6 +205,15 @@ public class PersonalizedSettings extends PreferenceActivity implements
     public void onResume() {
         super.onResume();
 
+        mDevelopmentPreferencesListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                invalidateHeaders();
+            }
+        };
+        mDevelopmentPreferences.registerOnSharedPreferenceChangeListener(
+                mDevelopmentPreferencesListener);
+
         ListAdapter listAdapter = getListAdapter();
         if (listAdapter instanceof HeaderAdapter) {
             ((HeaderAdapter) listAdapter).resume();
@@ -198,6 +229,10 @@ public class PersonalizedSettings extends PreferenceActivity implements
         if (listAdapter instanceof HeaderAdapter) {
             ((HeaderAdapter) listAdapter).pause();
         }
+
+        mDevelopmentPreferences.unregisterOnSharedPreferenceChangeListener(
+                mDevelopmentPreferencesListener);
+        mDevelopmentPreferencesListener = null;
     }
 
     @Override
@@ -225,20 +260,16 @@ public class PersonalizedSettings extends PreferenceActivity implements
 
     /**
      * Switch to parent fragment and store the grand parent's info
-     *
-     * @param className
-     *            name of the activity wrapper for the parent fragment.
+     * @param className name of the activity wrapper for the parent fragment.
      */
     private void switchToParent(String className) {
         final ComponentName cn = new ComponentName(this, className);
         try {
             final PackageManager pm = getPackageManager();
-            final ActivityInfo parentInfo = pm.getActivityInfo(cn,
-                    PackageManager.GET_META_DATA);
+            final ActivityInfo parentInfo = pm.getActivityInfo(cn, PackageManager.GET_META_DATA);
 
             if (parentInfo != null && parentInfo.metaData != null) {
-                String fragmentClass = parentInfo.metaData
-                        .getString(META_DATA_KEY_FRAGMENT_CLASS);
+                String fragmentClass = parentInfo.metaData.getString(META_DATA_KEY_FRAGMENT_CLASS);
                 CharSequence fragmentTitle = parentInfo.loadLabel(pm);
                 Header parentHeader = new Header();
                 parentHeader.fragment = fragmentClass;
@@ -249,10 +280,9 @@ public class PersonalizedSettings extends PreferenceActivity implements
                 highlightHeader(mTopLevelHeaderId);
 
                 mParentHeader = new Header();
-                mParentHeader.fragment = parentInfo.metaData
-                        .getString(META_DATA_KEY_PARENT_FRAGMENT_CLASS);
-                mParentHeader.title = parentInfo.metaData
-                        .getString(META_DATA_KEY_PARENT_TITLE);
+                mParentHeader.fragment
+                        = parentInfo.metaData.getString(META_DATA_KEY_PARENT_FRAGMENT_CLASS);
+                mParentHeader.title = parentInfo.metaData.getString(META_DATA_KEY_PARENT_TITLE);
             }
         } catch (NameNotFoundException nnfe) {
             Log.w(LOG_TAG, "Could not find parent activity : " + className);
@@ -264,11 +294,11 @@ public class PersonalizedSettings extends PreferenceActivity implements
         super.onNewIntent(intent);
 
         // If it is not launched from history, then reset to top-level
-        if ((intent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0
-                && mFirstHeader != null
-                && !onIsHidingHeaders()
-                && onIsMultiPane()) {
-            switchToHeaderLocal(mFirstHeader);
+        if ((intent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
+            if (mFirstHeader != null && !onIsHidingHeaders() && onIsMultiPane()) {
+                switchToHeaderLocal(mFirstHeader);
+            }
+            getListView().setSelectionFromTop(0, 0);
         }
     }
 
@@ -277,7 +307,9 @@ public class PersonalizedSettings extends PreferenceActivity implements
             Integer index = mHeaderIndexMap.get(id);
             if (index != null) {
                 getListView().setItemChecked(index, true);
-                getListView().smoothScrollToPosition(index);
+                if (isMultiPane()) {
+                    getListView().smoothScrollToPosition(index);
+                }
             }
         }
     }
@@ -287,8 +319,7 @@ public class PersonalizedSettings extends PreferenceActivity implements
         Intent superIntent = super.getIntent();
         String startingFragment = getStartingFragmentClass(superIntent);
         // This is called from super.onCreate, isMultiPane() is not yet reliable
-        // Do not use onIsHidingHeaders either, which relies itself on this
-        // method
+        // Do not use onIsHidingHeaders either, which relies itself on this method
         if (startingFragment != null && !onIsMultiPane()) {
             Intent modIntent = new Intent(superIntent);
             modIntent.putExtra(EXTRA_SHOW_FRAGMENT, startingFragment);
@@ -299,40 +330,35 @@ public class PersonalizedSettings extends PreferenceActivity implements
                 args = new Bundle();
             }
             args.putParcelable("intent", superIntent);
-            modIntent.putExtra(EXTRA_SHOW_FRAGMENT_ARGUMENTS,
-                    superIntent.getExtras());
+            modIntent.putExtra(EXTRA_SHOW_FRAGMENT_ARGUMENTS, superIntent.getExtras());
             return modIntent;
         }
         return superIntent;
     }
 
     /**
-     * Checks if the component name in the intent is different from the Settings
-     * class and returns the class name to load as a fragment.
+     * Checks if the component name in the intent is different from the Settings class and
+     * returns the class name to load as a fragment.
      */
     protected String getStartingFragmentClass(Intent intent) {
-        if (mFragmentClass != null)
-            return mFragmentClass;
+        if (mFragmentClass != null) return mFragmentClass;
 
         String intentClass = intent.getComponent().getClassName();
-        if (intentClass.equals(getClass().getName()))
-            return null;
+        if (intentClass.equals(getClass().getName())) return null;
 
         if ("com.android.settings.ManageApplications".equals(intentClass)
                 || "com.android.settings.RunningServices".equals(intentClass)
-                || "com.android.settings.applications.StorageUse"
-                .equals(intentClass)) {
+                || "com.android.settings.applications.StorageUse".equals(intentClass)) {
             // Old names of manage apps.
-            intentClass = com.android.settings.applications.ManageApplications.class
-                    .getName();
+            intentClass = com.android.settings.applications.ManageApplications.class.getName();
         }
 
         return intentClass;
     }
 
     /**
-     * Override initial header when an activity-alias is causing Settings to be
-     * launched for a specific fragment encoded in the android:name parameter.
+     * Override initial header when an activity-alias is causing Settings to be launched
+     * for a specific fragment encoded in the android:name parameter.
      */
     @Override
     public Header onGetInitialHeader() {
@@ -351,26 +377,45 @@ public class PersonalizedSettings extends PreferenceActivity implements
 
     @Override
     public Intent onBuildStartFragmentIntent(String fragmentName, Bundle args,
+                                             CharSequence titleText, CharSequence shortTitleText) {
+        Intent intent = super.onBuildStartFragmentIntent(fragmentName, args,
+                titleText, shortTitleText);
+        onBuildStartFragmentIntentHelper(fragmentName, intent);
+        return intent;
+    }
+
+    @Override
+    public Intent onBuildStartFragmentIntent(String fragmentName, Bundle args,
                                              int titleRes, int shortTitleRes) {
         Intent intent = super.onBuildStartFragmentIntent(fragmentName, args,
                 titleRes, shortTitleRes);
+        onBuildStartFragmentIntentHelper(fragmentName, intent);
+        return intent;
+    }
 
+    private void onBuildStartFragmentIntentHelper(String fragmentName, Intent intent) {
         // some fragments want to avoid split actionbar
-        if (DataUsageSummary.class.getName().equals(fragmentName)
-                || PowerUsageSummary.class.getName().equals(fragmentName)
-                || AccountSyncSettings.class.getName().equals(fragmentName)
-                || UserDictionarySettings.class.getName().equals(fragmentName)
-                || Memory.class.getName().equals(fragmentName)
-                || ManageApplications.class.getName().equals(fragmentName)
-                || WirelessSettings.class.getName().equals(fragmentName)
-                || SoundSettings.class.getName().equals(fragmentName)
-                || PrivacySettings.class.getName().equals(fragmentName)
-                || ManageAccountsSettings.class.getName().equals(fragmentName)) {
+        if (DataUsageSummary.class.getName().equals(fragmentName) ||
+                PowerUsageSummary.class.getName().equals(fragmentName) ||
+                AccountSyncSettings.class.getName().equals(fragmentName) ||
+                UserDictionarySettings.class.getName().equals(fragmentName) ||
+                Memory.class.getName().equals(fragmentName) ||
+                ManageApplications.class.getName().equals(fragmentName) ||
+                WirelessSettings.class.getName().equals(fragmentName) ||
+                SoundSettings.class.getName().equals(fragmentName) ||
+                PrivacySettings.class.getName().equals(fragmentName) ||
+                ManageAccountsSettings.class.getName().equals(fragmentName) ||
+                VpnSettings.class.getName().equals(fragmentName) ||
+                SecuritySettings.class.getName().equals(fragmentName) ||
+                InstalledAppDetails.class.getName().equals(fragmentName) ||
+                ChooseLockGenericFragment.class.getName().equals(fragmentName) ||
+                TetherSettings.class.getName().equals(fragmentName) ||
+                ApnSettings.class.getName().equals(fragmentName) ||
+                LocationSettings.class.getName().equals(fragmentName) ||
+                ZonePicker.class.getName().equals(fragmentName)) {
             intent.putExtra(EXTRA_CLEAR_UI_OPTIONS, true);
         }
-
         intent.setClass(this, SubSettings.class);
-        return intent;
     }
 
     /**
@@ -384,7 +429,12 @@ public class PersonalizedSettings extends PreferenceActivity implements
     }
 
     private void updateHeaderList(List<Header> target) {
+        final boolean showDev = mDevelopmentPreferences.getBoolean(
+                DevelopmentSettings.PREF_SHOW,
+                android.os.Build.TYPE.equals("eng"));
         int i = 0;
+
+        mHeaderIndexMap.clear();
         while (i < target.size()) {
             Header header = target.get(i);
             // Ids are integers, so downcasting
@@ -394,25 +444,21 @@ public class PersonalizedSettings extends PreferenceActivity implements
                 Utils.updateHeaderToSpecificActivityFromMetaDataOrRemove(this, target, header);
             } else if (id == R.id.wifi_settings) {
                 // Remove WiFi Settings if WiFi service is not available.
-                if (!getPackageManager().hasSystemFeature(
-                        PackageManager.FEATURE_WIFI)) {
-                    target.remove(header);
+                if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI)) {
+                    target.remove(i);
                 }
             } else if (id == R.id.bluetooth_settings) {
-                // Remove Bluetooth Settings if Bluetooth service is not
-                // available.
-                if (!getPackageManager().hasSystemFeature(
-                        PackageManager.FEATURE_BLUETOOTH)) {
-                    target.remove(header);
+                // Remove Bluetooth Settings if Bluetooth service is not available.
+                if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
+                    target.remove(i);
                 }
             } else if (id == R.id.data_usage_settings) {
                 // Remove data usage when kernel module not enabled
                 final INetworkManagementService netManager = INetworkManagementService.Stub
-                        .asInterface(ServiceManager
-                                .getService(Context.NETWORKMANAGEMENT_SERVICE));
+                        .asInterface(ServiceManager.getService(Context.NETWORKMANAGEMENT_SERVICE));
                 try {
                     if (!netManager.isBandwidthControlEnabled()) {
-                        target.remove(header);
+                        target.remove(i);
                     }
                 } catch (RemoteException e) {
                     // ignored
@@ -421,26 +467,32 @@ public class PersonalizedSettings extends PreferenceActivity implements
                 int headerIndex = i + 1;
                 i = insertAccountsHeaders(target, headerIndex);
             } else if (id == R.id.user_settings) {
-                if (!mEnableUserManagement
-                        || !UserId.MU_ENABLED
-                        || UserId.myUserId() != 0
-                        || !getResources().getBoolean(
-                        R.bool.enable_user_management)
+                if (!UserHandle.MU_ENABLED
+                        || !UserManager.supportsMultipleUsers()
                         || Utils.isMonkeyRunning()) {
-                    target.remove(header);
+                    target.remove(i);
+                }
+            } else if (id == R.id.development_settings) {
+                if (!showDev) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.superuser) {
+                if (!DevelopmentSettings.isRootForAppsEnabled()) {
+                    target.remove(i);
                 }
             }
-            if (UserId.MU_ENABLED && UserId.myUserId() != 0
+
+            if (target.get(i) == header
+                    && UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
                     && !ArrayUtils.contains(SETTINGS_FOR_RESTRICTED, id)) {
-                target.remove(header);
+                target.remove(i);
             }
 
             // Increment if the current one wasn't removed by the Utils code.
             if (target.get(i) == header) {
-                // Hold on to the first header, when we need to reset to the
-                // top-level
-                if (mFirstHeader == null
-                        && HeaderAdapter.getHeaderType(header) != HeaderAdapter.HEADER_TYPE_CATEGORY) {
+                // Hold on to the first header, when we need to reset to the top-level
+                if (mFirstHeader == null &&
+                        HeaderAdapter.getHeaderType(header) != HeaderAdapter.HEADER_TYPE_CATEGORY) {
                     mFirstHeader = header;
                 }
                 mHeaderIndexMap.put(id, i);
@@ -453,14 +505,12 @@ public class PersonalizedSettings extends PreferenceActivity implements
         String[] accountTypes = mAuthenticatorHelper.getEnabledAccountTypes();
         List<Header> accountHeaders = new ArrayList<Header>(accountTypes.length);
         for (String accountType : accountTypes) {
-            CharSequence label = mAuthenticatorHelper.getLabelForType(this,
-                    accountType);
+            CharSequence label = mAuthenticatorHelper.getLabelForType(this, accountType);
             if (label == null) {
                 continue;
             }
 
-            Account[] accounts = AccountManager.get(this).getAccountsByType(
-                    accountType);
+            Account[] accounts = AccountManager.get(this).getAccountsByType(accountType);
             boolean skipToAccount = accounts.length == 1
                     && !mAuthenticatorHelper.hasAccountPreferences(accountType);
             Header accHeader = new Header();
@@ -474,24 +524,20 @@ public class PersonalizedSettings extends PreferenceActivity implements
                 accHeader.fragment = AccountSyncSettings.class.getName();
                 accHeader.fragmentArguments = new Bundle();
                 // Need this for the icon
-                accHeader.extras.putString(
-                        ManageAccountsSettings.KEY_ACCOUNT_TYPE, accountType);
-                accHeader.extras.putParcelable(AccountSyncSettings.ACCOUNT_KEY,
+                accHeader.extras.putString(ManageAccountsSettings.KEY_ACCOUNT_TYPE, accountType);
+                accHeader.extras.putParcelable(AccountSyncSettings.ACCOUNT_KEY, accounts[0]);
+                accHeader.fragmentArguments.putParcelable(AccountSyncSettings.ACCOUNT_KEY,
                         accounts[0]);
-                accHeader.fragmentArguments.putParcelable(
-                        AccountSyncSettings.ACCOUNT_KEY, accounts[0]);
             } else {
                 accHeader.breadCrumbTitle = label;
                 accHeader.breadCrumbShortTitle = label;
                 accHeader.fragment = ManageAccountsSettings.class.getName();
                 accHeader.fragmentArguments = new Bundle();
-                accHeader.extras.putString(
-                        ManageAccountsSettings.KEY_ACCOUNT_TYPE, accountType);
-                accHeader.fragmentArguments.putString(
-                        ManageAccountsSettings.KEY_ACCOUNT_TYPE, accountType);
+                accHeader.extras.putString(ManageAccountsSettings.KEY_ACCOUNT_TYPE, accountType);
+                accHeader.fragmentArguments.putString(ManageAccountsSettings.KEY_ACCOUNT_TYPE,
+                        accountType);
                 if (!isMultiPane()) {
-                    accHeader.fragmentArguments.putString(
-                            ManageAccountsSettings.KEY_ACCOUNT_LABEL,
+                    accHeader.fragmentArguments.putString(ManageAccountsSettings.KEY_ACCOUNT_LABEL,
                             label.toString());
                 }
             }
@@ -510,38 +556,28 @@ public class PersonalizedSettings extends PreferenceActivity implements
             target.add(headerIndex++, header);
         }
         if (!mListeningToAccountUpdates) {
-            AccountManager.get(this).addOnAccountsUpdatedListener(this, null,
-                    true);
+            AccountManager.get(this).addOnAccountsUpdatedListener(this, null, true);
             mListeningToAccountUpdates = true;
         }
         return headerIndex;
     }
 
-    private boolean needsDockSettings() {
-        return getResources().getBoolean(R.bool.has_dock_settings);
-    }
-
     private void getMetaData() {
         try {
-            ActivityInfo ai = getPackageManager().getActivityInfo(
-                    getComponentName(), PackageManager.GET_META_DATA);
-            if (ai == null || ai.metaData == null)
-                return;
+            ActivityInfo ai = getPackageManager().getActivityInfo(getComponentName(),
+                    PackageManager.GET_META_DATA);
+            if (ai == null || ai.metaData == null) return;
             mTopLevelHeaderId = ai.metaData.getInt(META_DATA_KEY_HEADER_ID);
-            mFragmentClass = ai.metaData
-                    .getString(META_DATA_KEY_FRAGMENT_CLASS);
+            mFragmentClass = ai.metaData.getString(META_DATA_KEY_FRAGMENT_CLASS);
 
             // Check if it has a parent specified and create a Header object
-            final int parentHeaderTitleRes = ai.metaData
-                    .getInt(META_DATA_KEY_PARENT_TITLE);
-            String parentFragmentClass = ai.metaData
-                    .getString(META_DATA_KEY_PARENT_FRAGMENT_CLASS);
+            final int parentHeaderTitleRes = ai.metaData.getInt(META_DATA_KEY_PARENT_TITLE);
+            String parentFragmentClass = ai.metaData.getString(META_DATA_KEY_PARENT_FRAGMENT_CLASS);
             if (parentFragmentClass != null) {
                 mParentHeader = new Header();
                 mParentHeader.fragment = parentFragmentClass;
                 if (parentHeaderTitleRes != 0) {
-                    mParentHeader.title = getResources().getString(
-                            parentHeaderTitleRes);
+                    mParentHeader.title = getResources().getString(parentHeaderTitleRes);
                 }
             }
         } catch (NameNotFoundException nnfe) {
@@ -565,10 +601,10 @@ public class PersonalizedSettings extends PreferenceActivity implements
         static final int HEADER_TYPE_SWITCH = 2;
         private static final int HEADER_TYPE_COUNT = HEADER_TYPE_SWITCH + 1;
 
+        private final WifiEnabler mWifiEnabler;
+        private final BluetoothEnabler mBluetoothEnabler;
         private final ProfileEnabler mProfileEnabler;
-
-        private SwitcherHelpers switcherHelpers;
-
+        private final AirplaneEnabler mAirEnabler;
         private AuthenticatorHelper mAuthHelper;
 
         private static class HeaderViewHolder {
@@ -583,7 +619,10 @@ public class PersonalizedSettings extends PreferenceActivity implements
         static int getHeaderType(Header header) {
             if (header.fragment == null && header.intent == null) {
                 return HEADER_TYPE_CATEGORY;
-            } else if (header.id == R.id.profiles_settings) {
+            } else if (header.id == R.id.wifi_settings
+                    || header.id == R.id.bluetooth_settings
+                    || header.id == R.id.profiles_settings
+                    || header.id == R.id.airplane_mode) {
                 return HEADER_TYPE_SWITCH;
             } else {
                 return HEADER_TYPE_NORMAL;
@@ -621,18 +660,14 @@ public class PersonalizedSettings extends PreferenceActivity implements
             super(context, 0, objects);
 
             mAuthHelper = authenticatorHelper;
-            mInflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            switcherHelpers = SwitcherHelpers.getInstance();
-
-            // Temp Switches provided as placeholder until the adapter replaces
-            // these with actual
-            // Switches inflated from their layouts. Must be done before adapter
-            // is set in super
-            mProfileEnabler = new ProfileEnabler(context, null, new Switch(
-                    context));
-            switcherHelpers.setmProfileEnabler(mProfileEnabler);
+            // Temp Switches provided as placeholder until the adapter replaces these with actual
+            // Switches inflated from their layouts. Must be done before adapter is set in super
+            mWifiEnabler = new WifiEnabler(context, new Switch(context));
+            mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
+            mProfileEnabler = new ProfileEnabler(context, new Switch(context));
+            mAirEnabler = new AirplaneEnabler(context, new Switch(context));
         }
 
         @Override
@@ -642,7 +677,7 @@ public class PersonalizedSettings extends PreferenceActivity implements
             int headerType = getHeaderType(header);
             View view = null;
 
-            if (convertView == null) {
+            if (convertView == null || headerType == HEADER_TYPE_SWITCH) {
                 holder = new HeaderViewHolder();
                 switch (headerType) {
                     case HEADER_TYPE_CATEGORY:
@@ -652,27 +687,25 @@ public class PersonalizedSettings extends PreferenceActivity implements
                         break;
 
                     case HEADER_TYPE_SWITCH:
-                        view = mInflater.inflate(
-                                R.layout.preference_header_switch_item, parent,
+                        view = mInflater.inflate(R.layout.preference_header_switch_item, parent,
                                 false);
                         holder.icon = (ImageView) view.findViewById(R.id.icon);
-                        holder.title = (TextView) view
-                                .findViewById(com.android.internal.R.id.title);
-                        holder.summary = (TextView) view
-                                .findViewById(com.android.internal.R.id.summary);
-                        holder.switch_ = (Switch) view
-                                .findViewById(R.id.switchWidget);
+                        holder.title = (TextView)
+                                view.findViewById(com.android.internal.R.id.title);
+                        holder.summary = (TextView)
+                                view.findViewById(com.android.internal.R.id.summary);
+                        holder.switch_ = (Switch) view.findViewById(R.id.switchWidget);
                         break;
 
                     case HEADER_TYPE_NORMAL:
                         view = mInflater.inflate(
-                                R.layout.preference_header_item_custum, parent,
+                                R.layout.preference_header_item, parent,
                                 false);
                         holder.icon = (ImageView) view.findViewById(R.id.icon);
-                        holder.title = (TextView) view
-                                .findViewById(com.android.internal.R.id.title);
-                        holder.summary = (TextView) view
-                                .findViewById(com.android.internal.R.id.summary);
+                        holder.title = (TextView)
+                                view.findViewById(com.android.internal.R.id.title);
+                        holder.summary = (TextView)
+                                view.findViewById(com.android.internal.R.id.summary);
                         break;
                 }
                 view.setTag(holder);
@@ -681,42 +714,43 @@ public class PersonalizedSettings extends PreferenceActivity implements
                 holder = (HeaderViewHolder) view.getTag();
             }
 
-            // All view fields must be updated every time, because the view may
-            // be recycled
+            // All view fields must be updated every time, because the view may be recycled
             switch (headerType) {
                 case HEADER_TYPE_CATEGORY:
-                    holder.title.setText(header.getTitle(getContext()
-                            .getResources()));
+                    holder.title.setText(header.getTitle(getContext().getResources()));
                     break;
 
                 case HEADER_TYPE_SWITCH:
-                    // Would need a different treatment if the main menu had more
-                    // switches
-                    if (switcherHelpers.getIsProfile() == 0) {
+                    // Would need a different treatment if the main menu had more switches
+                    if (header.id == R.id.wifi_settings) {
+                        mWifiEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.bluetooth_settings) {
+                        mBluetoothEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.profiles_settings) {
                         mProfileEnabler.setSwitch(holder.switch_);
-                        switcherHelpers.setIsProfile(1);
+                    } else if (header.id == R.id.airplane_mode){
+                        mAirEnabler.setSwitch(holder.switch_);
                     }
+                    // No break, fall through on purpose to update common fields
+
+                    //$FALL-THROUGH$
                 case HEADER_TYPE_NORMAL:
                     if (header.extras != null
-                            && header.extras
-                            .containsKey(ManageAccountsSettings.KEY_ACCOUNT_TYPE)) {
-                        String accType = header.extras
-                                .getString(ManageAccountsSettings.KEY_ACCOUNT_TYPE);
+                            && header.extras.containsKey(ManageAccountsSettings.KEY_ACCOUNT_TYPE)) {
+                        String accType = header.extras.getString(
+                                ManageAccountsSettings.KEY_ACCOUNT_TYPE);
                         ViewGroup.LayoutParams lp = holder.icon.getLayoutParams();
-                        lp.width = getContext().getResources()
-                                .getDimensionPixelSize(R.dimen.header_icon_width);
+                        lp.width = getContext().getResources().getDimensionPixelSize(
+                                R.dimen.header_icon_width);
                         lp.height = lp.width;
                         holder.icon.setLayoutParams(lp);
-                        Drawable icon = mAuthHelper.getDrawableForType(
-                                getContext(), accType);
+                        Drawable icon = mAuthHelper.getDrawableForType(getContext(), accType);
                         holder.icon.setImageDrawable(icon);
                     } else {
                         holder.icon.setImageResource(header.iconRes);
                     }
-                    holder.title.setText(header.getTitle(getContext()
-                            .getResources()));
-                    CharSequence summary = header.getSummary(getContext()
-                            .getResources());
+                    holder.title.setText(header.getTitle(getContext().getResources()));
+                    CharSequence summary = header.getSummary(getContext().getResources());
                     if (!TextUtils.isEmpty(summary)) {
                         holder.summary.setVisibility(View.VISIBLE);
                         holder.summary.setText(summary);
@@ -730,11 +764,17 @@ public class PersonalizedSettings extends PreferenceActivity implements
         }
 
         public void resume() {
+            mWifiEnabler.resume();
+            mBluetoothEnabler.resume();
             mProfileEnabler.resume();
+            mAirEnabler.resume();
         }
 
         public void pause() {
+            mWifiEnabler.pause();
+            mBluetoothEnabler.pause();
             mProfileEnabler.pause();
+            mAirEnabler.resume();
         }
     }
 
@@ -755,21 +795,22 @@ public class PersonalizedSettings extends PreferenceActivity implements
     }
 
     @Override
-    public boolean onPreferenceStartFragment(PreferenceFragment caller,
-                                             Preference pref) {
+    public boolean onPreferenceStartFragment(PreferenceFragment caller, Preference pref) {
         // Override the fragment title for Wallpaper settings
         int titleRes = pref.getTitleRes();
         if (pref.getFragment().equals(WallpaperTypeSettings.class.getName())) {
             titleRes = R.string.wallpaper_settings_fragment_title;
+        } else if (pref.getFragment().equals(OwnerInfoSettings.class.getName())
+                && UserHandle.myUserId() != UserHandle.USER_OWNER) {
+            titleRes = R.string.user_info_settings_title;
         }
-        startPreferencePanel(pref.getFragment(), pref.getExtras(), titleRes,
-                pref.getTitle(), null, 0);
+        startPreferencePanel(pref.getFragment(), pref.getExtras(), titleRes, pref.getTitle(),
+                null, 0);
         return true;
     }
 
     public boolean shouldUpRecreateTask(Intent targetIntent) {
-        return super.shouldUpRecreateTask(new Intent(this,
-                PersonalizedSettings.class));
+        return super.shouldUpRecreateTask(new Intent(this, PersonalizedSettings.class));
     }
 
     @Override
@@ -777,13 +818,14 @@ public class PersonalizedSettings extends PreferenceActivity implements
         if (adapter == null) {
             super.setListAdapter(null);
         } else {
-            super.setListAdapter(new HeaderAdapter(this, getHeaders(),
-                    mAuthenticatorHelper));
+            super.setListAdapter(new HeaderAdapter(this, getHeaders(), mAuthenticatorHelper));
         }
     }
 
     @Override
     public void onAccountsUpdated(Account[] accounts) {
+        // TODO: watch for package upgrades to invalidate cache; see 7206643
+        mAuthenticatorHelper.updateAuthDescriptions(this);
         mAuthenticatorHelper.onAccountsUpdated(this, accounts);
         invalidateHeaders();
     }

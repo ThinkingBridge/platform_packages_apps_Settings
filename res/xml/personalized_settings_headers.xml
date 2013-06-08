@@ -181,35 +181,6 @@
                 android:action="android.settings.ADD_ACCOUNT_SETTINGS"/>
     </header>
 
-    <!-- ROMSettings -->
-    <header
-            android:id="@+id/romsettings_section"
-            android:title="@string/user_interface" />
-
-    <header
-            android:id="@+id/rom_settings"
-            android:title="@string/rom_settings_title"
-            android:icon="@drawable/ic_settings_romsettings"
-            android:fragment="com.android.settings.thinkingbridge.ROMSettings" />
-
-    <!-- Lock screen -->
-    <header
-            android:id="@+id/lock_screen_settings"
-            android:fragment="com.android.settings.cyanogenmod.LockscreenInterface"
-            android:title="@string/lock_screen_title"
-            android:icon="@drawable/ic_settings_lockscreen" />
-
-    <!-- Themes -->
-    <header
-            android:id="@+id/themes_settings"
-            android:icon="@drawable/ic_settings_themes"
-            android:title="@string/themes_settings_title">
-        <intent
-                android:action="android.intent.action.MAIN"
-                android:targetPackage="com.tmobile.themechooser"
-                android:targetClass="com.tmobile.themechooser.ThemeChooser" />
-    </header>
-
     <!-- SYSTEM -->
     <header android:id="@+id/system_section"
             android:title="@string/header_category_system" />
