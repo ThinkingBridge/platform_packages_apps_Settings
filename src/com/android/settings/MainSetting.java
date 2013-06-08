@@ -32,9 +32,6 @@ public class MainSetting extends Activity {
     private LocalActivityManager localManager;
     private LayoutInflater mInflater;
     private ViewPagerAdapter mPagerAdapter;
-    private SwitcherHelpers switcherHelpers;
-    private boolean resumeFirst;
-    private boolean pauseFirst;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,47 +39,10 @@ public class MainSetting extends Activity {
         setContentView(R.layout.mainsetting);
         localManager = new LocalActivityManager(this, true);
         localManager.dispatchCreate(savedInstanceState);
-        switcherHelpers = SwitcherHelpers.getInstance();
 
-        InitControler();
         InitTextView();
         InitViewPager();
 
-    }
-
-    @Override
-    protected void onResume() {
-        // TODO Auto-generated method stub
-        super.onResume();
-        if (!resumeFirst) {
-            switcherHelpers.getmWifiEnabler().resume();
-            switcherHelpers.getmBluetoothEnabler().resume();
-            switcherHelpers.getmProfileEnabler().resume();
-        } else {
-            resumeFirst = false;
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (!pauseFirst) {
-            switcherHelpers.getmWifiEnabler().pause();
-            switcherHelpers.getmBluetoothEnabler().pause();
-            switcherHelpers.getmProfileEnabler().pause();
-        } else {
-            pauseFirst = false;
-        }
-    }
-
-    // Init switcherhelpers
-    private void InitControler() {
-        resumeFirst = true;
-        pauseFirst = true;
-        switcherHelpers.setIsWifi(0);
-        switcherHelpers.setIsBluetooth(0);
-        switcherHelpers.setIsProfile(0);
-        switcherHelpers.setBluetoothIndex(0);
     }
 
     // tab title
