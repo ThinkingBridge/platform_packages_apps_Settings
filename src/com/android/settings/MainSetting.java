@@ -17,6 +17,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.view.LayoutInflater;
@@ -25,6 +26,7 @@ import android.util.Log;
 public class MainSetting extends Activity {
     private ViewPager mPager;
     private List<View> listViews; // Tab List
+    private ImageView cursor;// Animation Image
     private TextView used_tab, personal_tab, system_tab;// tab title
     private int offset = 0;// Animation Image move px
     private int currIndex = 0;// Animation Image Index
@@ -40,6 +42,7 @@ public class MainSetting extends Activity {
         localManager = new LocalActivityManager(this, true);
         localManager.dispatchCreate(savedInstanceState);
 
+        InitImageView();
         InitTextView();
         InitViewPager();
 
@@ -75,6 +78,24 @@ public class MainSetting extends Activity {
         mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(0);
         mPager.setOnPageChangeListener(new MyOnPageChangeListener());
+    }
+
+    // cursor animation
+    private void InitImageView() {
+        cursor = (ImageView) findViewById(R.id.cursor);
+        // get Image width
+        bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.top_slider)
+                .getWidth();
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        // get screen width
+        int screenW = dm.widthPixels;
+        // get offset move px
+        offset = (screenW / 3 - bmpW) / 2;
+        Matrix matrix = new Matrix();
+        matrix.postTranslate(offset, 0);
+        // init Animation ImageView px
+        cursor.setImageMatrix(matrix);
     }
 
     // viewpager adapter
@@ -173,7 +194,7 @@ public class MainSetting extends Activity {
             currIndex = arg0;
             animation.setFillAfter(true);// True:Image stop at Animation end
             animation.setDuration(300);
-            //cursor.startAnimation(animation);
+            cursor.startAnimation(animation);
         }
 
         @Override

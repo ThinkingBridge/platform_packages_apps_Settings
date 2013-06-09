@@ -24,7 +24,14 @@
                     android:gravity="center"
                     android:text="@string/used_setting"
                     android:textColor="#ffffff"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:background="@drawable/tab_click_bg"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dividing_line" >
+            </ImageView>
 
             <TextView
                     android:id="@+id/personal_tab"
@@ -34,7 +41,14 @@
                     android:gravity="center"
                     android:text="@string/personal_setting"
                     android:textColor="#ffffff"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:background="@drawable/tab_click_bg"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dividing_line" >
+            </ImageView>
 
             <TextView
                     android:id="@+id/system_tab"
@@ -44,8 +58,17 @@
                     android:gravity="center"
                     android:text="@string/system_setting"
                     android:textColor="#ffffff"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:background="@drawable/tab_click_bg"/>
         </LinearLayout>
+
+        <ImageView
+                android:id="@+id/cursor"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:scaleType="matrix"
+                android:src="@drawable/top_slider" />
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager
