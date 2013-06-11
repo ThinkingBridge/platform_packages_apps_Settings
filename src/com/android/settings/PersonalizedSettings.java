@@ -472,10 +472,6 @@ public class PersonalizedSettings extends PreferenceActivity
                         || Utils.isMonkeyRunning()) {
                     target.remove(i);
                 }
-            } else if (id == R.id.development_settings) {
-                if (!showDev) {
-                    target.remove(i);
-                }
             } else if (id == R.id.superuser) {
                 if (!DevelopmentSettings.isRootForAppsEnabled()) {
                     target.remove(i);
