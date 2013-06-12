@@ -597,10 +597,7 @@ public class PersonalizedSettings extends PreferenceActivity
         static final int HEADER_TYPE_SWITCH = 2;
         private static final int HEADER_TYPE_COUNT = HEADER_TYPE_SWITCH + 1;
 
-        private final WifiEnabler mWifiEnabler;
-        private final BluetoothEnabler mBluetoothEnabler;
         private final ProfileEnabler mProfileEnabler;
-        private final AirplaneEnabler mAirEnabler;
         private AuthenticatorHelper mAuthHelper;
 
         private static class HeaderViewHolder {
@@ -615,10 +612,7 @@ public class PersonalizedSettings extends PreferenceActivity
         static int getHeaderType(Header header) {
             if (header.fragment == null && header.intent == null) {
                 return HEADER_TYPE_CATEGORY;
-            } else if (header.id == R.id.wifi_settings
-                    || header.id == R.id.bluetooth_settings
-                    || header.id == R.id.profiles_settings
-                    || header.id == R.id.airplane_mode) {
+            } else if (header.id == R.id.profiles_settings) {
                 return HEADER_TYPE_SWITCH;
             } else {
                 return HEADER_TYPE_NORMAL;
@@ -718,14 +712,8 @@ public class PersonalizedSettings extends PreferenceActivity
 
                 case HEADER_TYPE_SWITCH:
                     // Would need a different treatment if the main menu had more switches
-                    if (header.id == R.id.wifi_settings) {
-                        mWifiEnabler.setSwitch(holder.switch_);
-                    } else if (header.id == R.id.bluetooth_settings) {
-                        mBluetoothEnabler.setSwitch(holder.switch_);
-                    } else if (header.id == R.id.profiles_settings) {
+                    if (header.id == R.id.profiles_settings) {
                         mProfileEnabler.setSwitch(holder.switch_);
-                    } else if (header.id == R.id.airplane_mode){
-                        mAirEnabler.setSwitch(holder.switch_);
                     }
                     // No break, fall through on purpose to update common fields
 
@@ -760,17 +748,11 @@ public class PersonalizedSettings extends PreferenceActivity
         }
 
         public void resume() {
-            mWifiEnabler.resume();
-            mBluetoothEnabler.resume();
             mProfileEnabler.resume();
-            mAirEnabler.resume();
         }
 
         public void pause() {
-            mWifiEnabler.pause();
-            mBluetoothEnabler.pause();
             mProfileEnabler.pause();
-            mAirEnabler.resume();
         }
     }
 
