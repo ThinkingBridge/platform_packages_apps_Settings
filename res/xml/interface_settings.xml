@@ -74,11 +74,6 @@
             android:title="@string/lcd_density_title"
             android:summary="@string/lcd_density_summary" />
 
-        <PreferenceScreen
-            android:key="recents_ram_bar"
-            android:fragment="com.android.settings.carbon.RamBar"
-            android:title="@string/ram_bar" />
-
     </PreferenceCategory>
 
     <PreferenceCategory

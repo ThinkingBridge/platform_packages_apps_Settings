@@ -23,13 +23,10 @@ import com.android.settings.accounts.AuthenticatorHelper;
 import com.android.settings.accounts.ManageAccountsSettings;
 import com.android.settings.applications.InstalledAppDetails;
 import com.android.settings.applications.ManageApplications;
-import com.android.settings.airplane.AirplaneEnabler;
-import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.deviceinfo.Memory;
 import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.profiles.ProfileEnabler;
 import com.android.settings.vpn2.VpnSettings;
-import com.android.settings.wifi.WifiEnabler;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -472,10 +469,6 @@ public class PersonalizedSettings extends PreferenceActivity
                         || Utils.isMonkeyRunning()) {
                     target.remove(i);
                 }
-            } else if (id == R.id.superuser) {
-                if (!DevelopmentSettings.isRootForAppsEnabled()) {
-                    target.remove(i);
-                }
             }
 
             if (target.get(i) == header
@@ -654,10 +647,7 @@ public class PersonalizedSettings extends PreferenceActivity
 
             // Temp Switches provided as placeholder until the adapter replaces these with actual
             // Switches inflated from their layouts. Must be done before adapter is set in super
-            mWifiEnabler = new WifiEnabler(context, new Switch(context));
-            mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mProfileEnabler = new ProfileEnabler(context, new Switch(context));
-            mAirEnabler = new AirplaneEnabler(context, new Switch(context));
         }
 
         @Override

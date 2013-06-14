@@ -15,6 +15,7 @@ import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.profiles.ProfileEnabler;
 import com.android.settings.vpn2.VpnSettings;
 import com.android.settings.wifi.WifiEnabler;
+import com.android.settings.carbon.TRDSEnabler;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -84,14 +85,21 @@ public class SystemSettings extends PreferenceActivity
     private Header mCurrentHeader;
     private Header mParentHeader;
     private boolean mInLocalHeaderSwitch;
+    private static Switch mTRDSSwitch;
 
     // Show only these settings for restricted users
     private int[] SETTINGS_FOR_RESTRICTED = {
-            R.id.statusbar,
-            R.id.powerwidget,
-            R.id.quicksettings,
-            R.id.power_menu,
-            R.id.pie_control
+            R.id.interface_settings,
+            R.id.lock_screen_settings,
+            R.id.nav_bar,
+            R.id.pie_controls,
+            R.id.power_menu_settings,
+            R.id.power_widget_settings,
+            R.id.ribbon_targets,
+            R.id.status_bar_settings,
+            R.id.statusbar_toggles,
+            R.id.themes_settings,
+            R.id.trds_settings
     };
 
     private SharedPreferences mDevelopmentPreferences;
@@ -445,10 +453,6 @@ public class SystemSettings extends PreferenceActivity
                 if (!showDev) {
                     target.remove(i);
                 }
-            } else if (id == R.id.superuser) {
-                if (!DevelopmentSettings.isRootForAppsEnabled()) {
-                    target.remove(i);
-                }
             }
 
             if (target.get(i) == header
@@ -574,6 +578,7 @@ public class SystemSettings extends PreferenceActivity
         private final BluetoothEnabler mBluetoothEnabler;
         private final ProfileEnabler mProfileEnabler;
         private final AirplaneEnabler mAirEnabler;
+        private final TRDSEnabler mTRDSEnabler;
         private AuthenticatorHelper mAuthHelper;
 
         private static class HeaderViewHolder {
@@ -586,12 +591,13 @@ public class SystemSettings extends PreferenceActivity
         private LayoutInflater mInflater;
 
         static int getHeaderType(Header header) {
-            if (header.fragment == null && header.intent == null) {
+            if (header.fragment == null && header.intent == null && header.id != R.id.trds_settings) {
                 return HEADER_TYPE_CATEGORY;
             } else if (header.id == R.id.wifi_settings
                     || header.id == R.id.bluetooth_settings
                     || header.id == R.id.profiles_settings
-                    || header.id == R.id.airplane_mode) {
+                    || header.id == R.id.airplane_mode
+                    || header.id == R.id.trds_settings) {
                 return HEADER_TYPE_SWITCH;
             } else {
                 return HEADER_TYPE_NORMAL;
@@ -637,6 +643,7 @@ public class SystemSettings extends PreferenceActivity
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mProfileEnabler = new ProfileEnabler(context, new Switch(context));
             mAirEnabler = new AirplaneEnabler(context, new Switch(context));
+            mTRDSEnabler = new TRDSEnabler(context, new Switch(context));
         }
 
         @Override
@@ -699,6 +706,9 @@ public class SystemSettings extends PreferenceActivity
                         mProfileEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.airplane_mode){
                         mAirEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.trds_settings) {
+                    	mTRDSSwitch = (Switch) view.findViewById(R.id.switchWidget);
+                        mTRDSEnabler.setSwitch(holder.switch_);
                     }
                     // No break, fall through on purpose to update common fields
 
@@ -737,6 +747,7 @@ public class SystemSettings extends PreferenceActivity
             mBluetoothEnabler.resume();
             mProfileEnabler.resume();
             mAirEnabler.resume();
+            mTRDSEnabler.resume();
         }
 
         public void pause() {
@@ -744,6 +755,7 @@ public class SystemSettings extends PreferenceActivity
             mBluetoothEnabler.pause();
             mProfileEnabler.pause();
             mAirEnabler.resume();
+            mTRDSEnabler.pause();
         }
     }
 
@@ -760,6 +772,9 @@ public class SystemSettings extends PreferenceActivity
             highlightHeader((int) mLastHeader.id);
         } else {
             mLastHeader = header;
+        }
+        if (header.id == R.id.trds_settings) {
+            mTRDSSwitch.toggle();
         }
     }
 

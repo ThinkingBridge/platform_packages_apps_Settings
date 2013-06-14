@@ -1,66 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2010 The Android Open Source Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-
 <preference-headers
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <!-- UserInterface Headers -->
+    <!-- Interface -->
     <header
-        android:title="@string/user_interface" />
+        android:id="@+id/interface_settings"
+        android:title="@string/interface_title"
+        android:icon="@drawable/ic_settings_interface"
+        android:fragment="com.android.settings.carbon.InterfaceSettings" />
 
-    <!--<header
-        android:id="@+id/general_ui"
-        android:title="@string/general_ui"
-        android:icon="@drawable/ic_settings_general_ui"
-        android:fragment="com.android.settings." />-->
-
+    <!-- Lockscreen -->
     <header
-        android:id="@+id/statusbar"
-        android:title="@string/status_bar_title"
-        android:icon="@drawable/ic_settings_statusbar"
-        android:fragment="com.android.settings.thinkingbridge.StatusBar" />
+        android:id="@+id/lock_screen_settings"
+        android:title="@string/lock_screen_title"
+        android:icon="@drawable/ic_settings_lockscreen"
+        android:fragment="com.android.settings.carbon.Lockscreens" />
 
+    <!-- Navigation -->
     <header
-        android:id="@+id/powerwidget"
-        android:title="@string/notification_drawer_title"
-        android:icon="@drawable/ic_settings_powerwidget"
-        android:fragment="com.android.settings.cyanogenmod.PowerWidget" />
+        android:id="@+id/nav_bar"
+        android:title="@string/navbar_title"
+        android:icon="@drawable/ic_settings_navbar"
+        android:fragment="com.android.settings.carbon.Navbar" />
 
+    <!-- Pie Controls -->
     <header
-        android:id="@+id/quicksettings"
-        android:title="@string/quick_settings_panel_title"
-        android:icon="@drawable/ic_settings_quicksettings"
-        android:fragment="com.android.settings.thinkingbridge.QuickSettings" />
+        android:id="@+id/pie_controls"
+        android:title="@string/pie_controls_title"
+        android:icon="@drawable/ic_settings_pie"
+        android:fragment="com.android.settings.carbon.Pie" />
 
+    <!-- Powermenu -->
     <header
-        android:id="@+id/power_menu"
+        android:id="@+id/power_menu_settings"
         android:title="@string/power_menu_title"
         android:icon="@drawable/ic_settings_powermenu"
-        android:fragment="com.android.settings.thinkingbridge.PowerMenu" />
+        android:fragment="com.android.settings.carbon.PowerMenu" />
 
-    <!-- Navbar headers -->
-
+    <!-- Powerwidget -->
     <header
-        android:title="@string/navbar_headers" />
+        android:id="@+id/power_widget_settings"
+        android:title="@string/power_widget_title"
+        android:icon="@drawable/ic_settings_powerwidget"
+        android:fragment="com.android.settings.carbon.PowerWidget" />
 
+    <!-- Ribbons -->
     <header
-        android:id="@+id/pie_control"
-        android:title="@string/title_pie"
-        android:icon="@drawable/ic_settings_pie"
-        android:fragment="com.android.settings.thinkingbridge.Pie" />
+        android:id="@+id/ribbon_targets"
+        android:fragment="com.android.settings.carbon.RibbonTargets"
+        android:icon="@drawable/ic_rom_control_ribbon"
+        android:title="@string/ribbon_settings_title"
+        android:summary="@string/ribbon_settings_summary" />
+
+    <!-- Statusbar -->
+    <header
+        android:id="@+id/status_bar_settings"
+        android:title="@string/status_bar_title"
+        android:icon="@drawable/ic_settings_statusbar"
+        android:fragment="com.android.settings.carbon.StatusBar" />
+
+    <!-- Statusbar Toggles -->
+    <header
+        android:id="@+id/statusbar_toggles"
+        android:title="@string/toggles_title"
+        android:icon="@drawable/ic_settings_quicksettings"
+        android:fragment="com.android.settings.carbon.StatusBarToggles" />
+        
+    <!-- TRDS -->
+    <header
+        android:id="@+id/trds_settings"
+        android:icon="@drawable/ic_settings_trds"
+        android:title="@string/trds_settings_title" />
+        
+    <!-- Themes -->
+    <header
+        android:id="@+id/themes_settings"
+        android:icon="@drawable/ic_settings_themes"
+        android:title="@string/themes_settings_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.tmobile.themechooser"
+            android:targetClass="com.tmobile.themechooser.ThemeChooser" />
+    </header>
 
 </preference-headers>

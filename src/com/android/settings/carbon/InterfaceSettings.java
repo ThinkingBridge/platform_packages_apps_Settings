@@ -1,18 +1,3 @@
-/*
- * Copyright (C) 2012 The Carbon Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package com.android.settings.carbon;
 
@@ -98,7 +83,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     public static final String TAG = "InterfaceSettings";
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
-    private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
     private static final String KEY_DUAL_PANE = "dual_pane";
     private static final String PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
     private static final String PREF_NOTIFICATION_SHOW_WIFI_SSID = "notification_show_wifi_ssid";
@@ -117,7 +101,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String KEY_HALO_REVERSED = "halo_reversed";
 
     Preference mCustomLabel;
-    Preference mRamBar;
     Preference mLcdDensity;
     CheckBoxPreference mDualPane;
     CheckBoxPreference mWakeUpWhenPluggedOrUnplugged;
@@ -194,9 +177,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
 
         mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
         updateCustomLabelTextSummary();
-
-        mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
-        updateRamBar();
 
         mNotificationManager = INotificationManager.Stub.asInterface(
                 ServiceManager.getService(Context.NOTIFICATION_SERVICE));
@@ -331,15 +311,6 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         }
     }
 
-    private void updateRamBar() {
-        int ramBarMode = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.RECENTS_RAM_BAR_MODE, 0);
-        if (ramBarMode != 0)
-            mRamBar.setSummary(getResources().getString(R.string.ram_bar_color_enabled));
-        else
-            mRamBar.setSummary(getResources().getString(R.string.ram_bar_color_disabled));
-    }
-
     private void openTransparencyDialog() {
         getFragmentManager().beginTransaction().add(new AdvancedTransparencyDialog(), null)
                 .commit();
@@ -448,13 +419,11 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-        updateRamBar();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        updateRamBar();
     }
 
      @Override

@@ -64,31 +64,7 @@
     <uses-permission android:name="android.permission.SET_TIME" />
     <uses-permission android:name="android.permission.ACCESS_SUPERUSER" />
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <permission
-        android:name="android.permission.REQUEST_SUPERUSER"
-        android:protectionLevel="signature" />
-    <permission
-        android:name="android.permission.REPORT_SUPERUSER"
-        android:protectionLevel="signature" />
-
-    <permission-group
-        android:name="android.permission-group.SUPERUSER"
-        android:description="@string/superuser_description_more"
-        android:icon="@drawable/ic_action_permission"
-        android:label="@string/superuser"
-        android:priority="10000" />
-
-    <permission
-        android:name="android.permission.ACCESS_SUPERUSER"
-        android:description="@string/superuser_description_more"
-        android:icon="@drawable/ic_action_permission"
-        android:label="@string/superuser_description"
-        android:logo="@drawable/ic_action_permission"
-        android:permissionGroup="android.permission-group.SUPERUSER"
-        android:protectionLevel="dangerous" />
-
+    
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
             android:taskAffinity=""
@@ -96,63 +72,6 @@
             android:uiOptions="splitActionBarWhenNarrow"
             android:hardwareAccelerated="true"
             android:supportsRtl="true">
-
-        <!-- Only system/su can open this activity -->
-        <!-- This activity will then call the MultitaskSuRequestActivity to create a new task stack -->
-        <activity
-            android:name="com.koushikdutta.superuser.RequestActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/superuser"
-            android:launchMode="singleTask"
-            android:excludeFromRecents="true"
-            android:permission="android.permission.REQUEST_SUPERUSER"
-            android:process=":superuser"
-            android:taskAffinity="com.android.settings.superuser"
-            android:theme="@style/RequestThemeDark" />
-        <!-- Only system/su can open this activity -->
-        <!-- This is activity is started in multiuser mode when the user invoking su -->
-        <!-- is not the device owner (user id 0). -->
-        <activity
-            android:name="com.koushikdutta.superuser.NotifyActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/superuser"
-            android:launchMode="singleTask"
-            android:excludeFromRecents="true"
-            android:permission="android.permission.REQUEST_SUPERUSER"
-            android:process=":superuser"
-            android:taskAffinity="com.android.settings.superuser"
-            android:theme="@style/RequestThemeDark" />
-
-        <!-- Multiple instances of this activity can be running for multiple su requests -->
-        <activity
-            android:name="com.koushikdutta.superuser.MultitaskSuRequestActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:label="@string/request"
-            android:process=":superuser"
-            android:taskAffinity="com.android.settings.superuser"
-            android:theme="@style/RequestThemeDark" />
-
-        <receiver
-            android:name="com.koushikdutta.superuser.SuReceiver"
-            android:permission="android.permission.REPORT_SUPERUSER" />
-
-        <receiver
-            android:name=".cyanogenmod.superuser.PackageChangeReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <data android:scheme="package" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <data android:scheme="package" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
 
         <!-- Settings -->
 
@@ -1575,7 +1494,7 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
-        <!-- Carbon Activities Start -->
+        <!-- ThinkingBridge Activities Start -->
         <activity android:name=".carbon.InterfaceSettings" />
         <activity android:name=".carbon.Lockscreens" />
         <activity android:name=".carbon.LockscreenButtons" />
@@ -1584,10 +1503,8 @@
         <activity android:name=".carbon.NotificationDrawerStyle" />
         <activity android:name=".carbon.Pie" />
         <activity android:name=".carbon.PieColor" />
-        <activity android:name=".carbon.PerformanceSettings" />
         <activity android:name=".carbon.PowerMenu" />
         <activity android:name=".carbon.PowerWidget" />
-        <activity android:name=".carbon.RamBar" />
         <activity android:name=".carbon.RibbonTargets" />
         <activity android:name=".carbon.StatusBar" />
         <activity android:name=".carbon.StatusBarBattery" />
@@ -1605,7 +1522,7 @@
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.carbon.Pie" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/carbon_settings" />
+                android:resource="@id/pie_controls" />
         </activity>
 
         <activity android:name="Settings$QuietHoursSettingsActivity"
@@ -1672,22 +1589,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="Settings$ASSRamBarActivity"
-                android:label="@string/ram_bar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.carbon.RamBar" />
-        </activity>
-
         <activity android:name=".profiles.NFCProfile"
                 android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="carbon/profile" />
+                <data android:mimeType="thinkingbridge/profile" />
             </intent-filter>
         </activity>
 
@@ -1697,7 +1604,7 @@
 
         <activity android:name=".ApnEditor" />
 
-        <!-- Carbon Activities End -->
+        <!-- ThinkingBridge Activities End -->
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
@@ -1751,7 +1658,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.app.action.START_ENCRYPTION" />
-                <category android:name="android.intent.category.DEFAULT" /> />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
                 android:value="com.android.settings.CryptKeeperSettings" />
@@ -1816,12 +1723,6 @@
         <receiver android:name=".bluetooth.BluetoothDiscoverableTimeoutReceiver">
             <intent-filter>
                 <action android:name="android.bluetooth.intent.DISCOVERABLE_TIMEOUT" />
-            </intent-filter>
-        </receiver>
-
-        <receiver android:name=".carbon.BootReceiver" android:enabled="true">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
 
