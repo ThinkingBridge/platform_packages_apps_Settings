@@ -258,7 +258,7 @@ public class Navbar extends SettingsPreferenceFragment implements
 
         mMenuArrowKeysCheckBox = (CheckBoxPreference) findPreference(PREF_MENU_ARROWS);
         mMenuArrowKeysCheckBox.setChecked(Settings.System.getBoolean(mContentRes,
-                Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, true));
+                Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, false));
 
         // don't allow devices that must use a navigation bar to disable it
         if (hasNavBarByDefault) {
