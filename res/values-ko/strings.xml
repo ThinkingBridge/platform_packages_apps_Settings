@@ -1835,5 +1835,9 @@
     <string name="used_setting">간편</string>
     <string name="personal_setting">일반</string>
     <string name="system_setting">시스템</string>
+    
+    <!-- Network speed -->
+    <string name="show_network_speed">네트워크 속도 표시</string>
+    <string name="show_network_speed_summary">상단바에 네트워크 속도 표시</string>
 
 </resources>

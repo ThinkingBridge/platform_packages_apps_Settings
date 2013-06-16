@@ -5844,5 +5844,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="used_setting">Used</string>
     <string name="personal_setting">Common</string>
     <string name="system_setting">System</string>
+    
+    <!-- Network speed -->
+    <string name="show_network_speed">Network speed indicator</string>
+    <string name="show_network_speed_summary">Show network speed in statsbar</string>
 
 </resources>
