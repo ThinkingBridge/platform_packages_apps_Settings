@@ -38,8 +38,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String TAG = "StatusBarSettings";
 
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
+    private static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
 
     private CheckBoxPreference mStatusBarBrightnessControl;
+    private CheckBoxPreference mStatusBarTraffic;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         StatusBarBrightnessChangedObserver statusBarBrightnessChangedObserver =
             new StatusBarBrightnessChangedObserver(new Handler());
         statusBarBrightnessChangedObserver.startObserving();
+        
+        mStatusBarTraffic = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_TRAFFIC);
+        mStatusBarTraffic.setChecked((Settings.System.getInt(getContentResolver(),
+                                Settings.System.STATUS_BAR_TRAFFIC, 1) == 1));
+        mStatusBarTraffic.setOnPreferenceChangeListener(this);
 
         mStatusBarBrightnessControl =
             (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
@@ -67,6 +74,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
                     (Boolean) newValue ? 1 : 0);
+            return true;
+        } else if (preference == mStatusBarTraffic) {
+        	Settings.System.putInt(getContentResolver(),
+        			Settings.System.STATUS_BAR_TRAFFIC,
+        			(Boolean) newValue ? 1 : 0);
             return true;
         }
         return false;
