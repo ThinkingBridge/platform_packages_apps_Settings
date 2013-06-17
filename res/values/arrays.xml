@@ -1318,6 +1318,18 @@
         <item>2500</item>
         <item>5000</item>
     </string-array>
+    
+    <string-array name="haptic_feedback_entries">
+        <item>Use global setting</item>
+        <item>On</item>
+        <item>Off</item>
+    </string-array>
+
+    <string-array name="haptic_feedback_values" translatable="false">
+        <item>2</item>
+        <item>1</item>
+        <item>0</item>
+    </string-array>
 
     <string-array name="entries_status_bar_am_pm">
         <item>Normal</item>
