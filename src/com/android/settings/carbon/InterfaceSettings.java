@@ -99,6 +99,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private static final String KEY_HALO_STATE = "halo_state";
     private static final String KEY_HALO_HIDE = "halo_hide";
     private static final String KEY_HALO_REVERSED = "halo_reversed";
+    private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
 
     Preference mCustomLabel;
     Preference mLcdDensity;
@@ -118,6 +119,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
     private ListPreference mHaloState;
     private CheckBoxPreference mHaloHide;
     private CheckBoxPreference mHaloReversed;
+    private ListPreference mListViewAnimation;
 
     private File mWallpaperImage;
     private File mWallpaperTemporary;
@@ -221,6 +223,13 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mUseAltResolver = (CheckBoxPreference) findPreference(PREF_USE_ALT_RESOLVER);
         mUseAltResolver.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
                 Settings.System.ACTIVITY_RESOLVER_USE_ALT, false));
+        
+        mListViewAnimation = (ListPreference) finePreference(KEY_LISTVIEW_ANIMATION);
+        int listviewanimation = Settings.System.getInt(getActivity().getContentResolver(),
+        		Settings.System.LISTVIEW_ANIMATION, 5);
+        mListViewAnimation.setValue(String.valueOf(listviewanimation));
+        mListViewAnimation.setSummary(mListViewAnimation.getEntry());
+        mListViewAnimation.setOnPreferenceChangeListener(this);
 
         mPowerButtonTorch = (CheckBoxPreference) findPreference(KEY_POWER_BUTTON_TORCH);
         mPowerButtonTorch.setChecked((Settings.System.getInt(getActivity().
@@ -476,6 +485,14 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.USER_UI_MODE, Integer.parseInt((String) newValue));
             Helpers.restartSystemUI();
+            return true;
+        } else if (preference == mListViewAnimation) {
+            int listviewanimation = Integer.valueOf((String) newValue);
+            int index = mListViewAnimation.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.LISTVIEW_ANIMATION,
+                    listviewanimation);
+            mListViewAnimation.setSummary(mListViewAnimation.getEntries()[index]);
             return true;
         } else if (preference == mHaloState) {
             boolean state = Integer.valueOf((String) newValue) == 1;

@@ -5865,5 +5865,15 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Display settings -->
     <string name="gpu_clock_title">GPU clock speed</string>
     <string name="gpu_clock_summary" translatable="false">%1$s</string>
+    
+    <!-- ListView animation -->
+    <string name="listview_animation_title">ListView Animation</string>
+    <string name="listview_off">Off</string>
+    <string name="listview_wave_left">Wave (Left)</string>
+    <string name="listview_wave_right">Wave (Right)</string>
+    <string name="listview_alpha">Alpha</string>
+    <string name="listview_swing">Swing</string>
+    <string name="listview_translate_left">Translate (Left)</string>
+    <string name="listview_translate_right">Translate (Right)</string>
 
 </resources>
