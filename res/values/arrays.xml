@@ -2247,8 +2247,8 @@
         <item>@string/listview_alpha</item>
         <item>@string/listview_stack_top</item>
         <item>@string/listview_stack_bottom</item>
-        <item>@string/listview_stack_unfold</item>
-        <item>@string/listview_stack_fold</item>
+        <item>@string/listview_unfold</item>
+        <item>@string/listview_fold</item>
         <item>@string/listview_translate_left</item>
         <item>@string/listview_translate_right</item>
     </string-array>
