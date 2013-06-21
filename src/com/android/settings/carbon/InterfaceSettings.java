@@ -224,9 +224,9 @@ public class InterfaceSettings extends SettingsPreferenceFragment
         mUseAltResolver.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
                 Settings.System.ACTIVITY_RESOLVER_USE_ALT, false));
         
-        mListViewAnimation = (ListPreference) finePreference(KEY_LISTVIEW_ANIMATION);
+        mListViewAnimation = (ListPreference) findPreference(KEY_LISTVIEW_ANIMATION);
         int listviewanimation = Settings.System.getInt(getActivity().getContentResolver(),
-        		Settings.System.LISTVIEW_ANIMATION, 5);
+        		Settings.System.LISTVIEW_ANIMATION, 1);
         mListViewAnimation.setValue(String.valueOf(listviewanimation));
         mListViewAnimation.setSummary(mListViewAnimation.getEntry());
         mListViewAnimation.setOnPreferenceChangeListener(this);

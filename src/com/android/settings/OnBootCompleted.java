@@ -1,5 +1,4 @@
 /*
- * Copyright (C) 2011 The CyanogenMod Project
  * Copyright (C) 2013 ThinkingBridge Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,9 +43,6 @@ public class OnBootCompleted extends IntentService {
         String maxFrequency = prefs.getString(CPUSettings.KEY_MAX_FREQ, null);
         String scheduler = prefs.getString(CPUSettings.KEY_SCHEDULER, null);
         String gpuClock = prefs.getString(DisplaySettings.KEY_GPU_CLOCK, null);
-        boolean highPerfSound = prefs.getBoolean(SoundSettings.KEY_HIGH_PERF_SOUND, true);
-        boolean bln = prefs.getBoolean(SoundSettings.KEY_BLN, true);
-        boolean blnBlink = prefs.getBoolean(SoundSettings.KEY_BLN_BLINK, true);
 
         if (prefs == null) {
             Log.i(TAG, "No settings saved. No kernel specific settings to restore.");
@@ -85,18 +81,6 @@ public class OnBootCompleted extends IntentService {
             // Set previous GPU clock frequency
             if (KernelUtils.fileExists(DisplaySettings.GPU_CLOCK_FILE) && gpuClock != null) {
                 KernelUtils.writeOneLine(DisplaySettings.GPU_CLOCK_FILE, gpuClock);
-            }
-            // Set previous High Performance Sound setting
-            if (KernelUtils.fileExists(SoundSettings.HIGH_PERF_SOUND_FILE)) {
-                KernelUtils.writeOneLine(SoundSettings.HIGH_PERF_SOUND_FILE, Integer.toString(highPerfSound ? 1 : 0));
-            }
-            // Set previous BLN setting
-            if (KernelUtils.fileExists(SoundSettings.BLN_FILE)) {
-                KernelUtils.writeOneLine(SoundSettings.BLN_FILE, Integer.toString(bln ? 1 : 0));
-            }
-            // Set previous BLN Blink setting
-            if (KernelUtils.fileExists(SoundSettings.BLN_FILE) && KernelUtils.fileExists(SoundSettings.BLN_BLINK_FILE)) {
-                KernelUtils.writeOneLine(SoundSettings.BLN_BLINK_FILE, Integer.toString(blnBlink ? 1 : 0));
             }
             Log.i(TAG, "Kernel specific settings restored.");
         }
