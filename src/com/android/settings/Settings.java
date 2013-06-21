@@ -140,9 +140,6 @@ public class Settings extends PreferenceActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-         //Go to MainSettings
-        startActivity(new Intent(Settings.this,MainSetting.class));
-        finish();
         if (getIntent().getBooleanExtra(EXTRA_CLEAR_UI_OPTIONS, false)) {
             getWindow().setUiOptions(0);
         }
