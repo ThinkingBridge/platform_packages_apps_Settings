@@ -4919,6 +4919,8 @@
     <string name="title_clock_doubleclick">Clock double click actions</string>
     <string name="title_clock_longclick">Clock long click actions</string>
     <string name="title_clock_shortclick">Clock short click actions</string>
+    <string name="clock_use_second">Use second clock</string>
+    <string name="clock_use_second_summary">Show second in clock</string>
     <string name="alarm">Alarms</string>
     <string name="nothing">Nothing</string>
     <string name="today">Calendar for today</string>
