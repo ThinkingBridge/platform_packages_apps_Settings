@@ -1832,7 +1832,6 @@
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"표시할 긴급 알림 유형을 선택합니다."</string>
     
     <!-- Main setting -->
-    <string name="used_setting">간편</string>
     <string name="personal_setting">일반</string>
     <string name="system_setting">시스템</string>
     
