@@ -60,6 +60,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
     private static final String PREF_CLOCK_DATE_STYLE = "clock_date_style";
     private static final String PREF_CLOCK_DATE_FORMAT = "clock_date_format";
     private static final String STATUS_BAR_CLOCK = "status_bar_show_clock";
+    private static final String CLOCK_USE_SECOND = "clock_use_second";
 
     public static final int CLOCK_DATE_STYLE_LOWERCASE = 1;
     public static final int CLOCK_DATE_STYLE_UPPERCASE = 2;
@@ -81,6 +82,7 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
     private ShortcutPickerHelper mPicker;
     private Preference mPreference;
     private String mString;
+    private CheckBoxPreference mClockUseSecond;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -148,6 +150,10 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
         }
 
         parseClockDateFormats();
+
+        mClockUseSecond = (CheckBoxPreference) prefSet.findPreference(CLOCK_USE_SECOND);
+        mClockUseSecond.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.CLOCK_USE_SECOND, 0) == 1));
 
         mStatusBarClock = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_CLOCK);
         mStatusBarClock.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
@@ -348,6 +354,11 @@ public class StatusBarClockStyle extends SettingsPreferenceFragment implements
             value = mStatusBarClock.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_CLOCK, value ? 1 : 0);
+            return true;
+        } else if (preference == mClockUseSecond) {
+            value = mClockUseSecond.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.CLOCK_USE_SECOND, value ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
