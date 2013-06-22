@@ -504,7 +504,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             mListViewAnimation.setSummary(mListViewAnimation.getEntries()[index]);
             return true;
         } else if (preference == mListViewInterpolator) {
-            int listviewanimation = Integer.valueOf((String) newValue);
+            int listviewinterpolator = Integer.valueOf((String) newValue);
             int index = mListViewInterpolator.findIndexOfValue((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.LISTVIEW_INTERPOLATOR,
