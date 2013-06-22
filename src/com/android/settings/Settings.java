@@ -28,7 +28,6 @@ import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.deviceinfo.Memory;
 import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.profiles.ProfileEnabler;
-import com.android.settings.carbon.TRDSEnabler;
 import com.android.settings.vpn2.VpnSettings;
 import com.android.settings.wifi.WifiEnabler;
 
@@ -124,6 +123,7 @@ public class Settings extends PreferenceActivity
             R.id.account_add,
             R.id.system_section,
             R.id.date_time_settings,
+            R.id.about_settings,
             R.id.accessibility_settings
     };
 
@@ -726,8 +726,8 @@ public class Settings extends PreferenceActivity
                         mBluetoothEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.profiles_settings) {
                         mProfileEnabler.setSwitch(holder.switch_);
-                    } else if (header.id == R.id.airplane_mode){
-                        mAirEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.airplane_mode) {
+                    	mAirEnabler.setSwitch(holder.switch_);
                     }
                     // No break, fall through on purpose to update common fields
 
@@ -789,9 +789,6 @@ public class Settings extends PreferenceActivity
             highlightHeader((int) mLastHeader.id);
         } else {
             mLastHeader = header;
-        }
-        if (header.id == R.id.trds_settings) {
-            mTRDSSwitch.toggle();
         }
     }
 

@@ -113,24 +113,6 @@
             </intent-filter>
         </activity>
         <activity
-                android:name="UsedSettings"
-                android:label="@string/settings_label_launcher"
-                android:launchMode="singleTask"
-                android:taskAffinity="com.android.settings" >
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-                android:name="PersonalizedSettings"
-                android:label="@string/settings_label_launcher"
-                android:launchMode="singleTask"
-                android:taskAffinity="com.android.settings" >
-            <intent-filter>
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
                 android:name="SystemSettings"
                 android:label="@string/settings_label_launcher"
                 android:launchMode="singleTask"
