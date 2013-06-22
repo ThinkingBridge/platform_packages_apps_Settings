@@ -599,8 +599,6 @@ public class Settings extends PreferenceActivity
         static final int HEADER_TYPE_SWITCH = 2;
         private static final int HEADER_TYPE_COUNT = HEADER_TYPE_SWITCH + 1;
 
-        private final WifiEnabler mWifiEnabler;
-        private final BluetoothEnabler mBluetoothEnabler;
         private final ProfileEnabler mProfileEnabler;
         private final AirplaneEnabler mAirEnabler;
         private AuthenticatorHelper mAuthHelper;
@@ -617,9 +615,7 @@ public class Settings extends PreferenceActivity
         static int getHeaderType(Header header) {
             if (header.fragment == null && header.intent == null) {
                 return HEADER_TYPE_CATEGORY;
-            } else if (header.id == R.id.wifi_settings
-                    || header.id == R.id.bluetooth_settings
-                    || header.id == R.id.profiles_settings
+            } else if (header.id == R.id.profiles_settings
                     || header.id == R.id.airplane_mode) {
                 return HEADER_TYPE_SWITCH;
             } else {
@@ -662,8 +658,6 @@ public class Settings extends PreferenceActivity
 
             // Temp Switches provided as placeholder until the adapter replaces these with actual
             // Switches inflated from their layouts. Must be done before adapter is set in super
-            mWifiEnabler = new WifiEnabler(context, new Switch(context));
-            mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mProfileEnabler = new ProfileEnabler(context, new Switch(context));
             mAirEnabler = new AirplaneEnabler(context, new Switch(context));
         }
@@ -720,11 +714,7 @@ public class Settings extends PreferenceActivity
 
                 case HEADER_TYPE_SWITCH:
                     // Would need a different treatment if the main menu had more switches
-                    if (header.id == R.id.wifi_settings) {
-                        mWifiEnabler.setSwitch(holder.switch_);
-                    } else if (header.id == R.id.bluetooth_settings) {
-                        mBluetoothEnabler.setSwitch(holder.switch_);
-                    } else if (header.id == R.id.profiles_settings) {
+                    if (header.id == R.id.profiles_settings) {
                         mProfileEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.airplane_mode) {
                     	mAirEnabler.setSwitch(holder.switch_);
@@ -762,15 +752,11 @@ public class Settings extends PreferenceActivity
         }
 
         public void resume() {
-            mWifiEnabler.resume();
-            mBluetoothEnabler.resume();
             mProfileEnabler.resume();
             mAirEnabler.resume();
         }
 
         public void pause() {
-            mWifiEnabler.pause();
-            mBluetoothEnabler.pause();
             mProfileEnabler.pause();
             mAirEnabler.resume();
         }
