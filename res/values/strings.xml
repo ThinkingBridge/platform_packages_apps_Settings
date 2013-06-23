@@ -4450,6 +4450,11 @@
     <string name="title_navring">Navigation Ring</string>
     
     <string name="cpu_settings">CPU Settings</string>
+    
+    <string name="general_ui">General UI</string>
+    <string name="navigationbar_settings">NavigationBar Settings</string>
+    <string name="lockscreen_settings">LockScreen Settings</string>
+    <string name="system_settings">System Settings</string>
 
     <!-- Quiet hours -->
     <string name="quiet_hours_title">Quiet hours</string>

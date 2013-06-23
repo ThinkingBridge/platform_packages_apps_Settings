@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <preference-headers
         xmlns:android="http://schemas.android.com/apk/res/android">
+        
+    <!-- General UI -->
+    <header
+        android:id="@+id/general_ui"
+        android:title="@string/general_ui" />
 
     <!-- Interface -->
     <header
@@ -8,28 +13,7 @@
         android:title="@string/interface_title"
         android:icon="@drawable/ic_settings_interface"
         android:fragment="com.android.settings.carbon.InterfaceSettings" />
-
-    <!-- Lockscreen -->
-    <header
-        android:id="@+id/lock_screen_settings"
-        android:title="@string/lock_screen_title"
-        android:icon="@drawable/ic_settings_lockscreen"
-        android:fragment="com.android.settings.carbon.Lockscreens" />
-
-    <!-- Navigation -->
-    <header
-        android:id="@+id/nav_bar"
-        android:title="@string/navbar_title"
-        android:icon="@drawable/ic_settings_navbar"
-        android:fragment="com.android.settings.carbon.Navbar" />
-
-    <!-- Pie Controls -->
-    <header
-        android:id="@+id/pie_controls"
-        android:title="@string/pie_controls_title"
-        android:icon="@drawable/ic_settings_pie"
-        android:fragment="com.android.settings.carbon.Pie" />
-
+    
     <!-- Powermenu -->
     <header
         android:id="@+id/power_menu_settings"
@@ -65,6 +49,47 @@
         android:title="@string/toggles_title"
         android:icon="@drawable/ic_settings_quicksettings"
         android:fragment="com.android.settings.carbon.StatusBarToggles" />
+    
+    <!-- Lockscreen settings -->
+    <header
+        android:id="@+id/lockscreen_settings"
+        android:title="@string/lockscreen_settings" />
+
+    <!-- Lockscreen -->
+    <header
+        android:id="@+id/lock_screen_settings"
+        android:title="@string/lock_screen_title"
+        android:icon="@drawable/ic_settings_lockscreen"
+        android:fragment="com.android.settings.carbon.Lockscreens" />
+    
+    <!-- Clock Widget -->
+    <header
+        android:id="@+id/lockscreen_lock_clock"
+        android:icon="@drawable/ic_settings_lockclock"
+        android:title="@string/lock_clock_title" >
+        <intent android:action="android.intent.action.MAIN"
+            android:targetPackage="com.cyanogenmod.lockclock"
+            android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
+    </header>
+
+    <!-- Navigation -->
+    <header
+        android:id="@+id/nav_bar"
+        android:title="@string/navbar_title"
+        android:icon="@drawable/ic_settings_navbar"
+        android:fragment="com.android.settings.carbon.Navbar" />
+
+    <!-- Pie Controls -->
+    <header
+        android:id="@+id/pie_controls"
+        android:title="@string/pie_controls_title"
+        android:icon="@drawable/ic_settings_pie"
+        android:fragment="com.android.settings.carbon.Pie" />
+    
+    <!-- System Settings -->
+    <header
+        android:id="@+id/system_settings"
+        android:title="@string/system_settings" />
         
     <!-- TRDS -->
     <header
