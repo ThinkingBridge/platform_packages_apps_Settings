@@ -120,6 +120,10 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="options"
+        android:title="@string/miscellaneous_options_title">
+        
         <CheckBoxPreference
             android:key="system_power_crt_screen_off"
             android:summary="@string/system_power_crt_screen_off_summary"

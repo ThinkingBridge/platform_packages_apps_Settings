@@ -402,10 +402,10 @@ public class InterfaceSettings extends SettingsPreferenceFragment
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.HALO_REVERSED,
                     mHaloReversed.isChecked() ? 1 : 0);
-        } else if (preference == mUseAltResolver) {
+        /*} else if (preference == mUseAltResolver) {
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.ACTIVITY_RESOLVER_USE_ALT,
-                    ((CheckBoxPreference) preference).isChecked());
+                    ((CheckBoxPreference) preference).isChecked());*/
             return true;
         }
 

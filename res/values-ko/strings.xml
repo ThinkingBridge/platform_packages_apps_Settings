@@ -1834,10 +1834,10 @@
     <!-- ThinkingBridge -->
     
     <!-- Headers -->
-    <string name="general_ui">General UI</string>
-    <string name="navigationbar_settings">NavigationBar Settings</string>
-    <string name="lockscreen_settings">LockScreen Settings</string>
-    <string name="system_settings">System Settings</string>
+    <string name="general_ui">일반 유저 인터페이스</string>
+    <string name="navigationbar_settings">네비게이션 바 설정</string>
+    <string name="lockscreen_settings">잠금화면 설정</string>
+    <string name="system_settings">시스템 설정</string>
     
     <!-- Quiet hours -->
     <string name="quiet_hours_title">취침 모드</string>
@@ -1902,21 +1902,21 @@
     <string name="toggles_title">퀵 토글</string>
 
     <!-- Notification Drawer  -->
-    <string name="notification_drawer_title">Notification drawer</string>
-    <string name="notification_style_title">Notification drawer style</string>
-    <string name="notification_style_summary">Change your notification drawer style</string>
-    <string name="notification_show_wifi_ssid_title">Show wifi network name</string>
-    <string name="notification_show_wifi_ssid_summary">Display the name of the currently connected wifi network</string>
+    <string name="notification_drawer_title">알림 서랍</string>
+    <string name="notification_style_title">알림 서랍 스타일</string>
+    <string name="notification_style_summary">알림 서랍 스타일을 변경하세요.</string>
+    <string name="notification_show_wifi_ssid_title">Wi-fi 네트워크 이름 표시</string>
+    <string name="notification_show_wifi_ssid_summary">현재 연결된 Wi-Fi 네트워크의 이름을 표시합니다</string>
 
     <!-- Notification drawer background -->
-    <string name="notification_wallpaper_title">Notification drawer background</string>
-    <string name="notification_wallpaper_landscape_title">Different landscape background</string>
-    <string name="notification_background_color_fill">Color fill</string>
-    <string name="notification_background_custom_image">Custom image</string>
-    <string name="notification_background_default_wallpaper">Default background</string>
-    <string name="notification_drawer_custom_background_dialog_title">Choose color</string>
-    <string name="notif_wallpaper_alpha_title">Notification background transparency</string>
-    <string name="notif_alpha_title">Notification Rows transparency</string>
+    <string name="notification_wallpaper_title">알림 서랍 배경</string>
+    <string name="notification_wallpaper_landscape_title">가로모드 다른 배경</string>
+    <string name="notification_background_color_fill">색상 채우기</string>
+    <string name="notification_background_custom_image">사용자 이미지</string>
+    <string name="notification_background_default_wallpaper">기본 배경</string>
+    <string name="notification_drawer_custom_background_dialog_title">색상 선택</string>
+    <string name="notif_wallpaper_alpha_title">알림창 배경 투명도</string>
+    <string name="notif_alpha_title">알림줄 투명도</string>
 
     <!-- UI Mode -->
     <string name="user_mode_ui">UI 모드</string>
@@ -2011,7 +2011,7 @@
     <string name="icon_custom">Gallery</string>
 
     <!-- Transparency -->
-    <string name="transparency_dialog_title">Transparency settings</string>
+    <string name="transparency_dialog_title">투명도 설정</string>
     <string name="transparency_dialog_linked_transparency">Link statusbar &amp; navbar alpha</string>
     <string name="transparency_dialog_transparency_sb_and_nv">Statusbar and navigation bar</string>
     <string name="transparency_dialog_statusbar">Statusbar</string>
@@ -2022,12 +2022,12 @@
     <string name="transparency_dialog_lockscreen">Lockscreen</string>
 
     <!-- Profiles Settings  -->
-    <string name="profiles_settings_title">Profiles</string>
-    <string name="profiles_general_title">General</string>
-    <string name="profiles_add">Add</string>
-    <string name="profile_menu_delete">Delete</string>
-    <string name="profile_settings_title">Profile</string>
-    <string name="profile_empty_list_profiles_off">To configure and use system profiles, turn profiles on.</string>
+    <string name="profiles_settings_title">프로필</string>
+    <string name="profiles_general_title">일반</string>
+    <string name="profiles_add">추가</string>
+    <string name="profile_menu_delete">삭제</string>
+    <string name="profile_settings_title">프로필</string>
+    <string name="profile_empty_list_profiles_off">시스템 프로필을 구성하고 사용하려면 프로필을 켜십시오.</string>
 
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Create Profile</string>
@@ -2198,34 +2198,34 @@
     <string name="vibrator_type_notification">Notifications</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">Possible Buttons</string>
+    <string name="possibleButtons">가능한 버튼</string>
     <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Portable Wi-Fi Hotspot</string>
-    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleWifiAp">휴대용 Wi-Fi 핫스팟</string>
+    <string name="toggleBluetooth">블루투스</string>
     <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Mobile Data</string>
-    <string name="toggleSync">Data Sync</string>
+    <string name="toggleData">모바일 데이터</string>
+    <string name="toggleSync">데이터 동기화</string>
     <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Ring Mode</string>
-    <string name="toggleBrightness">Brightness</string>
-    <string name="toggleAutoRotate">Orientation</string>
-    <string name="toggleScreenTimeout">Screen Timeout</string>
-    <string name="toggleAirplane">Airplane</string>
-    <string name="toggleFlashlight">Flashlight</string>
-    <string name="toggleLockScreen">Lockscreen</string>
+    <string name="toggleSound">벨 모드</string>
+    <string name="toggleNotificationSound">알림음</string>
+    <string name="toggleBrightness">밝기</string>
+    <string name="toggleAutoRotate">자동 회전</string>
+    <string name="toggleScreenTimeout">화면 제한시간</string>
+    <string name="toggleAirplane">비행기모드</string>
+    <string name="toggleFlashlight">손전등</string>
+    <string name="toggleLockScreen">잠금 화면</string>
     <string name="toggleWimax">WiMAX</string>
 
     <!-- Screen security - Screen security   -->
-    <string name="screen_security_category">Screen Security</string>
-    <string name="screen_security_title">Lockscreen</string>
-    <string name="screen_security_summary">View or change lockscreen delay and timeout</string>
-    <string name="additional_options_title">Additional Options</string>
-    <string name="unlock_menu_unlock_title">Menu Unlock</string>
-    <string name="unlock_menu_unlock_summary">Pressing menu button unlocks device</string>
-    <string name="unlock_home_unlock_title">Home Unlock</string>
-    <string name="unlock_home_unlock_summary">Pressing home button unlocks device</string>
-    <string name="unlock_quick_unlock_control_title">Quick Unlock</string>
-    <string name="unlock_quick_unlock_control_summary">Unlock when authentication is provided</string>
+    <string name="screen_security_category">화면 보안</string>
+    <string name="screen_security_title">잠금 화면</string>
+    <string name="screen_security_summary">잠금화면 보안, 지연 및 시간제한 설정 보기 또는 변경</string>
+    <string name="unlock_menu_unlock_title">메뉴 잠금해제</string>
+    <string name="unlock_menu_unlock_summary">메뉴 버튼을 눌러 잠금해제</string>
+    <string name="unlock_home_unlock_title">홈 잠금해제</string>
+    <string name="unlock_home_unlock_summary">홈 버튼을 눌러 잠금해제</string>
+    <string name="unlock_quick_unlock_control_title">빠른 잠금해제</string>
+    <string name="unlock_quick_unlock_control_summary">PIN/비밀번호가 맞으면 자동으로 잠금해제</string>
 
     <!-- Slide lock delay -->
     <string name="delay_and_timeout_title">Lock Delay</string>
@@ -2437,7 +2437,7 @@
     <string name="battery_light_full_color_title">충전됨</string>
 
     <!-- Sound settings screen -->
-    <string name="volume_overlay_title">Volume panel style</string>
+    <string name="volume_overlay_title">볼륨 패널 스타일</string>
     <string name="volume_overlay_single">Single</string>
     <string name="volume_overlay_expandable">Expandable</string>
     <string name="volume_overlay_expanded">Expanded</string>
@@ -2800,7 +2800,7 @@
     <string name="ring_vib">Ring/Vib</string>
     <string name="ring_silent">Ring/Silent</string>
     <string name="ring_vib_silent">Ring/Vib/Silent</string>
-    <string name="screen_off">Screen off</string>
+    <string name="screen_off">화면 꺼짐</string>
     <string name="google_now">Google Now</string>
     <string name="one_target">1 target</string>
     <string name="two_targets">2 targets</string>
@@ -2896,9 +2896,9 @@
     <string name="summary_expanded_desktop">%1$s</string>
     <string name="expanded_desktop_summary">Show or change expanded desktop mode</string>
     <string name="expanded_desktop_disabled">Off</string>
-    <string name="expanded_desktop_only_nav_bar">Hide navigation bar</string>
-    <string name="expanded_desktop_only_status_bar">Hide status bar</string>
-    <string name="expanded_desktop_both_hidden">Hide navigation and status bar</string>
+    <string name="expanded_desktop_only_nav_bar">네비게이션 바 숨김</string>
+    <string name="expanded_desktop_only_status_bar">상단바 숨김</string>
+    <string name="expanded_desktop_both_hidden">네비게이션 바와 상단바 숨김</string>
 
     <!-- Advanced, Device specific (DeviceParts) settings  -->
     <string name="advanced_settings_title">고급 설정</string>
@@ -2921,20 +2921,20 @@
     <string name="status_bar_battery_status_circle_percentage">원 (퍼센트)</string>
 
     <!-- Status bar notification count -->
-    <string name="status_bar_notif_count_title">Notification count</string>
-    <string name="status_bar_notif_count_summary">Display number of pending notifications</string>
+    <string name="status_bar_notif_count_title">알림 개수 표시</string>
+    <string name="status_bar_notif_count_summary">대기중인 알림의 수를 표시</string>
 
     <!-- Wakeup options -->
-    <string name="display_category_wakeup_options_title">Wakeup options</string>
-    <string name="pref_volume_wake_title">Volume rocker wake</string>
-    <string name="pref_volume_wake_summary">Pressing the volume rocker up/down will wake the device</string>
+    <string name="display_category_wakeup_options_title">웨이크업 옵션</string>
+    <string name="pref_volume_wake_title">볼륨 키로 깨기</string>
+    <string name="pref_volume_wake_summary">화면이 꺼졌을때 볼륨 키 위/아래를 눌러 화면을 켭니다.</string>
 
     <!-- Setting checkbox summary for displaying USB debugging notification -->
     <string name="adb_notify">USB 디버깅 알림</string>
     <string name="adb_notify_summary">USB 디버깅이 연결되면 알림을 표시</string>
 
     <!-- Launches Dev Tools -->
-    <string name="development_tools_title">Launch Tools</string>
+    <string name="development_tools_title">도구 실행</string>
 
     <!-- USB Mass Storage -->
     <string name="usb_mass_storage_title">Mass storage</string>
@@ -3041,9 +3041,9 @@
 
     <!-- CRT --> 
     <string name="system_power_crt_screen_off_title">CRT 화면 꺼짐</string>
-    <string name="system_power_crt_screen_off_summary">Screen will animate an electron beam when turned off</string>
+    <string name="system_power_crt_screen_off_summary">화면이 꺼질시 CRT 애니메이션이 표시됩니다</string>
     <string name="system_power_crt_screen_on_title">CRT 화면 켜짐</string>
-    <string name="system_power_crt_screen_on_summary">Screen will animate an electron beam when turned on</string>
+    <string name="system_power_crt_screen_on_summary">화면이 켜질시 CRT 애니메이션이 표시됩니다</string>
 
     <!-- Battery Icon and Bar -->
     <string name="status_bar_battery_icon_bar_title">배터리 아이콘 및 바 스타일</string>
@@ -3065,7 +3065,7 @@
     <string name="circle_dotted_w_percent">CM 점과 배터리</string>
     <string name="speed_battery">가속기</string>
     <string name="square_battery">사각형</string>
-    <string name="gear_battery">기어</string>
+    <string name="gear_battery">AOKP 원 배터리</string>
     <string name="cm_battery">CM 얇은 배터리</string>
     <string name="hide">숨기기</string>
     <string name="circle_battery_color">원 색상</string>
@@ -3221,7 +3221,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="listview_translate_right">Translate (Right)</string>
 
     <!-- ListView interpolator -->
-    <string name="listview_interpolator_title">ListView Interpolator</string>
+    <string name="listview_interpolator_title">리스트뷰 Interpolator</string>
     <string name="listview_accelerate_interpolator">accelerate_interpolator</string>
     <string name="listview_decelerate_interpolator">decelerate_interpolator</string>
     <string name="listview_accelerate_decelerate_interpolator">accelerate_decelerate_interpolator</string>

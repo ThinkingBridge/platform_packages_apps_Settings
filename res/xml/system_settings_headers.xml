@@ -71,6 +71,11 @@
             android:targetPackage="com.cyanogenmod.lockclock"
             android:targetClass="com.cyanogenmod.lockclock.preference.Preferences" />
     </header>
+    
+    <!-- Navigation/Hardware keys -->
+    <header
+        android:id="@+id/navigation_bar"
+        android:title="@string/navigation_bar" />
 
     <!-- Navigation -->
     <header
