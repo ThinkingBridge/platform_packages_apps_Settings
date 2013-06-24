@@ -1905,7 +1905,7 @@
     <string name="notification_drawer_title">알림 서랍</string>
     <string name="notification_style_title">알림 서랍 스타일</string>
     <string name="notification_style_summary">알림 서랍 스타일을 변경하세요.</string>
-    <string name="notification_show_wifi_ssid_title">Wi-fi 네트워크 이름 표시</string>
+    <string name="notification_show_wifi_ssid_title">Wi-Fi 네트워크 이름 표시</string>
     <string name="notification_show_wifi_ssid_summary">현재 연결된 Wi-Fi 네트워크의 이름을 표시합니다</string>
 
     <!-- Notification drawer background -->
@@ -1938,13 +1938,13 @@
     <string name="menu_ribbon_toggles_error">Toggles are only available for the left and right swipe ribbons.</string>
 
     <!-- Lockscreen Vibrate -->
-    <string name="lockscreen_vibrate_enabled_title">Vibrate</string>
-    <string name="lockscreen_vibrate_enabled_head">Vibrate when unlocking device</string>
+    <string name="lockscreen_vibrate_enabled_title">진동</string>
+    <string name="lockscreen_vibrate_enabled_head">잠금해제가 되면 진동이 나게 합니다</string>
 
     <!-- Lockscreen Battery -->
     <string name="lockscreen_battery_status_title">배터리 상태</string>
-    <string name="lockscreen_battery_status_charging">Only When Charging</string>
-    <string name="lockscreen_battery_status_alwayson">Always On</string>
+    <string name="lockscreen_battery_status_charging">충전 중일 때만</string>
+    <string name="lockscreen_battery_status_alwayson">항상 켜기</string>
 
     <!-- Lockscreen Customization -->
     <string name="lockscreen_maximize_widgets_title">Maximize Widgets</string>
@@ -2013,13 +2013,13 @@
     <!-- Transparency -->
     <string name="transparency_dialog_title">투명도 설정</string>
     <string name="transparency_dialog_linked_transparency">Link statusbar &amp; navbar alpha</string>
-    <string name="transparency_dialog_transparency_sb_and_nv">Statusbar and navigation bar</string>
-    <string name="transparency_dialog_statusbar">Statusbar</string>
-    <string name="transparency_dialog_navbar">Navigation bar</string>
-    <string name="transparency_dialog_match_keyguard_alpha">Match lockscreen alpha</string>
-    <string name="transparency_dialog_transparency">Homescreen alpha</string>
-    <string name="transparency_dialog_transparency_keyguard">Lockscreen alpha</string>
-    <string name="transparency_dialog_lockscreen">Lockscreen</string>
+    <string name="transparency_dialog_transparency_sb_and_nv">상태바 및 네비게이션 바</string>
+    <string name="transparency_dialog_statusbar">상태바</string>
+    <string name="transparency_dialog_navbar">네비게이션 바</string>
+    <string name="transparency_dialog_match_keyguard_alpha">잠금화면 투명도 일치시키기</string>
+    <string name="transparency_dialog_transparency">홈화면 투명도</string>
+    <string name="transparency_dialog_transparency_keyguard">잠금화면 투명도</string>
+    <string name="transparency_dialog_lockscreen">잠금화면</string>
 
     <!-- Profiles Settings  -->
     <string name="profiles_settings_title">프로필</string>
@@ -2233,15 +2233,15 @@
     <string name="slide_lock_timeout_delay_title">Delay After Timeout</string>
     <string name="slide_lock_screenoff_delay_title">Delay After Turned Off</string>
     <string name="slide_lock_delay_none">None</string>
-    <string name="slide_lock_delay_1s">1 Second</string>
-    <string name="slide_lock_delay_5s">5 Seconds</string>
-    <string name="slide_lock_delay_10s">10 Seconds</string>
-    <string name="slide_lock_delay_15s">15 Seconds</string>
-    <string name="slide_lock_delay_30s">30 Seconds</string>
-    <string name="slide_lock_delay_1m">1 Minute</string>
-    <string name="slide_lock_delay_5m">5 Minutes</string>
-    <string name="slide_lock_delay_10m">10 Minutes</string>
-    <string name="slide_lock_delay_30m">30 Minutes</string>
+    <string name="slide_lock_delay_1s">1 초</string>
+    <string name="slide_lock_delay_5s">5 초</string>
+    <string name="slide_lock_delay_10s">10 초</string>
+    <string name="slide_lock_delay_15s">15 초</string>
+    <string name="slide_lock_delay_30s">30 초</string>
+    <string name="slide_lock_delay_1m">1 분</string>
+    <string name="slide_lock_delay_5m">5 분</string>
+    <string name="slide_lock_delay_10m">10 분</string>
+    <string name="slide_lock_delay_30m">30 분</string>
 
     <!-- Display : Rotation  -->
     <string name="display_rotation_title">화면 회전</string>
@@ -2564,11 +2564,12 @@
     <string name="hardware_keys_title">하드웨어 키</string>
     <string name="hardware_keys_bindings_title">키 액션</string>
     <string name="hardware_keys_enable_custom_title">커스텀 액션 활성화</string>
+    <string name="hardware_keys_home_press_title">홈 키</string>
     <string name="hardware_keys_home_long_press_title">홈 키 (길게 누르면서)</string>
     <string name="hardware_keys_menu_press_title">메뉴 키</string>
     <string name="hardware_keys_menu_long_press_title">메뉴 키 (길게 누르면서)</string>
     <string name="hardware_keys_back_press_title">뒤로가기 키</string>
-    <string name="hardware_keys_back_long_press_title">Back key (길게 누르면서)</string>
+    <string name="hardware_keys_back_long_press_title">뒤로가기 키 (길게 누르면서)</string>
     <string name="hardware_keys_assist_press_title">검색 키</string>
     <string name="hardware_keys_assist_long_press_title">검색 키 (길게 누르면서)</string>
     <string name="hardware_keys_app_switch_press_title">앱 전환 키</string>
@@ -2642,6 +2643,8 @@
     <string name="navbar_widgets_delete">위젯 삭제</string>
     <string name="navigation_bar_menu_arrow_keys_title">메뉴 화살표 키</string>
     <string name="navigation_bar_menu_arrow_keys_summary">입력하는 동안 소프트 키에 화살표 키 표시</string>
+    <string name="statusbar_hide_title">상태바 숨기기</string>
+    <string name="statusbar_hide_summary">상태바를 숨깁니다.</string>
     <string name="navigation_bar_alpha_title">상단바 및 소프트 키 투명도 조절</string>
     <string name="navbar_hide_enable_title">네비바 숨김 활성화</string>
     <string name="drag_handle_opacity_title">불투명도 설정</string>
@@ -2675,7 +2678,7 @@
     <string name="action_long_save"> set as long action</string>
     <string name="title_navring_amount">Number of navigation ring targets</string>
     <string name="summary_navring_amount">Choose number of targets in the navigation ring</string>
-    <string name="interface_navring_settings_title">Navigation ring</string>
+    <string name="interface_navring_settings_title">네비게이션 링</string>
     <string name="interface_navring_settings_summary">@null</string>
     <string name="navring_target_info">Drag your finger to targets to assign actions</string>
     <string name="navring_clear">Clear action</string>
@@ -2802,11 +2805,11 @@
     <string name="ring_vib_silent">Ring/Vib/Silent</string>
     <string name="screen_off">화면 꺼짐</string>
     <string name="google_now">Google Now</string>
-    <string name="one_target">1 target</string>
-    <string name="two_targets">2 targets</string>
-    <string name="three_targets">3 targets</string>
-    <string name="four_targets">4 targets</string>
-    <string name="five_targets">5 targets</string>
+    <string name="one_target">1 타겟</string>
+    <string name="two_targets">2 타겟</string>
+    <string name="three_targets">3 타겟</string>
+    <string name="four_targets">4 타겟</string>
+    <string name="five_targets">5 타겟</string>
     <string name="size_42_dp_default">42 dp (기본)</string>
     <string name="size_36_dp">36 dp</string>
     <string name="size_30_dp">30 dp</string>
@@ -2895,7 +2898,7 @@
     <string name="power_menu_sound_title">사운드 패널</string>
     <string name="summary_expanded_desktop">%1$s</string>
     <string name="expanded_desktop_summary">Show or change expanded desktop mode</string>
-    <string name="expanded_desktop_disabled">Off</string>
+    <string name="expanded_desktop_disabled">끄기</string>
     <string name="expanded_desktop_only_nav_bar">네비게이션 바 숨김</string>
     <string name="expanded_desktop_only_status_bar">상단바 숨김</string>
     <string name="expanded_desktop_both_hidden">네비게이션 바와 상단바 숨김</string>
@@ -2951,9 +2954,9 @@
     <string name="lockscreen_long_press_back_title">뒤로 버튼 길게 누르기</string>
     <string name="lockscreen_long_press_home_title">홈 버튼 길게 누르기</string>
     <string name="lockscreen_long_press_menu_title">메뉴 버튼 길게 누르기</string>
-    <string name="lockscreen_long_press_assist_title">Long press search button</string>
-    <string name="lockscreen_long_press_app_switch_title">Long press app switch button</string>
-    <string name="lockscreen_long_press_camera_title">Long press camera button</string>
+    <string name="lockscreen_long_press_assist_title">검색 버튼 길게 누르기</string>
+    <string name="lockscreen_long_press_app_switch_title">앱 전환 버튼 길게 누르기</string>
+    <string name="lockscreen_long_press_camera_title">카메라 버튼 길게 누르기</string>
     <string name="lockscreen_buttons_no_action">없음</string>
     <string name="lockscreen_buttons_flashlight">전등</string>
     <string name="lockscreen_buttons_next">다음 노래</string>
