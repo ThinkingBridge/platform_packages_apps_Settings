@@ -2014,7 +2014,7 @@
     <string name="transparency_dialog_title">투명도 설정</string>
     <string name="transparency_dialog_linked_transparency">Link statusbar &amp; navbar alpha</string>
     <string name="transparency_dialog_transparency_sb_and_nv">상단바 및 네비게이션 바</string>
-    <string name="transparency_dialog_statusbar">상단</string>
+    <string name="transparency_dialog_statusbar">상단바</string>
     <string name="transparency_dialog_navbar">네비게이션 바</string>
     <string name="transparency_dialog_match_keyguard_alpha">잠금화면 투명도 일치시키기</string>
     <string name="transparency_dialog_transparency">홈화면 투명도</string>
@@ -2508,7 +2508,7 @@
     <string name="toggle_favcontact_title">즐겨찾는 연락처</string>
     <string name="toggle_favcontact_summary">즐겨찾는 연락처를 추가합니다.</string>
     <string name="toggle_enable_fasttoggle_title">빠른 토글 활성화</string>
-    <string name="toggle_enable_fasttoggle_summary">바상태바의 한쪽을 내렸을 때 토글이 나타나도록 설정합니다.</string>
+    <string name="toggle_enable_fasttoggle_summary">상태바의 한쪽을 내렸을 때 토글이 나타나도록 설정합니다.</string>
     <string name="toggle_choose_fasttoggle_side_title">빠른 토글의 방향</string>
     <string name="toggle_choose_fasttoggle_side_summary">빠른 토글을 사용하기 위한 방향을 선택합니다.</string>
     <string name="toggle_dialog_arrange_title">토글 설정</string>
