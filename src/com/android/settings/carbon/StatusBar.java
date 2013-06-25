@@ -79,7 +79,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
 
         mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
+                Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 1) == 1));
         
         mStatusBarTraffic.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_TRAFFIC, 1) == 1));
