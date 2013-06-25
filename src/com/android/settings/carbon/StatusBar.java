@@ -41,10 +41,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_SIGNAL = "status_bar_signal";
     private static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
     private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
-    private static final String KEY_STATUS_BAR_ICON_OPACITY = "status_bar_icon_opacity";
+    //private static final String KEY_STATUS_BAR_ICON_OPACITY = "status_bar_icon_opacity";
     private static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
-    private static final String KEY_MMS_BREATH = "mms_breath";
-    private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
+    //private static final String KEY_MMS_BREATH = "mms_breath";
+    //private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
     private static final String STATUSBAR_HIDDEN = "statusbar_hidden";
 
@@ -53,10 +53,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mStatusBarNotifCount;
     private PreferenceScreen mClockStyle;
     private PreferenceCategory mPrefCategoryGeneral;
-    private ListPreference mStatusBarIconOpacity;
+    //private ListPreference mStatusBarIconOpacity;
     private CheckBoxPreference mStatusBarTraffic;
-    private CheckBoxPreference mMMSBreath;
-    private CheckBoxPreference mMissedCallBreath;
+    //private CheckBoxPreference mMMSBreath;
+    //private CheckBoxPreference mMissedCallBreath;
     private ListPreference mNotificationsBeh;
     private CheckBoxPreference mStatusBarHide;
 
@@ -103,19 +103,19 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarNotifCount.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_NOTIF_COUNT, 0) == 1));
 
-        int iconOpacity = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+        /*int iconOpacity = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_NOTIF_ICON_OPACITY, 140);
         mStatusBarIconOpacity = (ListPreference) findPreference(KEY_STATUS_BAR_ICON_OPACITY);
         mStatusBarIconOpacity.setValue(String.valueOf(iconOpacity));
-        mStatusBarIconOpacity.setOnPreferenceChangeListener(this);
+        mStatusBarIconOpacity.setOnPreferenceChangeListener(this);*/
 
-        mMMSBreath = (CheckBoxPreference) findPreference(KEY_MMS_BREATH);
+        /*mMMSBreath = (CheckBoxPreference) findPreference(KEY_MMS_BREATH);
         mMMSBreath.setChecked(Settings.System.getInt(resolver,
-                Settings.System.MMS_BREATH, 0) == 1);
+                Settings.System.MMS_BREATH, 0) == 1);*/
 
-        mMissedCallBreath = (CheckBoxPreference) findPreference(KEY_MISSED_CALL_BREATH);
+        /*mMissedCallBreath = (CheckBoxPreference) findPreference(KEY_MISSED_CALL_BREATH);
         mMissedCallBreath.setChecked(Settings.System.getInt(resolver,
-                Settings.System.MISSED_CALL_BREATH, 0) == 1);
+                Settings.System.MISSED_CALL_BREATH, 0) == 1);*/
 
         int CurrentBeh = Settings.Secure.getInt(mCr, Settings.Secure.NOTIFICATIONS_BEHAVIOUR, 0);
         mNotificationsBeh = (ListPreference) findPreference(KEY_NOTIFICATION_BEHAVIOUR);
@@ -153,18 +153,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                     Settings.System.STATUS_BAR_SIGNAL_TEXT, signalStyle);
             mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntries()[index]);
             return true;
-        } else if (preference == mStatusBarIconOpacity) {
-            int iconOpacity = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_NOTIF_ICON_OPACITY, iconOpacity);
-            return true;
-        } else if (preference == mNotificationsBeh) {
-            String val = (String) newValue;
-                     Settings.Secure.putInt(mCr, Settings.Secure.NOTIFICATIONS_BEHAVIOUR,
-            Integer.valueOf(val));
-            int index = mNotificationsBeh.findIndexOfValue(val);
-            mNotificationsBeh.setSummary(mNotificationsBeh.getEntries()[index]);
-            return true;
         }
         return false;
     }
@@ -185,14 +173,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             value = mStatusBarTraffic.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_TRAFFIC, value ? 1 : 0);
-            return true;
-        } else if (preference == mMMSBreath) {
-            Settings.System.putInt(mContext.getContentResolver(), Settings.System.MMS_BREATH, 
-                    mMMSBreath.isChecked() ? 1 : 0);
-            return true;
-        } else if (preference == mMissedCallBreath) {
-            Settings.System.putInt(mContext.getContentResolver(), Settings.System.MISSED_CALL_BREATH, 
-                    mMissedCallBreath.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mStatusBarHide) {
             boolean checked = ((CheckBoxPreference)preference).isChecked();
