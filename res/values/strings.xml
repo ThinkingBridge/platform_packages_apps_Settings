@@ -5895,8 +5895,4 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="listview_anticipate_overshoot_interpolator">anticipate_overshoot_interpolator</string>
     <string name="listview_bounce_interpolator">bounce_interpolator</string>
 
-    <!-- Quick Tile Background -->
-    <string name="menu_tile_background_reset">Tiles background reset</string>
-    <string name="quick_tiles_bg_color_title">Tiles background color</string>
-    <string name="quick_tiles_bg_pressed_color_title">Tiles pressed background color</string>
 </resources>
