@@ -3234,8 +3234,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
    
    <!-- Share ThinkingBridge ROM -->
    <string name="share_teambridge">ROM 공유하기</string>
-   <string name="share_teambridge">다른 사람에게 ThinkingBridge 를 알려주세요.</string>
-   <string name="share_message">ThinkingBridge ROM 을 써보세요! \n홈페이지 : http://www.tbridge.kr \nIRC 채널 : Freenode IRC #ThinkingBridge \n트위터 : @TbridgeROM \n다운로드 : http://goo.gl/Qc5zB</string>
+   <string name="share_teambridge_summary">다른 사람에게 ThinkingBridge 를 알려주세요.</string>
+   <string name="share_message">ThinkingBridge ROM 을 써보세요! \n웹 사이트 : http://www.tbridge.kr \nIRC 채널 : Freenode IRC #ThinkingBridge \n트위터 : @TbridgeROM \n다운로드 : http://goo.gl/Qc5zB</string>
    <string name="share_chooser_title">롬을 공유해보세요!</string>
 
 </resources>

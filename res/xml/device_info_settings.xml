@@ -33,7 +33,7 @@
         
         <!-- Share ThinkingBridge ROM -->
         <Preference
-            android:kay="share"
+            android:key="share"
             android:title="@string/share_teambridge"
             android:summary="@string/share_teambridge_summary" />
 

@@ -234,15 +234,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                     mDevHitToast.show();
                 }
             }
+        } else if (preference.getKey().equals(TEAM_BRIDGE_SHARE)) {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, String.format(
+                    getActivity().getString(R.string.share_message)));
+            startActivity(Intent.createChooser(intent, getActivity().getString(R.string.share_chooser_title)));
         }
-    } else if (preference.getKey().equals(TEAM_BRIDGE_SHARE)) {
-    	Intent intent = new Intent();
-    	intent.setAction(Intent.ACTION_SEND);
-    	intent.setType("text/plain");
-    	intent.putExtra(Intent.EXTRA_TEXT, String.String.format(
-    			getActivity().getString(R.string.share_message));
-    	startActivity(Intent.createChooser(intent, getActivity().getString(R.string.share_chooser_title)));
-    }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
