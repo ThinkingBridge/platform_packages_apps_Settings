@@ -6,7 +6,7 @@
 
     <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="48dp">
+            android:layout_height="50dp">
             
             <ImageView
                 android:id="@+id/cursor"
@@ -27,11 +27,12 @@
                     android:id="@+id/used_tab"
                     android:layout_width="0px"
                     android:layout_weight="1.0"
+                    android:clickable="true"
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/personal_setting"
                     android:textColor="#ffffff"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:background="@drawable/tab_click_bg"/>
 
             <ImageView
@@ -44,11 +45,12 @@
                     android:id="@+id/system_tab"
                     android:layout_width="0px"
                     android:layout_weight="1.0"
+                    android:clickable="true"
                     android:layout_height="fill_parent"
                     android:gravity="center"
                     android:text="@string/system_setting"
                     android:textColor="#ffffff"
-                    android:textSize="16sp"
+                    android:textSize="18sp"
                     android:background="@drawable/tab_click_bg"/>
         </LinearLayout>
     </RelativeLayout>
