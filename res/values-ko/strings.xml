@@ -2515,7 +2515,7 @@
     <string name="toggle_style_tile">타일</string>
     <string name="toggle_style_traditional">예전 방식</string>
     <string name="toggle_style_scrollable">예전 방식 (스크롤)</string>
-    <string name="toggle_swap_handle_side">오른쪽에있는 핸들을 드래그</string>
+    <string name="toggle_swap_handle_side">오른쪽으로 드래그</string>
     <string name="add_toggles">토글 추가</string>
     <string name="screenshot_delay_title">Screenshot delay</string>
     <string name="screenshot_delay_summary">Delay to use after long pressing the screenshot toggle</string>
