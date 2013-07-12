@@ -5857,6 +5857,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Network speed -->
     <string name="show_network_speed">Network speed indicator</string>
     <string name="show_network_speed_summary">Show network speed in statsbar</string>
+    <string name="status_bar_traffic_color_title">Network speed Color</string>
 
     <!-- CPU settings -->
     <string name="cpu_governors_title">Governor</string>

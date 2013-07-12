@@ -3193,6 +3193,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Network speed -->
     <string name="show_network_speed">네트워크 속도 표시</string>
     <string name="show_network_speed_summary">상단바에 네트워크 속도 표시</string>
+    <string name="status_bar_traffic_color_title">네트워크 속도 색깔</string>
     
     <!-- ThinkingBridge Device controller -->
     <string name="cpu_settings">CPU 설정</string>
