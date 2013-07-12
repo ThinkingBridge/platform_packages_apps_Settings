@@ -43,7 +43,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
     //private static final String KEY_STATUS_BAR_ICON_OPACITY = "status_bar_icon_opacity";
     private static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
-    private static final String STATUS_BAR_TRAFFIC_COLOR = "status_bar_traffic_color";
     //private static final String KEY_MMS_BREATH = "mms_breath";
     //private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
@@ -56,7 +55,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private PreferenceCategory mPrefCategoryGeneral;
     //private ListPreference mStatusBarIconOpacity;
     private CheckBoxPreference mStatusBarTraffic;
-    private ColorPickerPreference mTrafficColorPicker;
     //private CheckBoxPreference mMMSBreath;
     //private CheckBoxPreference mMissedCallBreath;
     private ListPreference mNotificationsBeh;
@@ -85,16 +83,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         
         mStatusBarTraffic.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_TRAFFIC, 1) == 1));
-        
-        mTrafficColorPicker = (ColorPickerPreference) findPreference("status_bar_traffic_color");
-        mTrafficColorPicker.setOnPreferenceChangeListener(this);
-        defaultColor = getResources().getColor(
-        		com.android.internal.R.color.holo_blue_light);
-        intColor = Settings.System.getInt(getActivity().getContentResolver(),
-        		Settings.System.STATUS_BAR_TRAFFIC_COLOR, defaultColor);
-        hexColor = String.format("#%08x", (0xffffffff & intColor));
-        mTrafficColorPicker.setSummary(hexColor);
-        mTrafficColorPicker.setNewPreviewColor(intColor);
 
         try {
             if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
@@ -186,15 +174,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_TRAFFIC, value ? 1 : 0);
             return true;
-        } else if (preference == mTrafficColorPicker) {
-        	String hex = ColorPickerPreference.convertToARGB(Integer.valueOf(String
-        			.valueOf(newValue)));
-        	preference.setSummary(hex);
-        	
-        	int intHex = ColorPickerPreference.convertToColorInt(hex);
-        	Settings.System.putInt(mContentRes,
-        			Settings.System.STATUS_BAR_TRAFFIC_COLOR, intHex);
-        	return true;
         } else if (preference == mStatusBarHide) {
             boolean checked = ((CheckBoxPreference)preference).isChecked();
             Settings.System.putBoolean(getActivity().getContentResolver(),
