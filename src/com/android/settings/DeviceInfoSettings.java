@@ -200,6 +200,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 }
             }
         } else if (preference.getKey().equals(KEY_BUILD_NUMBER)) {
+<<<<<<< HEAD
             // Only allow the owner of the device to turn on dev and performance options
             if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
                 if (mDevHitCountdown > 0) {
@@ -223,6 +224,19 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                                 R.plurals.show_dev_countdown, mDevHitCountdown, mDevHitCountdown),
                                 Toast.LENGTH_SHORT);
                         mDevHitToast.show();
+=======
+            // Don't enable developer options for secondary users.
+            if (UserHandle.myUserId() != UserHandle.USER_OWNER) return true;
+
+            if (mDevHitCountdown > 0) {
+                mDevHitCountdown--;
+                if (mDevHitCountdown == 0) {
+                    getActivity().getSharedPreferences(DevelopmentSettings.PREF_FILE,
+                            Context.MODE_PRIVATE).edit().putBoolean(
+                                    DevelopmentSettings.PREF_SHOW, true).apply();
+                    if (mDevHitToast != null) {
+                        mDevHitToast.cancel();
+>>>>>>> android-4.3_r2.1
                     }
                 } else if (mDevHitCountdown < 0) {
                     if (mDevHitToast != null) {

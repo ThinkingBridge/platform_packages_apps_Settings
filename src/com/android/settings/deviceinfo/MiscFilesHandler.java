@@ -141,6 +141,7 @@ public class MiscFilesHandler extends ListActivity {
             return true;
         }
 
+<<<<<<< HEAD
         private class DeleteHandler {
             private ServiceConnection mDefContainerConn = new ServiceConnection() {
                 @Override
@@ -151,6 +152,18 @@ public class MiscFilesHandler extends ListActivity {
                         imcs.deleteFile(mPath); // Works for file and directory   
                     } catch (Exception e) {
                         Log.w(TAG, "Problem in container service", e);
+=======
+        // Deletes all files and subdirectories under given dir.
+        // Returns true if all deletions were successful.
+        // If a deletion fails, the method stops attempting to delete and returns false.
+        private boolean deleteDir(File dir) {
+            String[] children = dir.list();
+            if (children != null) {
+                for (int i=0; i < children.length; i++) {
+                    boolean success = deleteDir(new File(dir, children[i]));
+                    if (!success) {
+                        return false;
+>>>>>>> android-4.3_r2.1
                     }
                     unbindService(mDefContainerConn);
                 }

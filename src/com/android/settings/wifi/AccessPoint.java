@@ -344,6 +344,7 @@ class AccessPoint extends Preference {
         setTitle(ssid);
 
         Context context = getContext();
+<<<<<<< HEAD
         StringBuilder summary = new StringBuilder();
 
         if (isIBSS)
@@ -354,6 +355,9 @@ class AccessPoint extends Preference {
         } else if (mRssi == Integer.MAX_VALUE) { // Wifi out of range
             summary.append(context.getString(R.string.wifi_not_in_range));
         } else if (mConfig != null && mConfig.status == WifiConfiguration.Status.DISABLED) {
+=======
+        if (mConfig != null && mConfig.status == WifiConfiguration.Status.DISABLED) {
+>>>>>>> android-4.3_r2.1
             switch (mConfig.disableReason) {
                 case WifiConfiguration.DISABLED_AUTH_FAILURE:
                     summary.append(context.getString(R.string.wifi_disabled_password_failure));

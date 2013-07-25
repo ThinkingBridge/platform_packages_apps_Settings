@@ -107,7 +107,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
     private static final String[] NEED_VOICE_CAPABILITY = {
             KEY_RINGTONE, KEY_DTMF_TONE, KEY_CATEGORY_CALLS,
+<<<<<<< HEAD
             KEY_EMERGENCY_TONE, KEY_INCREASING_RING
+=======
+            KEY_EMERGENCY_TONE, KEY_VIBRATE
+>>>>>>> android-4.3_r2.1
     };
 
     private static final int MSG_UPDATE_RINGTONE_SUMMARY = 1;
@@ -209,12 +213,19 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             mRingMode.setOnPreferenceChangeListener(this);
         }
 
+<<<<<<< HEAD
         mSafeHeadsetVolume = (CheckBoxPreference) findPreference(KEY_SAFE_HEADSET_VOLUME);
         mSafeHeadsetVolume.setPersistent(false);
         boolean safeMediaVolumeEnabled = getResources().getBoolean(
                 com.android.internal.R.bool.config_safe_media_volume_enabled);
         mSafeHeadsetVolume.setChecked(Settings.System.getInt(resolver,
                 Settings.System.SAFE_HEADSET_VOLUME, safeMediaVolumeEnabled ? 1 : 0) != 0);
+=======
+        if (getResources().getBoolean(com.android.internal.R.bool.config_useFixedVolume)) {
+            // device with fixed volume policy, do not display volumes submenu
+            getPreferenceScreen().removePreference(findPreference(KEY_RING_VOLUME));
+        }
+>>>>>>> android-4.3_r2.1
 
         mVibrateWhenRinging = (CheckBoxPreference) findPreference(KEY_VIBRATE);
         mVibrateWhenRinging.setPersistent(false);
@@ -293,9 +304,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         if (vibrator == null || !vibrator.hasVibrator()) {
             removePreference(KEY_VIBRATE);
             removePreference(KEY_HAPTIC_FEEDBACK);
-        }
-        if (!Utils.isVoiceCapable(getActivity())) {
-            removePreference(KEY_VIBRATE);
         }
 
         if (TelephonyManager.PHONE_TYPE_CDMA == activePhoneType) {
