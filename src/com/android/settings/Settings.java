@@ -130,7 +130,6 @@ public class Settings extends PreferenceActivity
             R.id.about_settings,
             R.id.accessibility_settings,
             R.id.interface_section,
-            R.id.homescreen_settings,
             R.id.lock_screen_settings,
             R.id.system_settings
     };
@@ -445,27 +444,6 @@ public class Settings extends PreferenceActivity
             int id = (int) header.id;
             if (id == R.id.operator_settings || id == R.id.manufacturer_settings) {
                 Utils.updateHeaderToSpecificActivityFromMetaDataOrRemove(this, target, header);
-            } else if (id == R.id.homescreen_settings) {
-                Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
-                launcherIntent.addCategory(Intent.CATEGORY_HOME);
-                launcherIntent.addCategory(Intent.CATEGORY_DEFAULT);
-
-                Intent launcherPrefsIntent = new Intent(Intent.ACTION_MAIN);
-                launcherPrefsIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
-
-                final PackageManager pm = getPackageManager();
-                ActivityInfo defaultLauncher = pm.resolveActivity(launcherIntent,
-                        PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
-
-                launcherPrefsIntent.setPackage(defaultLauncher.packageName);
-                ResolveInfo launcherPrefs = pm.resolveActivity(launcherPrefsIntent, 0);
-                if (launcherPrefs != null) {
-                    header.intent = new Intent().setClassName(
-                            launcherPrefs.activityInfo.packageName,
-                            launcherPrefs.activityInfo.name);
-                } else {
-                    target.remove(header);
-                }
             } else if (id == R.id.wifi_settings) {
                 // Remove WiFi Settings if WiFi service is not available.
                 if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI)) {
@@ -907,7 +885,6 @@ public class Settings extends PreferenceActivity
     public static class TextToSpeechSettingsActivity extends Settings { /* empty */ }
     public static class AndroidBeamSettingsActivity extends Settings { /* empty */ }
     public static class WifiDisplaySettingsActivity extends Settings { /* empty */ }
-    public static class AnonymousStatsActivity extends Settings { /* empty */ }
     public static class ApnSettingsActivity extends Settings { /* empty */ }
     public static class ApnEditorActivity extends Settings { /* empty */ }
     public static class ProfilesSettingsActivity extends Settings { /* empty */ }
