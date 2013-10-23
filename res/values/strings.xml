@@ -5132,15 +5132,22 @@
     <!-- Second Clock -->
     <string name="status_bar_clock_second">Second clock</string>
     <string name="status_bar_clock_second_summary">Show second on clock</string>
-    
-    <!--Volume rocker category-->
+
     <!--Volume buttons category-->
-     <string name="volume_buttons_category">Volume buttons</string>
-     <!--Volume buttons wake-->
-     <string name="volume_wake_title">Volume buttons wake</string>
-     <string name="volume_wake_summary">Pressing either volume button will wake your device</string>
-     <!--Volume buttons music control-->
-     <string name="volume_music_controls_title">Volume buttons music controls</string>
-     <string name="volume_music_controls_summary">When the screen is off, long pressing the volume buttons will seek music tracks</string>
+    <string name="volume_buttons_category">Volume buttons</string>
+    <!--Volume buttons wake-->
+    <string name="volume_wake_title">Volume buttons wake</string>
+    <string name="volume_wake_summary">Pressing either volume button will wake your device</string>
+    <!--Volume buttons music control-->
+    <string name="volume_music_controls_title">Volume buttons music controls</string>
+    <string name="volume_music_controls_summary">When the screen is off, long pressing the volume buttons will seek music tracks</string>
+     
+    <!-- Volume adjust sounds -->
+    <string name="volume_adjust_sounds_enable_title">Volume adjust sound</string>
+    <string name="volume_adjust_sounds_enable_summary">Play sound when adjusting volume with hard keys</string>
+
+    <!-- Link volumes -->
+    <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
+    <string name="volume_ring_only_description">Ringtone</string>
 
 </resources>
