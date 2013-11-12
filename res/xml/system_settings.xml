@@ -20,6 +20,16 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
     
     <PreferenceCategory
+        android:title="@string/interface_category">
+        
+        <PreferenceScreen
+            android:key="notification_drawer"
+            android:fragment="com.android.settings.slim.NotificationDrawerSettings"
+            android:title="@string/notification_drawer_title" />
+        
+    </PreferenceCategory>
+    
+    <PreferenceCategory
         android:title="@string/status_bar_category">
         
         <PreferenceScreen
@@ -28,8 +38,8 @@
             android:title="@string/status_bar_title" />
         
         <PreferenceScreen
-            android:fragment="com.android.settings.thinkingbridge.BatteryIconStyle"
             android:key="battery_style_pref"
+            android:fragment="com.android.settings.thinkingbridge.BatteryIconStyle"
             android:title="@string/battery_icon_title" />
             
      </PreferenceCategory>
