@@ -2727,5 +2727,9 @@
     <string name="listview_overshoot_interpolator">오버 슈트</string>
     <string name="listview_anticipate_overshoot_interpolator">예상 및 오버 슈트</string>
     <string name="listview_bounce_interpolator">바운스</string>
+    
+    <!--Quick unlock -->
+    <string name="unlock_quick_unlock_control_title">빠른 잠금 해제</string>
+    <string name="unlock_quick_unlock_control_summary">올바른 PIN / 암호를 입력 할 시 자동으로 잠금 해제</string>
 
 </resources>
