@@ -4980,5 +4980,12 @@
     <string name="pulse_speed_normal">Normal</string>
     <string name="pulse_speed_slow">Slow</string>
     <string name="pulse_speed_very_slow">Very slow</string>
+    
+    <!-- StatusBar Settings -->
+    <string name="status_bar_general_title">General</string>
+    <string name="status_bar_title">Status Bar</string>
+    <string name="status_bar_toggle_brightness">Brightness control</string>
+    <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
+    <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
 
 </resources>
