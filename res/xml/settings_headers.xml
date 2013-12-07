@@ -57,6 +57,13 @@
         android:breadCrumbTitle="@string/wireless_networks_settings_title"
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
+        
+    <!-- System -->
+    <header
+        android:id="@+id/system_settings"
+        android:title="@string/system_settings_title"
+        android:fragment="com.android.settings.thinkingbridge.SystemSettings"
+        android:icon="@drawable/ic_settings_system" />
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
