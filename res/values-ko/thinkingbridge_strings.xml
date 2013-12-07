@@ -67,28 +67,28 @@
     
     <!-- About phone screen,  setting option name-->
     <string name="mod_version">ThinkingBridge OS</string>
-    <string name="mod_version_default">Unknown</string>
+    <string name="mod_version_default">알수 없음</string>
     <!-- About phone screen, build date of ROM -->
-    <string name="build_date">Build date</string>
+    <string name="build_date">빌드 날짜</string>
     <string name="build_date_default">2012-01-01-0000</string>
     <!-- About device screen, Cpu info. -->
     <string name="cpu_info">CPU</string>
     <!-- About phone screen, Free memory info -->
-    <string name="mem_info">Memory</string>
+    <string name="mem_info">메모리</string>
     <!-- About phone screen, status item label -->
     
     <!-- System Settings -->
-    <string name="system_settings_title">System Settings</string>
+    <string name="system_settings_title">시스템 설정</string>
     
     <!-- StatusBar Settings -->
-    <string name="status_bar_general_title">General</string>
-    <string name="status_bar_title">Status Bar</string>
-    <string name="status_bar_toggle_brightness">Brightness control</string>
-    <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
+    <string name="status_bar_general_title">일반</string>
+    <string name="status_bar_title">상단바</string>
+    <string name="status_bar_toggle_brightness">밝기 컨트롤</string>
+    <string name="status_bar_toggle_brightness_summary">상태바에서 슬라이딩으로 밝기를 조정</string>
     <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
     
     <!-- Advanced reboot options -->
-    <string name="advanced_reboot_title">Advanced reboot</string>
-    <string name="advanced_reboot_summary">When unlocked, include options in the power menu for rebooting into recovery or bootloader</string>
+    <string name="advanced_reboot_title">확장 재부팅</string>
+    <string name="advanced_reboot_summary">전원 메뉴 옵션 재부팅에 리커버리 및 부트로더로 재부팅을 포함합니다</string>
 
 </resources>
