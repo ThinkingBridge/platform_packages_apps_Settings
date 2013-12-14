@@ -32,11 +32,6 @@
                 android:targetClass="com.android.settings.SetFullBackupPassword" />
     </PreferenceScreen>
 
-    <CheckBoxPreference
-        android:key="advanced_reboot"
-        android:title="@string/advanced_reboot_title"
-        android:summary="@string/advanced_reboot_summary" />
-
     <CheckBoxPreference 
         android:key="keep_screen_on" 
         android:title="@string/keep_screen_on" 
@@ -269,5 +264,14 @@
             android:summary="@string/show_all_anrs_summary"/>
 
      </PreferenceCategory>
+
+     <!-- Must remain at bottom -->
+     <Preference
+         android:key="chamber_of_secrets"
+         android:title="\n \n" />
+
+     <CheckBoxPreference
+         android:key="chamber_of_unlocked_secrets"
+         android:title="@string/chamber_title" />
 
 </PreferenceScreen>

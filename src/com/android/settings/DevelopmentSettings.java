@@ -65,6 +65,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import dalvik.system.VMRuntime;
 
@@ -148,7 +149,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String TERMINAL_APP_PACKAGE = "com.android.terminal";
 
-    private static final String ADVANCED_REBOOT_KEY = "advanced_reboot";
+    private static final String KEY_CHAMBER_OF_SECRETS = "chamber_of_secrets";
+    private static final String KEY_CHAMBER_OF_UNLOCKED_SECRETS =
+            "chamber_of_unlocked_secrets";
 
     private static final int RESULT_DEBUG_APP = 1000;
 
@@ -204,7 +207,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private CheckBoxPreference mShowAllANRs;
     private CheckBoxPreference mExperimentalWebView;
 
-    private CheckBoxPreference mAdvancedReboot;
+    private Preference mChamber;
+    private CheckBoxPreference mChamberUnlocked;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
     private final ArrayList<CheckBoxPreference> mResetCbPrefs
@@ -264,14 +268,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mAllowMockLocation = findAndInitCheckboxPref(ALLOW_MOCK_LOCATION);
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
-        mAdvancedReboot = findAndInitCheckboxPref(ADVANCED_REBOOT_KEY);
 
         if (!android.os.Process.myUserHandle().equals(UserHandle.OWNER)) {
             disableForUser(mEnableAdb);
             disableForUser(mClearAdbKeys);
             disableForUser(mEnableTerminal);
             disableForUser(mPassword);
-            disableForUser(mAdvancedReboot);
         }
 
         mDebugAppPref = findPreference(DEBUG_APP_KEY);
@@ -328,6 +330,23 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         if (hdcpChecking != null) {
             mAllPrefs.add(hdcpChecking);
             removePreferenceForProduction(hdcpChecking);
+        }
+
+        mChamber = (Preference) findPreference(KEY_CHAMBER_OF_SECRETS);
+        mAllPrefs.add(mChamber);
+        mChamberUnlocked =
+                findAndInitCheckboxPref(KEY_CHAMBER_OF_UNLOCKED_SECRETS);
+        mChamberUnlocked.setOnPreferenceChangeListener(this);
+
+        boolean chamberOpened = Settings.Secure.getInt(
+                getActivity().getContentResolver(),
+                Settings.Secure.CHAMBER_OF_SECRETS, 0) == 1;
+        mChamberUnlocked.setChecked(chamberOpened);
+
+        if (chamberOpened) {
+            removePreference(mChamber);
+        } else {
+            removePreference(mChamberUnlocked);
         }
     }
 
@@ -403,6 +422,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private void removePreference(Preference preference) {
         getPreferenceScreen().removePreference(preference);
         mAllPrefs.remove(preference);
+    }
+
+    private void addPreference(Preference preference) {
+        getPreferenceScreen().addPreference(preference);
+        preference.setOnPreferenceChangeListener(this);
+        mAllPrefs.add(preference);
     }
 
     private void setPrefsEnabledState(boolean enabled) {
@@ -507,24 +532,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateBugreportOptions();
         updateForceRtlOptions();
         updateWifiDisplayCertificationOptions();
-        updateAdvancedRebootOptions();
     }
-
-    private void resetAdvancedRebootOptions() {
-        Settings.Secure.putInt(getActivity().getContentResolver(),
-                Settings.Global.ADVANCED_REBOOT, 0);
-    }
-
-    private void writeAdvancedRebootOptions() {
-        Settings.Secure.putInt(getActivity().getContentResolver(),
-                Settings.Global.ADVANCED_REBOOT,
-                mAdvancedReboot.isChecked() ? 1 : 0);
-    }
-
-    private void updateAdvancedRebootOptions() {
-        mAdvancedReboot.setChecked(Settings.Secure.getInt(getActivity().getContentResolver(),
-                Settings.Global.ADVANCED_REBOOT, 0) != 0);
-     }
 
     private void resetDangerousOptions() {
         mDontPokeProperties = true;
@@ -536,7 +544,6 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
         }
         resetDebuggerOptions();
-        resetAdvancedRebootOptions();
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
         writeAnimationScaleOption(2, mAnimatorDurationScale, null);
@@ -1271,8 +1278,18 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeForceRtlOptions();
         } else if (preference == mWifiDisplayCertification) {
             writeWifiDisplayCertificationOptions();
-        } else if (preference == mAdvancedReboot) {
-            writeAdvancedRebootOptions();
+        } else if (preference == mChamber) {
+            if (Settings.Secure.getInt(getActivity().getContentResolver(),
+                    Settings.Secure.CHAMBER_OF_SECRETS, 0) == 0) {
+                Settings.Secure.putInt(getActivity().getContentResolver(),
+                        Settings.Secure.CHAMBER_OF_SECRETS, 1);
+                Toast.makeText(getActivity(),
+                        R.string.chamber_toast,
+                        Toast.LENGTH_LONG).show();
+                getPreferenceScreen().removePreference(mChamber);
+                addPreference(mChamberUnlocked);
+                mChamberUnlocked.setChecked(true);
+            }
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
@@ -1352,6 +1369,11 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             return true;
         } else if (preference == mAppProcessLimit) {
             writeAppProcessLimitOptions(newValue);
+            return true;
+        } else if (preference == mChamberUnlocked) {
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.CHAMBER_OF_SECRETS,
+                    (Boolean) newValue ? 1 : 0);
             return true;
         }
         return false;
