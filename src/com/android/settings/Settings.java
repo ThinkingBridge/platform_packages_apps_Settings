@@ -326,7 +326,6 @@ public class Settings extends PreferenceActivity
         ManageApplications.class.getName(),
         ProcessStatsUi.class.getName(),
         NotificationStation.class.getName(),
-        AppOpsSummary.class.getName(),
         LocationSettings.class.getName(),
         SecuritySettings.class.getName(),
         PrivacySettings.class.getName(),
@@ -533,7 +532,7 @@ public class Settings extends PreferenceActivity
     private void updateHeaderList(List<Header> target) {
         final boolean showDev = mDevelopmentPreferences.getBoolean(
                 DevelopmentSettings.PREF_SHOW,
-                android.os.Build.TYPE.equals("eng") || android.os.Build.TYPE.equals("userdebug"));
+                android.os.Build.TYPE.equals("eng"));
         int i = 0;
 
         final UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
@@ -565,9 +564,6 @@ public class Settings extends PreferenceActivity
                 } catch (RemoteException e) {
                     // ignored
                 }
-            } else if (id == R.id.advanced_settings) {
-                if (!needsAdvancedSettings())
-                    target.remove(header);
             } else if (id == R.id.battery_settings) {
                 // Remove battery settings when battery is not available. (e.g. TV)
 
@@ -725,10 +721,6 @@ public class Settings extends PreferenceActivity
 
         sp.edit().putBoolean(HomeSettings.HOME_PREFS_DO_SHOW, true).apply();
         return true;
-    }
-
-    private boolean needsAdvancedSettings() {
-        return getResources().getBoolean(R.bool.has_advanced_settings);
     }
 
     private void getMetaData() {
@@ -1088,7 +1080,15 @@ public class Settings extends PreferenceActivity
     public static class DeviceInfoSettingsActivity extends Settings { /* empty */ }
     public static class ApplicationSettingsActivity extends Settings { /* empty */ }
     public static class ManageApplicationsActivity extends Settings { /* empty */ }
-    public static class AppOpsSummaryActivity extends Settings { /* empty */ }
+    public static class AppOpsSummaryActivity extends Settings {
+        @Override
+        public boolean isValidFragment(String className) {
+            if (AppOpsSummary.class.getName().equals(className)) {
+                return true;
+            }
+            return super.isValidFragment(className);
+        }
+    }
     public static class StorageUseActivity extends Settings { /* empty */ }
     public static class DevelopmentSettingsActivity extends Settings { /* empty */ }
     public static class AccessibilitySettingsActivity extends Settings { /* empty */ }
@@ -1117,5 +1117,4 @@ public class Settings extends PreferenceActivity
     public static class PaymentSettingsActivity extends Settings { /* empty */ }
     public static class PrintSettingsActivity extends Settings { /* empty */ }
     public static class PrintJobSettingsActivity extends Settings { /* empty */ }
-    public static class AnonymousStatsActivity extends Settings { /* empty */ }
 }

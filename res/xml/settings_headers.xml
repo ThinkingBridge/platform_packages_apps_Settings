@@ -58,18 +58,6 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
-    <!-- Quick Links -->
-    <header android:title="@string/quick_links_title" />
-
-    <header android:id="@+id/advanced_settings"
-            android:title="@string/advanced_settings_title"
-            android:icon="@drawable/ic_settings_advanced">
-        <intent
-                android:action="com.cyanogenmod.action.LAUNCH_DEVICE_SETTINGS"
-                android:targetPackage="com.cyanogenmod.settings.device"
-                android:targetClass="com.cyanogenmod.settings.device.DeviceSettings" />
-    </header>
-
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
         android:title="@string/header_category_device" />
@@ -185,20 +173,6 @@
     <!-- SYSTEM -->
     <header android:id="@+id/system_section"
         android:title="@string/header_category_system" />
-
-    <!-- Superuser -->
-    <header
-        android:id="@+id/superuser"
-        android:fragment="com.koushikdutta.superuser.PolicyNativeFragment"
-        android:icon="@drawable/ic_action_permission"
-        android:title="@string/superuser" />
-
-    <!-- App Ops -->
-    <header
-        android:fragment="com.android.settings.applications.AppOpsSummary"
-        android:icon="@drawable/ic_app_ops"
-        android:title="@string/app_ops_settings"
-        android:id="@+id/appops_settings" />
 
     <!-- Date & Time -->
     <header
