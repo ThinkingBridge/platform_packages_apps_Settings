@@ -4919,4 +4919,9 @@
 
     <!-- Text to display in regulatory info screen (from device overlay). -->
     <string name="regulatory_info_text"></string>
+
+    <!-- About phone screen,  setting option name-->
+    <string name="mod_version">ThinkingBridge OS</string>
+    <string name="mod_version_default">Unknown</string>
+
 </resources>
