@@ -2105,7 +2105,6 @@
     
     <!-- StatusBar Settings -->
     <string name="status_bar_general_title">일반</string>
-    <string name="status_bar_title">상단바</string>
     <string name="status_bar_toggle_brightness">밝기 컨트롤</string>
     <string name="status_bar_toggle_brightness_summary">상태바에서 슬라이딩으로 밝기를 조정</string>
     <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
