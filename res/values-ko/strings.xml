@@ -2042,4 +2042,21 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"사진 촬영"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"갤러리에서 사진 선택"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    
+    <!-- About phone screen,  setting option name-->
+    <string name="mod_version">ThinkingBridge OS</string>
+    <string name="mod_version_default">알수없음</string>
+    <!-- About phone screen, build date of ROM -->
+    <string name="build_date">빌드 날짜</string>
+    <string name="build_date_default">2012-01-01-0000</string>
+    <!-- About device screen, Cpu info. -->
+    <string name="cpu_info">CPU</string>
+    <!-- About phone screen, Free memory info -->
+    <string name="mem_info">메모리</string>
+    <!-- About phone screen, status item label -->
+    
+    <!-- System Settings -->
+    <string name="system_settings_title">시스템 설정</string>
+    <string name="status_bar_title">상단바</string>
+    
 </resources>

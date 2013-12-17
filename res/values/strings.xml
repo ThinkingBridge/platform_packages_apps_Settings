@@ -4932,5 +4932,9 @@
     <!-- About phone screen, Free memory info -->
     <string name="mem_info">Memory</string>
     <!-- About phone screen, status item label -->
+    
+    <!-- System Settings -->
+    <string name="system_settings_title">System Settings</string>
+    <string name="status_bar_title">Status Bar</string>
 
 </resources>
