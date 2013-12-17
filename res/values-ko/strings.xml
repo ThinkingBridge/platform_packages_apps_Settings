@@ -2059,4 +2059,59 @@
     <string name="system_settings_title">시스템 설정</string>
     <string name="status_bar_title">상단바</string>
     
+    <!--Notification LED category header-->
+    <string name="notification_led_category_title">Notification led</string>
+    
+    <!--Notification light dialogs-->
+    <string name="edit_light_settings">Edit light settings</string>
+    <string name="pulse_speed_title">Pulse length and speed</string>
+    <string name="default_time">Normal</string>
+    <string name="custom_time">Custom</string>
+    <string name="dialog_test">Test</string>
+    <string name="dialog_delete_title">Delete</string>
+    <string name="dialog_delete_message">Remove selected item?</string>
+    <string name="dialog_test_message">Turn the screen off to see the selected notification in action or dismiss this dialog to stop the test</string>
+    <string name="dialog_test_button">Dismiss</string>
+    <string name="ok">OK</string>
+    <string name="reset">Reset</string>
+    <string name="profile_choose_app">Choose app</string>
+    <string name="profiles_add">Add</string>
+    
+    <!--Lights settings screen, notification light settings-->
+    <string name="display_lights_settings_title">Display &amp; lights</string>
+    <string name="lights_category_title">Lights</string>
+    <string name="notification_light_general_title">General</string>
+    <string name="notification_light_applist_title">Applications</string>
+    <string name="notification_light_phonelist_title">Phone</string>
+    <string name="notification_light_use_custom">Use custom values</string>
+    <string name="notification_light_enabled">Enabled</string>
+    <string name="notification_light_disabled">Disabled</string>
+    <string name="notification_light_default_value">Default</string>
+    <string name="notification_light_missed_call_title">Missed call</string>
+    <string name="notification_light_voicemail_title">Voicemail</string>
+    
+    <!--Values for the notification light pulse spinners-->
+    <string name="pulse_length_always_on">Always on</string>
+    <string name="pulse_length_very_short">Very short</string>
+    <string name="pulse_length_short">Short</string>
+    <string name="pulse_length_normal">Normal</string>
+    <string name="pulse_length_long">Long</string>
+    <string name="pulse_length_very_long">Very long</string>
+    <string name="pulse_speed_very_fast">Very fast</string>
+    <string name="pulse_speed_fast">Fast</string>
+    <string name="pulse_speed_normal">Normal</string>
+    <string name="pulse_speed_slow">Slow</string>
+    <string name="pulse_speed_very_slow">Very slow</string>
+    
+    <!-- StatusBar Settings -->
+    <string name="status_bar_general_title">일반</string>
+    <string name="status_bar_title">상단바</string>
+    <string name="status_bar_toggle_brightness">밝기 컨트롤</string>
+    <string name="status_bar_toggle_brightness_summary">상태바에서 슬라이딩으로 밝기를 조정</string>
+    <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
+    
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">확장 재부팅</string>
+    <string name="advanced_reboot_summary">전원 메뉴 옵션 재부팅에 리커버리 및 부트로더로 재부팅을 포함합니다</string>
+    
 </resources>
