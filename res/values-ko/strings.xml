@@ -2056,11 +2056,23 @@
     <!-- About phone screen, status item label -->
     
     <!-- System Settings -->
-    <string name="system_settings_title">시스템 설정</string>
+    <string name="header_quick_setting">빠른 설정</string>
+    <string name="system_settings_title">인터페이스</string>
+    
+    <!-- StatusBar Settings -->
     <string name="status_bar_title">상단바</string>
+    <string name="status_bar_general_title">일반</string>
+    <string name="status_bar_style_title">스타일</string>
+    <string name="status_bar_toggle_brightness">밝기 컨트롤</string>
+    <string name="status_bar_toggle_brightness_summary">상태바에서 슬라이딩으로 밝기를 조정</string>
+    <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
+    
+    <!-- Advanced reboot options -->
+    <string name="advanced_reboot_title">확장 재부팅</string>
+    <string name="advanced_reboot_summary">전원 메뉴 옵션 재부팅에 리커버리 및 부트로더로 재부팅을 포함합니다</string>
     
     <!--Notification LED category header-->
-    <string name="notification_led_category_title">Notification led</string>
+    <string name="notification_led_category_title">Notification Led</string>
     
     <!--Notification light dialogs-->
     <string name="edit_light_settings">Edit light settings</string>
@@ -2102,16 +2114,6 @@
     <string name="pulse_speed_normal">Normal</string>
     <string name="pulse_speed_slow">Slow</string>
     <string name="pulse_speed_very_slow">Very slow</string>
-    
-    <!-- StatusBar Settings -->
-    <string name="status_bar_general_title">일반</string>
-    <string name="status_bar_toggle_brightness">밝기 컨트롤</string>
-    <string name="status_bar_toggle_brightness_summary">상태바에서 슬라이딩으로 밝기를 조정</string>
-    <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
-    
-    <!-- Advanced reboot options -->
-    <string name="advanced_reboot_title">확장 재부팅</string>
-    <string name="advanced_reboot_summary">전원 메뉴 옵션 재부팅에 리커버리 및 부트로더로 재부팅을 포함합니다</string>
     
     <!-- Message of dialog confirming that user wants to restart their device with a new runtime -->
     <string name="custom_runtime_warning_title">주의</string>

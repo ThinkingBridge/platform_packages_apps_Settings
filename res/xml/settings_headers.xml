@@ -57,8 +57,11 @@
         android:breadCrumbTitle="@string/wireless_networks_settings_title"
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
-        
-    <!-- System -->
+
+    <!-- Quick Setting -->
+    <header android:title="@string/header_quick_setting" />
+
+    <!-- Interface Settings -->
     <header
         android:id="@+id/system_settings"
         android:title="@string/system_settings_title"
