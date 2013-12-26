@@ -15,4 +15,9 @@ public class SystemSettings extends SettingsPreferenceFragment {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.system_settings);
     }
+    
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 }
