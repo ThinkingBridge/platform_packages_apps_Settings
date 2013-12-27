@@ -4919,6 +4919,17 @@
 
     <!-- Text to display in regulatory info screen (from device overlay). -->
     <string name="regulatory_info_text"></string>
+    
+    <!-- General strings -->
+    <string name="ok">OK</string>
+    <string name="reset">Reset</string>
+    <string name="attention">Attention</string>
+    <string name="enabled">Enabled</string>
+    <string name="default_string">Default</string>
+    <string name="additional_options_title">Additional options</string>
+    <string name="reset_message">Reset all entries to default?</string>
+    <string name="style_title">Style</string>
+    <string name="add">Add</string>
 
     <!-- About phone screen,  setting option name-->
     <string name="mod_version">ThinkingBridge OS</string>
@@ -4936,7 +4947,6 @@
     <!-- System Settings -->
     <string name="header_quick_setting">Quick Setting</string>
     <string name="system_settings_title">Interface</string>
-    <string name="status_bar_title">Status Bar</string>
     
     <!-- StatusBar Settings -->
     <string name="status_bar_title">Status Bar</string>
@@ -4953,8 +4963,6 @@
     <!-- Message of dialog confirming that user wants to restart their device with a new runtime -->
     <string name="custom_runtime_warning_title">Warning</string>
     <string name="custom_runtime_warning_message">ART is not supported by ThinkingBridge. This setting is included for experimentation only and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for more information.&lt;br/&gt;&lt;br/&gt;We request you do not file bug reports if you have enabled ART as your runtime.&lt;br/&gt;&lt;br/&gt;Are you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-    
-    <string name="ok">OK</string>
     
     <!-- Display settings screen, notification light settings -->
     <string name="display_category_light_options_title">Light options</string>
@@ -5007,6 +5015,15 @@
     <!-- Network speed -->
     <string name="show_network_speed">Network speed indicator</string>
     <string name="show_network_speed_summary">Show network speed in statsbar</string>
+    
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">Set</string>
     
     <!-- Status bar | Clock -->
     <string name="status_bar_clock">Clock and date</string>
