@@ -4948,8 +4948,13 @@
     <string name="header_quick_setting">Quick Setting</string>
     <string name="system_settings_title">Interface</string>
     
-    <!-- StatusBar Settings -->
+    <!-- Category -->
     <string name="status_bar_category">Status Bar Category</string>
+    <string name="navigation_bar_category">Navigation bar</string>
+    <string name="lockscreen_category">LockScreen</string>
+    
+    
+    <!-- StatusBar Settings -->
     <string name="status_bar_title">Status Bar</string>
     <string name="status_bar_general_title">General</string>
     <string name="status_bar_style_title">Style</string>
@@ -5081,7 +5086,6 @@
     <string name="battery_style_reset_message">Reset all battery colors?</string>
     
     <!-- Navigation Bar -->
-    <string name="navigation_bar_category">Navigation bar</string>
     <string name="navigation_bar_title">Buttons and layout</string>
     <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
     <string name="navigation_bar_tips">\u2022 Actions can only be assigned to one button at a time\n\n\u2022 The home button cannot be re-assigned\n\n\u2022 Side buttons cannot be rearranged</string>
@@ -5091,7 +5095,7 @@
     <string name="navigation_bar_reset_toast">Navigation bar reset to default</string>
     <string name="navigation_bar_menu_editable">Editable</string>
     <string name="navigation_bar_menu_locked">Locked</string>
-    
+
     <!--Lockscreen See Through-->
     <string name="see_through_title">See through</string>
     <string name="see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
@@ -5101,5 +5105,23 @@
     <string name="blur_behind_summary">Adds a nice blur effect to the background</string>
     <string name="blur_radius_title">Blur Radius</string>
     <string name="blur_radius_summary">Set the blur radius for the blur effect</string>
+
+    <!-- Lockscreen Notifications -->
+    <string name="lockscreen_notifications">Lockscreen notifications</string>
+    <string name="lockscreen_notifications_summary">Show pending notifications on lockscreen</string>
+    <string name="pocket_mode">Pocket mode</string>
+    <string name="pocket_mode_summary">Turn screen on and show all notifications when device is pulled out of pocket. Turn screen off when device gets back into pocket.</string>
+    <string name="show_always">Show always</string>
+    <string name="show_always_summary">Always turn screen on when pulled out of pocket, even when there are no notifications pending</string>
+    <string name="hide_low_priority">Hide low priority</string>
+    <string name="hide_low_priority_summary">Hide low priority notifications such as google now weather notifications</string>
+    <string name="hide_non_clearable">Hide non clearable</string>
+    <string name="hide_non_clearable_summary">Hide all non clearable notifications</string>
+    <string name="dismiss_all">Allow dismissing all notifications</string>
+    <string name="dismiss_all_summary">Allow dismissing even non clearable notifications. Of course, they\'re just hidden from lockscreen and not from the notification panel.</string>
+    <string name="expanded_view">Expanded notification view</string>
+    <string name="expanded_view_summary">Add possibility to toggle between normal and expanded view by longpress. The expanded view sometimes shows more private information so you might want to disable it.</string>
+    <string name="force_expanded_view">Force expanded view</string>
+    <string name="force_expanded_view_summary">Show notifications expanded by default. You still will be able to toggle between expanded and normal view.</string>
 
 </resources>
