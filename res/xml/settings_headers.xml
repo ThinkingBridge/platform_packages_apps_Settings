@@ -39,6 +39,7 @@
     <!-- AirPlane -->
     <header
         android:id="@+id/airplane_mode"
+        android:fragment="com.android.settings.WirelessSettings"
         android:title="@string/airplane_mode"
         android:icon="@drawable/ic_settings_airplane_mode" />
 
