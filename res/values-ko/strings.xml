@@ -2198,5 +2198,9 @@
     <string name="navigation_bar_reset_toast">Navigation bar reset to default</string>
     <string name="navigation_bar_menu_editable">Editable</string>
     <string name="navigation_bar_menu_locked">Locked</string>
+    
+    <!-- SecondClock -->
+    <string name="status_bar_clock_second">초시계 사용</string>
+    <string name="status_bar_clock_second_summary">시계에 초시계 표시</string>
 
 </resources>
