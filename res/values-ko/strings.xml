@@ -2044,7 +2044,7 @@
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
     
     <!-- About phone screen,  setting option name-->
-    <string name="mod_version">ThinkingBridge OS</string>
+    <string name="mod_version">ThinkingBridge 버전</string>
     <string name="mod_version_default">알수없음</string>
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">빌드 날짜</string>

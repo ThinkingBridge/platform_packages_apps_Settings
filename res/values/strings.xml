@@ -4932,7 +4932,7 @@
     <string name="add">Add</string>
 
     <!-- About phone screen,  setting option name-->
-    <string name="mod_version">ThinkingBridge OS</string>
+    <string name="mod_version">ThinkingBridge Version</string>
     <string name="mod_version_default">Unknown</string>
 
     <!-- About phone screen, build date of ROM -->
