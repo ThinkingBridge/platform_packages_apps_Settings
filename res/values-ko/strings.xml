@@ -2046,15 +2046,27 @@
     <!-- About phone screen,  setting option name-->
     <string name="mod_version">ThinkingBridge 버전</string>
     <string name="mod_version_default">알수없음</string>
+
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">빌드 날짜</string>
     <string name="build_date_default">2012-01-01-0000</string>
+
     <!-- About device screen, Cpu info. -->
     <string name="cpu_info">CPU</string>
     <!-- About phone screen, Free memory info -->
     <string name="mem_info">메모리</string>
+
     <!-- About phone screen, status item label -->
-    
+    <!-- General strings -->
+
+    <string name="attention">주의</string>
+    <string name="enabled">사용함</string>
+    <string name="default_string">기본값</string>
+    <string name="additional_options_title">추가 옵션</string>
+    <string name="reset_message">기본값으로 모든 항목을 초기화 하시겠습니까?</string>
+    <string name="style_title">스타일</string>
+    <string name="add">추가</string>
+
     <!-- System Settings -->
     <string name="header_quick_setting">빠른 설정</string>
     <string name="system_settings_title">인터페이스</string>
@@ -2066,138 +2078,181 @@
     <string name="status_bar_style_title">스타일</string>
     <string name="status_bar_toggle_brightness">밝기 컨트롤</string>
     <string name="status_bar_toggle_brightness_summary">상태바에서 슬라이딩으로 밝기를 조정</string>
-    <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
+    <string name="status_bar_toggle_info">자동 밝기가 설정되었습니다</string>
     
     <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">확장 재부팅</string>
     <string name="advanced_reboot_summary">전원 메뉴 옵션 재부팅에 리커버리 및 부트로더로 재부팅을 포함합니다</string>
     
     <!--Notification LED category header-->
-    <string name="notification_led_category_title">Notification Led</string>
+    <string name="notification_led_category_title">알림 LED</string>
     
     <!--Notification light dialogs-->
-    <string name="edit_light_settings">Edit light settings</string>
-    <string name="pulse_speed_title">Pulse length and speed</string>
-    <string name="default_time">Normal</string>
-    <string name="custom_time">Custom</string>
-    <string name="dialog_test">Test</string>
-    <string name="dialog_delete_title">Delete</string>
-    <string name="dialog_delete_message">Remove selected item?</string>
-    <string name="dialog_test_message">Turn the screen off to see the selected notification in action or dismiss this dialog to stop the test</string>
-    <string name="dialog_test_button">Dismiss</string>
-    <string name="ok">OK</string>
-    <string name="reset">Reset</string>
-    <string name="profile_choose_app">Choose app</string>
-    <string name="profiles_add">Add</string>
+    <string name="edit_light_settings">LED 설정 편집</string>
+    <string name="pulse_speed_title">깜박임 길이와 속도</string>
+    <string name="default_time">일반</string>
+    <string name="custom_time">사용자</string>
+    <string name="dialog_test">사용자</string>
+    <string name="dialog_delete_title">삭제</string>
+    <string name="dialog_delete_message">선택한 항목을 삭제 하시겠습니까?</string>
+    <string name="dialog_test_message">작업에서 선택한 알림을 보려면 화면을 끄거나 테스트를 중지하려면 이 대화 상자를 닫습니다</string>
+    <string name="dialog_test_button">취소</string>
+    <string name="ok">확인</string>
+    <string name="reset">초기화</string>
+    <string name="profile_choose_app">애플리케이션 선택</string>
+    <string name="profiles_add">추가</string>
     
     <!--Lights settings screen, notification light settings-->
-    <string name="display_lights_settings_title">Display &amp; lights</string>
-    <string name="lights_category_title">Lights</string>
-    <string name="notification_light_general_title">General</string>
-    <string name="notification_light_applist_title">Applications</string>
-    <string name="notification_light_phonelist_title">Phone</string>
-    <string name="notification_light_use_custom">Use custom values</string>
-    <string name="notification_light_enabled">Enabled</string>
-    <string name="notification_light_disabled">Disabled</string>
-    <string name="notification_light_default_value">Default</string>
-    <string name="notification_light_missed_call_title">Missed call</string>
-    <string name="notification_light_voicemail_title">Voicemail</string>
+    <string name="display_lights_settings_title">디스플레이 및 조명</string>
+    <string name="lights_category_title">조명</string>
+    <string name="notification_light_general_title">기본설정</string>
+    <string name="notification_light_applist_title">애플리케이션</string>
+    <string name="notification_light_phonelist_title">전화</string>
+    <string name="notification_light_use_custom">사용자 지정</string>
+    <string name="notification_light_enabled">사용</string>
+    <string name="notification_light_disabled">사용 안함</string>
+    <string name="notification_light_default_value">기본값</string>
+    <string name="notification_light_missed_call_title">부재중 전화</string>
+    <string name="notification_light_voicemail_title">음성메일</string>
     
     <!--Values for the notification light pulse spinners-->
-    <string name="pulse_length_always_on">Always on</string>
-    <string name="pulse_length_very_short">Very short</string>
-    <string name="pulse_length_short">Short</string>
-    <string name="pulse_length_normal">Normal</string>
-    <string name="pulse_length_long">Long</string>
-    <string name="pulse_length_very_long">Very long</string>
-    <string name="pulse_speed_very_fast">Very fast</string>
-    <string name="pulse_speed_fast">Fast</string>
-    <string name="pulse_speed_normal">Normal</string>
-    <string name="pulse_speed_slow">Slow</string>
-    <string name="pulse_speed_very_slow">Very slow</string>
+    <string name="pulse_length_always_on">항상 켜기</string>
+    <string name="pulse_length_very_short">매우 짧게</string>
+    <string name="pulse_length_short">짧게</string>
+    <string name="pulse_length_normal">일반</string>
+    <string name="pulse_length_long">길게</string>
+    <string name="pulse_length_very_long">매우 길게</string>
+    <string name="pulse_speed_very_fast">매우 빠르게</string>
+    <string name="pulse_speed_fast">빠르게</string>
+    <string name="pulse_speed_normal">일반</string>
+    <string name="pulse_speed_slow">느리게</string>
+    <string name="pulse_speed_very_slow">매우 느리게</string>
     
     <!-- Message of dialog confirming that user wants to restart their device with a new runtime -->
     <string name="custom_runtime_warning_title">주의</string>
-    <string name="custom_runtime_warning_message">ART is not supported by ThinkingBridge. This setting is included for experimentation only and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for more information.&lt;br/&gt;&lt;br/&gt;We request you do not file bug reports if you have enabled ART as your runtime.&lt;br/&gt;&lt;br/&gt;Are you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+    <string name="custom_runtime_warning_message">ART는 ThinkingBridge 팀에서 지원하지 않습니다. 이 설정은 실험적인 기능이 포함되어 불안정, 충돌, 데이터가 손실되거나 기기의 부팅이 되지 않을수도 있습니다. 자세한 내용은 &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\">ART 소개&lt;/a>를 참조하세요.&lt;br/>&lt;br/>런타임으로 ART을 활성화한 경우에 버그가 생길경우 버그 리포트를 제출하지 마세요.&lt;br/>&lt;br/>%1$s에서 %2$s로 런타임을 변경하기 위해 재부팅 하시겠습니까?</string>
     
+    <!-- Battery light settings -->
+    <string name="battery_reset_title">초기화</string>
+    <string name="battery_light_title">배터리 LED</string>
+    <string name="battery_low_pulse_title">배터리가 부족할 경우 깜빡임</string>
+    <string name="battery_light_list_title">색상</string>
+    <string name="battery_light_low_color_title">배터리 부족</string>
+    <string name="battery_light_medium_color_title">충전중</string>
+    <string name="battery_light_full_color_title">충전 완료</string>
+
     <!-- Network speed -->
     <string name="show_network_speed">네트워크 속도 표시</string>
     <string name="show_network_speed_summary">상단바에 네트워크 속도 표시</string>
     
     <!-- Color Picker -->
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="dialog_color_picker">색상 선택기</string>
+    <string name="press_color_to_apply">아래에서 적용할 색상을 누르세요</string>
     <string name="arrow_right">→</string>
     <string name="arrow_down">↓</string>
     <string name="hex">Hex:</string>
     <string name="hex_hint">#ff000000</string>
-    <string name="set">Set</string>
+    <string name="set">적용</string>
     
     <!-- Status bar | Clock -->
-    <string name="status_bar_clock">Clock and date</string>
-    <string name="status_bar_clock_title">Clock and date style</string>
-    <string name="clock_title_enable">Alignment</string>
-    <string name="clock_enabled">Enabled</string>
-    <string name="clock_disabled">Disabled</string>
-    <string name="clock_color_title">Color</string>
-    <string name="status_bar_clock_style_reset">Reset color</string>
-    <string name="status_bar_show_clock_title">Show clock and date</string>
+    <string name="status_bar_clock">시계 및 날짜</string>
+    <string name="status_bar_clock_title">시계 및 날짜 스타일</string>
+    <string name="clock_title_enable">정렬</string>
+    <string name="clock_enabled">사용</string>
+    <string name="clock_disabled">사용 중지</string>
+    <string name="clock_color_title">색상</string>
+    <string name="status_bar_clock_style_reset">색상 초기화</string>
+    <string name="status_bar_show_clock_title">시계 및 날짜 표시</string>
     <string name="status_bar_am_pm_title">AM/PM</string>
-    <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
-    <string name="enable_clock_weekday">Day of the week</string>
-    <string name="enable_clock_weekday_summary">Abbreviated day of the week before the time</string>
-    <string name="right_clock">Right clock</string>
-    <string name="center_clock">Center clock</string>
-    <string name="dont_show">Don\'t show</string>
-    <string name="clock_date_display">Date</string>
-    <string name="clock_date_display_summary">Display custom date before the clock</string>
-    <string name="clock_date_style">Date style</string>
-    <string name="clock_date_format">Date format</string>
-    <string name="clock_date_string_edittext_title">Must be in DateFormat eg. MM/dd/yy</string>
-    <string name="clock_date_string_edittext_summary">Enter string</string>
-    <string name="am_pm_clock_normal">Normal font size</string>
-    <string name="am_pm_clock_small">Small font size</string>
-    <string name="am_pm_clock_none">Don\'t show</string>
-    <string name="clock_date_display_none">Don\'t show</string>
-    <string name="clock_date_display_small">Small font size</string>
-    <string name="clock_date_display_normal">Normal font size</string>
-    <string name="clock_date_style_normal">Normal</string>
-    <string name="clock_date_style_lowercase">Lowercase</string>
-    <string name="clock_date_style_uppercase">Uppercase</string>
-    <string name="clock_date_format_custom">Custom java format</string>
-    <string name="status_bar_clock_style_reset_message">Reset clock color?</string>
+    <string name="status_bar_am_pm_info">24시간 형식을 사용합니다</string>
+    <string name="enable_clock_weekday">요일</string>
+    <string name="enable_clock_weekday_summary">시간 앞에 요일 표시</string>
+    <string name="right_clock">오른쪽 시계</string>
+    <string name="center_clock">중앙 시계</string>
+    <string name="dont_show">표시하지 않음</string>
+    <string name="clock_date_display">날짜</string>
+    <string name="clock_date_display_summary">시계 앞에 사용자 지정 날짜를 표시합니다</string>
+    <string name="clock_date_style">날짜 스타일</string>
+    <string name="clock_date_format">날짜 형식</string>
+    <string name="clock_date_string_edittext_title">날짜 형식 예제. yy/MM/dd</string>
+    <string name="clock_date_string_edittext_summary">문자열 입력</string>
+    <string name="am_pm_clock_normal">일반 글꼴 크기</string>
+    <string name="am_pm_clock_small">작은 글꼴 크기</string>
+    <string name="am_pm_clock_none">표시하지 않음</string>
+    <string name="clock_date_display_none">표시하지 않음</string>
+    <string name="clock_date_display_small">작은 글꼴 크기</string>
+    <string name="clock_date_display_normal">일반 글꼴 크기</string>
+    <string name="clock_date_style_normal">일반</string>
+    <string name="clock_date_style_lowercase">소문자</string>
+    <string name="clock_date_style_uppercase">대문자</string>
+    <string name="clock_date_format_custom">사용자 지정 형식</string>
+    <string name="status_bar_clock_style_reset_message">시계 색상을 초기화사시겠습니까?</string>
     
     <!-- StatusBar Battery Settings -->
     <string name="battery_icon_title">배터리 아이콘</string>
-    <string name="battery_status_icon">Icon</string>
-    <string name="battery_status_percentage">Percentage</string>
-    <string name="battery_status_icon_percentage">Icon with percentage</string>
-    <string name="battery_status_circle">Circle</string>
-    <string name="battery_status_circle_percentage">Circle with percentage</string>
-    <string name="battery_status_dotted_circle_percentage">Dotted Circle with percentage</string>
-    <string name="battery_status_dotted_circle">Dotted Circle</string>
-    <string name="battery_color_title">Battery color</string>
-    <string name="circle_battery_animation_speed">Circle animation speed</string>
-    <string name="circle_battery_animation_speed_none">None</string>
-    <string name="circle_battery_animation_speed_slow">Slow</string>
-    <string name="circle_battery_animation_speed_stock">Normal</string>
-    <string name="circle_battery_animation_speed_fast">Fast</string>
-    <string name="battery_text_color">Percentage text color</string>
-    <string name="battery_bolt_color">Bolt charging color</string>
-    <string name="battery_text_charging_color">Percentage text charging color</string>
-    <string name="battery_style_reset_message">Reset all battery colors?</string>
+    <string name="battery_status_icon">아이콘</string>
+    <string name="battery_status_percentage">퍼센트</string>
+    <string name="battery_status_icon_percentage">아이콘 및 퍼센트</string>
+    <string name="battery_status_circle">원형</string>
+    <string name="battery_status_circle_percentage">원형 및 퍼센트</string>
+    <string name="battery_status_dotted_circle_percentage">점선 원형 및 퍼센트</string>
+    <string name="battery_status_dotted_circle">점선 원형</string>
+    <string name="battery_color_title">배터리 색상</string>
+    <string name="circle_battery_animation_speed">원형 애니메이션 속도</string>
+    <string name="circle_battery_animation_speed_none">없음</string>
+    <string name="circle_battery_animation_speed_slow">느림</string>
+    <string name="circle_battery_animation_speed_stock">보통</string>
+    <string name="circle_battery_animation_speed_fast">빠름</string>
+    <string name="battery_text_color">퍼센트 텍스트 색상</string>
+    <string name="battery_bolt_color">충전중 볼트 색상</string>
+    <string name="battery_text_charging_color">충전중 퍼센트 텍스트 색상</string>
+    <string name="battery_style_reset_message">모든 배터리 색상을 초기화 하시겠습니까?</string>
     
     <!-- Navigation Bar -->
     <string name="navigation_bar_category">네비게이션바</string>
     <string name="navigation_bar_title">네비게이션바 설정</string>
-    <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
-    <string name="navigation_bar_tips">\u2022 Actions can only be assigned to one button at a time\n\n\u2022 The home button cannot be re-assigned\n\n\u2022 Side buttons cannot be rearranged</string>
+    <string name="navigation_bar_help_text">1 - 편집 시작하려면 자물쇠 아이콘을 누르세요\n2 - 기능을 할당하거나 변경하려면 해당 버튼을 누르세요\n3 - 순서를 다시 정렬하려면 해당 버튼을 길게 누르세요\n4 - 저장하려면 다시 자물쇠 아이콘을 누르세요\n5 - 시스템 기본값을 복원하려면 초기화 버튼을 누르세요.</string>
+    <string name="navigation_bar_tips">\u2022 작업은 한 번에 하나의 버튼에 할당할수 있습니다.\n\n\u2022 홈 버튼은 재 할당할수 없습니다.\n\n\u2022 사이드 버튼은 재 배열할수 없습니다</string>
     <string name="navigation_bar_tips_title">빠른 팁</string>
-    <string name="navigation_bar_reset_message">Delete current settings and restore to default?</string>
-    <string name="navigation_bar_save_message">Navigation bar settings saved</string>
-    <string name="navigation_bar_reset_toast">Navigation bar reset to default</string>
-    <string name="navigation_bar_menu_editable">Editable</string>
-    <string name="navigation_bar_menu_locked">Locked</string>
+    <string name="navigation_bar_reset_message">현재 설정을 삭제하고 기본값으로 복원하시겠습니까?</string>
+    <string name="navigation_bar_save_message">네비게이션 바 설정이 저장되었습니다</string>
+    <string name="navigation_bar_reset_toast">네비게이션 바가 기본값으로 초기회되었습니다</string>
+    <string name="navigation_bar_menu_editable">편집 가능</string>
+    <string name="navigation_bar_menu_locked">고정</string>
+
+    <!-- Locksreen Category -->
+    <string name="lockscreen_category">잠금화면</string>
+
+
+    <!--Lockscreen See Through-->
+    <string name="see_through_title">투명 배경</string>
+    <string name="see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
+
+    <!--Lockscreen blur-->
+    <string name="blur_behind_title">잠금 흐림 효과 배경</string>
+    <string name="blur_behind_summary">Adds a nice blur effect to the background</string>
+    <string name="blur_radius_title">Blur Radius</string>
+    <string name="blur_radius_summary">Set the blur radius for the blur effect</string>
+
+    <!-- Lockscreen Notifications -->
+    <string name="lockscreen_notifications">잠금화면 알림</string>
+    <string name="lockscreen_notifications_summary">Show pending notifications on lockscreen</string>
+    <string name="pocket_mode">Pocket mode</string>
+    <string name="pocket_mode_summary">Turn screen on and show all notifications when device is pulled out of pocket. Turn screen off when device gets back into pocket.</string>
+    <string name="show_always">Show always</string>
+    <string name="show_always_summary">Always turn screen on when pulled out of pocket, even when there are no notifications pending</string>
+    <string name="hide_low_priority">Hide low priority</string>
+    <string name="hide_low_priority_summary">Hide low priority notifications such as google now weather notifications</string>
+    <string name="hide_non_clearable">Hide non clearable</string>
+    <string name="hide_non_clearable_summary">Hide all non clearable notifications</string>
+    <string name="dismiss_all">Allow dismissing all notifications</string>
+    <string name="dismiss_all_summary">Allow dismissing even non clearable notifications. Of course, they\'re just hidden from lockscreen and not from the notification panel.</string>
+    <string name="expanded_view">Expanded notification view</string>
+    <string name="expanded_view_summary">Add possibility to toggle between normal and expanded view by longpress. The expanded view sometimes shows more private information so you might want to disable it.</string>
+    <string name="force_expanded_view">Force expanded view</string>
+    <string name="force_expanded_view_summary">Show notifications expanded by default. You still will be able to toggle between expanded and normal view.</string>
+    <string name="wake_on_notification">Wake on notification</string>
+    <string name="wake_on_notification_summary">Wake device when a new notification is received</string>
     
     <!-- SecondClock -->
     <string name="status_bar_clock_second">초시계 사용</string>
