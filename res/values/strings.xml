@@ -5132,5 +5132,15 @@
     <!-- Second Clock -->
     <string name="status_bar_clock_second">Second clock</string>
     <string name="status_bar_clock_second_summary">Show second on clock</string>
+    
+    <!--Volume rocker category-->
+    <!--Volume buttons category-->
+     <string name="volume_buttons_category">Volume buttons</string>
+     <!--Volume buttons wake-->
+     <string name="volume_wake_title">Volume buttons wake</string>
+     <string name="volume_wake_summary">Pressing either volume button will wake your device</string>
+     <!--Volume buttons music control-->
+     <string name="volume_music_controls_title">Volume buttons music controls</string>
+     <string name="volume_music_controls_summary">When the screen is off, long pressing the volume buttons will seek music tracks</string>
 
 </resources>
