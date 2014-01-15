@@ -2235,26 +2235,6 @@
     <string name="blur_behind_summary">Adds a nice blur effect to the background</string>
     <string name="blur_radius_title">Blur Radius</string>
     <string name="blur_radius_summary">Set the blur radius for the blur effect</string>
-
-    <!-- Lockscreen Notifications -->
-    <string name="lockscreen_notifications">잠금화면 알림</string>
-    <string name="lockscreen_notifications_summary">Show pending notifications on lockscreen</string>
-    <string name="pocket_mode">포켓 모드</string>
-    <string name="pocket_mode_summary">주머니에서 장치를 가지고 다닐때 활성 디스플레이 알림을 표시합니다.</string>
-    <string name="show_always">Show always</string>
-    <string name="show_always_summary">Always turn screen on when pulled out of pocket, even when there are no notifications pending</string>
-    <string name="hide_low_priority">낮은 우선 순위 숨기기</string>
-    <string name="hide_low_priority_summary">낮은 우선 순위 숨기기</string>
-    <string name="hide_non_clearable">고정된 알림 표시 숨기기</string>
-    <string name="hide_non_clearable_summary">잠금 화면일 때 고정된 알림 표시 숨기기</string>
-    <string name="dismiss_all">고정된 알림 유지 </string>
-    <string name="dismiss_all_summary">잠금 화면일 때 고정된 알림 밀어도 화면에 유지</string>
-    <string name="expanded_view">Expanded notification view</string>
-    <string name="expanded_view_summary">Add possibility to toggle between normal and expanded view by longpress. The expanded view sometimes shows more private information so you might want to disable it.</string>
-    <string name="force_expanded_view">Force expanded view</string>
-    <string name="force_expanded_view_summary">Show notifications expanded by default. You still will be able to toggle between expanded and normal view.</string>
-    <string name="wake_on_notification">Wake on notification</string>
-    <string name="wake_on_notification_summary">Wake device when a new notification is received</string>
     
     <!-- SecondClock -->
     <string name="status_bar_clock_second">초시계 사용</string>
