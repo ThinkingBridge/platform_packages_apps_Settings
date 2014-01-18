@@ -74,6 +74,7 @@ import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.bluetooth.BluetoothSettings;
 import com.android.settings.deviceinfo.Memory;
 import com.android.settings.deviceinfo.UsbSettings;
+import com.android.settings.ecomode.EcoModeEnabler;
 import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.inputmethod.KeyboardLayoutPickerFragment;
@@ -785,6 +786,7 @@ public class Settings extends PreferenceActivity
         private final BluetoothEnabler mBluetoothEnabler;
         private final AirplaneEnabler mAirEnabler;
         private final LocationEnabler mLocationEnabler;
+        private final EcoModeEnabler mEcoModeEnabler;
         private AuthenticatorHelper mAuthHelper;
         private DevicePolicyManager mDevicePolicyManager;
 
@@ -805,6 +807,7 @@ public class Settings extends PreferenceActivity
             } else if (header.id == R.id.wifi_settings
                     || header.id == R.id.bluetooth_settings
                     || header.id == R.id.airplane_mode
+                    || header.id == R.id.ecomode_settings
                     || header.id == R.id.location_settings) {
                 return HEADER_TYPE_SWITCH;
             } else if (header.id == R.id.security_settings) {
@@ -852,6 +855,7 @@ public class Settings extends PreferenceActivity
             mWifiEnabler = new WifiEnabler(context, new Switch(context));
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mAirEnabler = new AirplaneEnabler(context, new Switch(context));
+            mEcoModeEnabler = new EcoModeEnabler(context, new Switch(context));
             mLocationEnabler = new LocationEnabler(context, new Switch(context));
             mDevicePolicyManager = dpm;
         }
@@ -926,6 +930,8 @@ public class Settings extends PreferenceActivity
                         mBluetoothEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.airplane_mode) {
                         mAirEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.ecomode_settings) {
+                        mEcoModeEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.location_settings) {
                         mLocationEnabler.setSwitch(holder.switch_);
                     }
@@ -1002,6 +1008,7 @@ public class Settings extends PreferenceActivity
             mWifiEnabler.resume();
             mBluetoothEnabler.resume();
             mAirEnabler.resume();
+            mEcoModeEnabler.resume();
             mLocationEnabler.resume();
         }
 
@@ -1009,6 +1016,7 @@ public class Settings extends PreferenceActivity
             mWifiEnabler.pause();
             mBluetoothEnabler.pause();
             mAirEnabler.pause();
+            mEcoModeEnabler.pause();
             mLocationEnabler.pause();
         }
     }

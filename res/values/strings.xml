@@ -5132,5 +5132,15 @@
     <!-- Link volumes -->
     <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
     <string name="volume_ring_only_description">Ringtone</string>
+    
+    <!-- EcoMode settings -->
+    <string name="eco_mode_settings_title">Eco Mode</string>
+    <string name="eco_mode_settings_summary">Optimize battery life</string>
+    <string name="eco_mode_toggles_mobile_title">Mobile networks</string>
+    <string name="eco_mode_toggles_location_title">Location</string>
+    <string name="eco_mode_toggles_gps_title">Disable GPS</string>
+    <string name="eco_mode_toggles_gps_summary">GPS based location service will be disabled on screen off</string>
+    <string name="eco_mode_toggles_mobile_data_title">Disable mobile data</string>
+    <string name="eco_mode_toggles_mobile_data_summary">Mobile data will be disabled on screen off</string>
 
 </resources>

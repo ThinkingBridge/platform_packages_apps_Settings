@@ -1583,7 +1583,7 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
         
-        <!-- ThinkingBridge Activity -->
+        <!-- ThinkingBridge Activity Start -->
         <activity android:name="Settings$SystemSettingsActivity"
                 android:label="@string/system_settings_title"
                 android:taskAffinity=""
@@ -1598,13 +1598,26 @@
                 android:resource="@id/system_settings" />
         </activity>
 
-        <activity android:name=".thinkingbridge.SystemSettings"
+        <activity
+            android:name=".thinkingbridge.SystemSettings"
             android:label="SystemSettings" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
+        <!-- Eco Mode -->
+        <activity
+            android:name=".thinkingbridge.EcoModeSettings"
+            android:label="EcoMode" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.SHORTCUT" />
+              </intent-filter>
+        </activity>
+        
+        <!-- ThinkingBridge Activity End -->
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
