@@ -2239,15 +2239,5 @@
     <!-- SecondClock -->
     <string name="status_bar_clock_second">초시계 사용</string>
     <string name="status_bar_clock_second_summary">시계에 초시계 표시</string>
-    
-    <!-- EcoMode settings -->
-    <string name="eco_mode_settings_title">에코 모드</string>
-    <string name="eco_mode_settings_summary">배터리 수명 최적화</string>
-    <string name="eco_mode_toggles_mobile_title">모바일 네트워크</string>
-    <string name="eco_mode_toggles_location_title">위치</string>
-    <string name="eco_mode_toggles_gps_title">GPS 비활성화</string>
-    <string name="eco_mode_toggles_gps_summary">화면을 끌때 GPS 가 비활성화 됩니다.</string>
-    <string name="eco_mode_toggles_mobile_data_title">모바일 데이터 비활성화</string>
-    <string name="eco_mode_toggles_mobile_data_summary">화면을 끌때 모바일 데이터를 비활성화 합니다.</string>
 
 </resources>
