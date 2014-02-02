@@ -2209,18 +2209,6 @@
     <string name="battery_bolt_color">충전중 볼트 색상</string>
     <string name="battery_text_charging_color">충전중 퍼센트 텍스트 색상</string>
     <string name="battery_style_reset_message">모든 배터리 색상을 초기화 하시겠습니까?</string>
-    
-    <!-- Navigation Bar -->
-    <string name="navigation_bar_category">네비게이션바</string>
-    <string name="navigation_bar_title">네비게이션바 설정</string>
-    <string name="navigation_bar_help_text">1 - 편집 시작하려면 자물쇠 아이콘을 누르세요\n2 - 기능을 할당하거나 변경하려면 해당 버튼을 누르세요\n3 - 순서를 다시 정렬하려면 해당 버튼을 길게 누르세요\n4 - 저장하려면 다시 자물쇠 아이콘을 누르세요\n5 - 시스템 기본값을 복원하려면 초기화 버튼을 누르세요.</string>
-    <string name="navigation_bar_tips">\u2022 작업은 한 번에 하나의 버튼에 할당할수 있습니다.\n\n\u2022 홈 버튼은 재 할당할수 없습니다.\n\n\u2022 사이드 버튼은 재 배열할수 없습니다</string>
-    <string name="navigation_bar_tips_title">빠른 팁</string>
-    <string name="navigation_bar_reset_message">현재 설정을 삭제하고 기본값으로 복원하시겠습니까?</string>
-    <string name="navigation_bar_save_message">네비게이션 바 설정이 저장되었습니다</string>
-    <string name="navigation_bar_reset_toast">네비게이션 바가 기본값으로 초기회되었습니다</string>
-    <string name="navigation_bar_menu_editable">편집 가능</string>
-    <string name="navigation_bar_menu_locked">고정</string>
 
     <!-- Locksreen Category -->
     <string name="lockscreen_category">잠금화면</string>
