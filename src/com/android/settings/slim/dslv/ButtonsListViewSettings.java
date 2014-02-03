@@ -59,7 +59,6 @@ import com.android.internal.util.slim.ButtonsHelper;
 import com.android.internal.util.slim.ImageHelper;
 import com.android.internal.util.slim.DeviceUtils;
 import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
-import com.android.internal.util.slim.PolicyHelper;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
@@ -91,7 +90,6 @@ public class ButtonsListViewSettings extends ListFragment implements
     private static final int NAV_RING              = 3;
     private static final int LOCKSCREEN_SHORTCUT   = 4;
     private static final int NOTIFICATION_SHORTCUT = 5;
-    private static final int POWER_MENU_SHORTCUT   = 6;
 
     private static final int DEFAULT_MAX_BUTTON_NUMBER = 5;
 
@@ -480,9 +478,6 @@ public class ButtonsListViewSettings extends ListFragment implements
                     mActivity, mActionValuesKey, mActionEntriesKey);
             case NOTIFICATION_SHORTCUT:
                 return ButtonsHelper.getNotificationsShortcutConfig(mActivity);
-            case POWER_MENU_SHORTCUT:
-                return PolicyHelper.getPowerMenuConfigWithDescription(
-                    mActivity, mActionValuesKey, mActionEntriesKey);
             case LOCKSCREEN_SHORTCUT:
                 return ButtonsHelper.getLockscreenShortcutConfig(mActivity);
         }
@@ -502,9 +497,6 @@ public class ButtonsListViewSettings extends ListFragment implements
                 if (reset) {
                     loadAdditionalFragment();
                 }
-                break;
-            case POWER_MENU_SHORTCUT:
-                PolicyHelper.setPowerMenuConfig(mActivity, buttonConfigs, reset);
                 break;
             case LOCKSCREEN_SHORTCUT:
                 ButtonsHelper.setLockscreenShortcutConfig(mActivity, buttonConfigs, reset);
@@ -551,17 +543,11 @@ public class ButtonsListViewSettings extends ListFragment implements
                 holder.longpressActionDescriptionView.setText(
                     getResources().getString(R.string.shortcut_action_longpress)
                     + " " + getItem(position).getLongpressActionDescription());
-            }
-            if (mButtonMode == POWER_MENU_SHORTCUT) {
-                holder.iconView.setImageDrawable(ImageHelper.resize(
-                        mActivity, PolicyHelper.getPowerMenuIconImage(mActivity,
-                        getItem(position).getClickAction(),
-                        getItem(position).getIcon(), false), 36));
             } else {
                 holder.iconView.setImageDrawable(ImageHelper.resize(
-                        mActivity, ButtonsHelper.getButtonIconImage(mActivity,
-                        getItem(position).getClickAction(),
-                        getItem(position).getIcon()), 36));
+                		mActivity, ButtonsHelper.getButtonIconImage(mActivity,
+                		getItem(position).getClickAction(),
+                		getItem(position).getIcon()), 36));
             }
 
             if (!mDisableIconPicker && holder.iconView.getDrawable() != null) {
@@ -656,9 +642,6 @@ public class ButtonsListViewSettings extends ListFragment implements
                     switch (getOwner().mButtonMode) {
                         // case LOCKSCREEN_SHORTCUT:
                         case NOTIFICATION_SHORTCUT:
-                        case POWER_MENU_SHORTCUT:
-                            buttonMode = res.getString(R.string.shortcut_action_help_shortcut);
-                            break;
                         case NAV_BAR:
                         case NAV_RING:
                         // case PIE:
