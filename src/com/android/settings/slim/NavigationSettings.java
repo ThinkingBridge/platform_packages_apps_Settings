@@ -35,7 +35,7 @@ public class NavigationSettings extends SettingsPreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.slim_navigation_settings);
+        addPreferencesFromResource(R.xml.navigation_settings);
     }
 
 }
