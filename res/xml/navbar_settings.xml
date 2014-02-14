@@ -33,7 +33,7 @@
                 <extra android:name="buttonMode" android:value="0" />
                 <extra android:name="maxAllowedButtons" android:value="5" />
                 <extra android:name="disableDeleteLastEntry" android:value="true" />
-                <extra android:name="fragment" android:value="com.android.settings.slim.fragments.NavbarButtonFragment" />
+                <extra android:name="fragment" android:value="com.android.settings.thinkingbridge.fragments.NavbarButtonFragment" />
             </PreferenceScreen>
 
             <PreferenceScreen
@@ -48,7 +48,7 @@
 
             <PreferenceScreen
                 android:key="navbar_style_dimen_settings"
-                android:fragment="com.android.settings.slim.NavbarStyleDimenSettings"
+                android:fragment="com.android.settings.thinkingbridge.navbar.NavbarStyleDimenSettings"
                 android:title="@string/navbar_style_dimen_title" />
 
         </PreferenceCategory>

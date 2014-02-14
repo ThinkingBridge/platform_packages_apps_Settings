@@ -44,7 +44,6 @@ import android.security.KeyStore;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.android.internal.util.slim.DeviceUtils;
 import com.android.internal.widget.LockPatternUtils;
 
 import java.util.ArrayList;
@@ -69,11 +68,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_LOCK_AFTER_TIMEOUT = "lock_after_timeout";
     private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
-    private static final String KEY_SEE_TRHOUGH = "see_through";
-    private static final String KEY_BLUR_BEHIND = "blur_behind";
-    private static final String KEY_BLUR_RADIUS = "blur_radius";
-    private static final String KEY_INTERFACE_SETTINGS = "lock_screen_settings";
-    private static final String KEY_TARGET_SETTINGS = "lockscreen_targets";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
@@ -112,10 +106,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private CheckBoxPreference mToggleVerifyApps;
     private CheckBoxPreference mPowerButtonInstantlyLocks;
     private CheckBoxPreference mEnableKeyguardWidgets;
-    private CheckBoxPreference mSeeThrough;
-    private CheckBoxPreference mBlurBehind;
-    
-    private SeekBarPreference mBlurRadius;
 
     private Preference mNotificationAccess;
 
@@ -213,18 +203,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
             updateLockAfterPreferenceSummary();
         }
 
-        // lockscreen see through
-        mSeeThrough = (CheckBoxPreference) root.findPreference(KEY_SEE_TRHOUGH);
-        mBlurBehind = (CheckBoxPreference) root.findPreference(KEY_BLUR_BEHIND);
-        mBlurBehind.setChecked(Settings.System.getInt(getContentResolver(), 
-        		Settings.System.LOCKSCREEN_BLUR_BEHIND, 0) == 1);
-        mBlurBehind.setEnabled(mSeeThrough.isChecked());
-        mBlurRadius = (SeekBarPreference) root.findPreference(KEY_BLUR_RADIUS);
-        mBlurRadius.setProgress(Settings.System.getInt(getContentResolver(), 
-        		Settings.System.LOCKSCREEN_BLUR_RADIUS, 12));
-        mBlurRadius.setOnPreferenceChangeListener(this);
-        mBlurRadius.setEnabled(mBlurBehind.isChecked() && mBlurBehind.isEnabled());
-
         // biometric weak liveliness
         mBiometricWeakLiveliness =
                 (CheckBoxPreference) root.findPreference(KEY_BIOMETRIC_WEAK_LIVELINESS);
@@ -236,25 +214,12 @@ public class SecuritySettings extends RestrictedSettingsFragment
         mPowerButtonInstantlyLocks = (CheckBoxPreference) root.findPreference(
                 KEY_POWER_INSTANTLY_LOCKS);
 
-        PreferenceGroup securityCategory = (PreferenceGroup)
-                root.findPreference(KEY_SECURITY_CATEGORY);
-        if (securityCategory != null) {
-            Preference lockInterfacePref = findPreference(KEY_INTERFACE_SETTINGS);
-            Preference lockTargetsPref = findPreference(KEY_TARGET_SETTINGS);
-            if (lockInterfacePref != null && lockTargetsPref != null) {
-                if (!DeviceUtils.isPhone(getActivity())) {
-                     // Nothing for tablets and large screen devices
-                     securityCategory.removePreference(lockInterfacePref);
-                } else {
-                     securityCategory.removePreference(lockTargetsPref);
-                }
-            }
-        }
-
         // don't display visible pattern if biometric and backup is not pattern
         if (resid == R.xml.security_settings_biometric_weak &&
                 mLockPatternUtils.getKeyguardStoredPasswordQuality() !=
                 DevicePolicyManager.PASSWORD_QUALITY_SOMETHING) {
+        	PreferenceGroup securityCategory = (PreferenceGroup)
+        			root.findPreference(KEY_SECURITY_CATEGORY);
             if (securityCategory != null && mVisiblePattern != null) {
                 securityCategory.removePreference(root.findPreference(KEY_VISIBLE_PATTERN));
             }
@@ -283,6 +248,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
             if (ActivityManager.isLowRamDeviceStatic()
                     || mLockPatternUtils.isLockScreenDisabled()) {
                 // Widgets take a lot of RAM, so disable them on low-memory devices
+            	PreferenceGroup securityCategory = (PreferenceGroup) root.findPreference(KEY_SECURITY_CATEGORY);
                 if (securityCategory != null) {
                     securityCategory.removePreference(root.findPreference(KEY_ENABLE_WIDGETS));
                     mEnableKeyguardWidgets = null;
@@ -602,15 +568,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
             } else {
                 setNonMarketAppsAllowed(false);
             }
-        } else if (preference == mSeeThrough) {
-            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH,
-                    mSeeThrough.isChecked() ? 1 : 0);
-            mBlurBehind.setEnabled(mSeeThrough.isChecked());
-            mBlurRadius.setEnabled(mBlurBehind.isChecked() && mBlurBehind.isEnabled());
-        } else if (preference == mBlurBehind) {
-            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_BLUR_BEHIND,
-                    mBlurBehind.isChecked() ? 1 : 0);
-            mBlurRadius.setEnabled(mBlurBehind.isChecked());
         } else if (KEY_TOGGLE_VERIFY_APPLICATIONS.equals(key)) {
             Settings.Global.putInt(getContentResolver(), Settings.Global.PACKAGE_VERIFIER_ENABLE,
                     mToggleVerifyApps.isChecked() ? 1 : 0);
@@ -659,8 +616,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 Log.e("SecuritySettings", "could not persist lockAfter timeout setting", e);
             }
             updateLockAfterPreferenceSummary();
-        } else if (preference == mBlurRadius) {
-        	Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_BLUR_RADIUS, (Integer)value);
         }
         return true;
     }

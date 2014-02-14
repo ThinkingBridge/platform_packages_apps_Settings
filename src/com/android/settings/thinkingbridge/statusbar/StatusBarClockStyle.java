@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.thinkingbridge;
+package com.android.settings.thinkingbridge.statusbar;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

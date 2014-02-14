@@ -86,7 +86,6 @@ import com.android.settings.nfc.PaymentSettings;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintServiceSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
-import com.android.settings.thinkingbridge.BatteryIconStyle;
 import com.android.settings.slim.QuietHours;
 import com.android.settings.tts.TextToSpeechSettings;
 import com.android.settings.users.UserSettings;
@@ -358,7 +357,6 @@ public class Settings extends PreferenceActivity
         KeyboardLayoutPickerFragment.class.getName(),
         ApnSettings.class.getName(),
         QuietHours.class.getName(),
-        BatteryIconStyle.class.getName(),
     };
 
     @Override
@@ -1144,6 +1142,5 @@ public class Settings extends PreferenceActivity
     public static class ApnSettingsActivity extends Settings { /* empty */ }
     public static class ApnEditorActivity extends Settings { /* empty */ }
     public static class QuietHoursSettingsActivity extends Settings { /* empty */ }
-    public static class BatteryIconStyleSettingsActivity extends Settings { /* empty */ }
     public static class DisplayRotationSettingsActivity extends Settings { /* empty */ }
 }

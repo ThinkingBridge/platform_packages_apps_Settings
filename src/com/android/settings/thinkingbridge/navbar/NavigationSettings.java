@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim;
+package com.android.settings.thinkingbridge.navbar;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -27,9 +27,6 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 public class NavigationSettings extends SettingsPreferenceFragment {
-
-    private static final String KEY_HARDWARE_KEYS = "hardware_keys";
-    private static final String KEY_PIE_SETTINGS = "pie_settings";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

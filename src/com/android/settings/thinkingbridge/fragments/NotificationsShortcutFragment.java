@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim.fragments;
+package com.android.settings.thinkingbridge.fragments;
 
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
