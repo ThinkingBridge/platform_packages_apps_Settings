@@ -38,6 +38,7 @@ import android.view.MenuItem;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.preferences.ImageListPreference;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import java.util.Date;
@@ -56,7 +57,7 @@ public class BatteryIconStyle extends SettingsPreferenceFragment
 
     private static final int MENU_RESET = Menu.FIRST;
 
-    private ListPreference mStatusBarBattery;
+    private ImageListPreference mStatusBarBattery;
     private ColorPickerPreference mBatteryColor;
     private ColorPickerPreference mBatteryTextColor;
     private ColorPickerPreference mBatteryTextChargingColor;
@@ -92,7 +93,7 @@ public class BatteryIconStyle extends SettingsPreferenceFragment
             return null;
         }
 
-        mStatusBarBattery = (ListPreference) prefSet.findPreference(PREF_STATUS_BAR_BATTERY);
+        mStatusBarBattery = (ImageListPreference) prefSet.findPreference(PREF_STATUS_BAR_BATTERY);
         mStatusBarBattery.setOnPreferenceChangeListener(this);
         int statusBarBattery = Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_BATTERY, 0);

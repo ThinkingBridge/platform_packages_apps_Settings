@@ -122,4 +122,13 @@
         <attr name="markerSize" format="dimension" />
         <attr name="margin" format="dimension" />
     </declare-styleable>
+    
+    <declare-styleable name="ListPreferenceMultiSelect">
+        <attr format="string" name="checkAll" />
+        <attr format="string" name="separator" />
+    </declare-styleable>
+
+    <declare-styleable name="ImageListPreference">
+        <attr name="entryImages" format="reference" />
+    </declare-styleable>
 </resources>
