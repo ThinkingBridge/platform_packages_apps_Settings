@@ -52,14 +52,14 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
             "tiles_per_row";
     private static final String PREF_TILES_PER_ROW_DUPLICATE_LANDSCAPE =
             "tiles_per_row_duplicate_landscape";
-    private static final String PREF_QUICK_TILES_BG_COLOR =
-            "quick_tiles_bg_color";
-    private static final String PREF_QUICK_TILES_BG_PRESSED_COLOR =
-            "quick_tiles_bg_pressed_color";
+    //private static final String PREF_QUICK_TILES_BG_COLOR =
+    //        "quick_tiles_bg_color";
+    //private static final String PREF_QUICK_TILES_BG_PRESSED_COLOR =
+    //        "quick_tiles_bg_pressed_color";
     private static final String PREF_QUICK_TILES_ALPHA =
             "quick_tiles_alpha";
-    private static final String PREF_QUICK_TILES_TEXT_COLOR =
-            "quick_tiles_text_color";
+    //private static final String PREF_QUICK_TILES_TEXT_COLOR =
+    //        "quick_tiles_text_color";
     private static final String PREF_ADDITIONAL_OPTIONS =
             "quicksettings_tiles_style_additional_options";
 
@@ -71,9 +71,9 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
 
     private ListPreference mTilesPerRow;
     private CheckBoxPreference mDuplicateColumnsLandscape;
-    private ColorPickerPreference mQuickTilesBgColor;
-    private ColorPickerPreference mQuickTilesBgPressedColor;
-    private ColorPickerPreference mQuickTilesTextColor;
+    //private ColorPickerPreference mQuickTilesBgColor;
+    //private ColorPickerPreference mQuickTilesBgPressedColor;
+    //private ColorPickerPreference mQuickTilesTextColor;
     private SeekBarPreference mQsTileAlpha;
 
     private boolean mCheckPreferences;
@@ -108,7 +108,7 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
         int intColor;
         String hexColor;
 
-        mQuickTilesBgColor = (ColorPickerPreference) findPreference(PREF_QUICK_TILES_BG_COLOR);
+        /**mQuickTilesBgColor = (ColorPickerPreference) findPreference(PREF_QUICK_TILES_BG_COLOR);
         mQuickTilesBgColor.setOnPreferenceChangeListener(this);
         intColor = Settings.System.getInt(getActivity().getContentResolver(),
                     Settings.System.QUICK_TILES_BG_COLOR, -2);
@@ -148,7 +148,7 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
             hexColor = String.format("#%08x", (0xffffffff & intColor));
             mQuickTilesTextColor.setSummary(hexColor);
         }
-        mQuickTilesTextColor.setNewPreviewColor(intColor);
+        mQuickTilesTextColor.setNewPreviewColor(intColor);**/
 
         float transparency;
         try{
@@ -227,7 +227,7 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
                     Settings.System.QUICK_TILES_PER_ROW_DUPLICATE_LANDSCAPE,
                     (Boolean) newValue ? 1 : 0);
             return true;
-        } else if (preference == mQuickTilesBgColor) {
+        /**} else if (preference == mQuickTilesBgColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
@@ -235,8 +235,8 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
             Settings.System.putInt(getContentResolver(),
                     Settings.System.QUICK_TILES_BG_COLOR,
                     intHex);
-            return true;
-        } else if (preference == mQuickTilesBgPressedColor) {
+            return true;**/
+        /**} else if (preference == mQuickTilesBgPressedColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
@@ -244,8 +244,8 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
             Settings.System.putInt(getContentResolver(),
                     Settings.System.QUICK_TILES_BG_PRESSED_COLOR,
                     intHex);
-            return true;
-        } else if (preference == mQuickTilesTextColor) {
+            return true;**/
+        /**} else if (preference == mQuickTilesTextColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
@@ -253,7 +253,7 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
             Settings.System.putInt(getContentResolver(),
                     Settings.System.QUICK_TILES_TEXT_COLOR,
                     intHex);
-            return true;
+            return true;**/
         } else if (preference == mQsTileAlpha) {
             float valNav = Float.parseFloat((String) newValue);
             Settings.System.putFloat(getContentResolver(),
@@ -297,18 +297,7 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
                     .setTitle(R.string.reset)
                     .setMessage(R.string.qs_style_reset_message)
                     .setNegativeButton(R.string.cancel, null)
-                    .setPositiveButton(R.string.dlg_ok,
-                        new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.QUICK_TILES_BG_COLOR, -2);
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.QUICK_TILES_BG_PRESSED_COLOR, -2);
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.QUICK_TILES_TEXT_COLOR, -2);
-                            getOwner().refreshSettings();
-                        }
-                    })
+                    //.setPositiveButton(R.string.dlg_ok,
                     .create();
             }
             throw new IllegalArgumentException("unknown id " + id);

@@ -2645,13 +2645,13 @@
 
     <!-- QuickSettings style options -->
     <string name="quicksettings_tiles_style">스타일</string>
-    <string name="summary_quicksettings_tiles_style">타일 등의 색상을 변경</string>
+    <string name="summary_quicksettings_tiles_style">타일의 스타일 변경</string>
     <string name="quicksettings_tiles_style_additional_options">추가 옵션</string>
     <string name="tiles_per_row_title">행당 타일</string>
     <string name="tiles_per_row_duplicate_landscape_title">가로시 수량</string>
     <string name="tiles_per_row_duplicate_landscape_summary">가로보기시 행당 타일의 수량을 두 배로 표시</string>
     <string name="quick_tiles_bg_color_title">타일​​ 배경 색상</string>
-    <string name="quick_tiles_bg_pressed_color_title">타일​​을 누를시 배경 색상r</string>
+    <string name="quick_tiles_bg_pressed_color_title">타일​​을 누를시 배경 색상</string>
     <string name="quick_tiles_text_color_title">타일​​ 텍스트 색상</string>
     <string name="quick_tiles_alpha_title">타일 배경 투명도</string>
     <string name="qs_style_reset_message">모든 색상을 기본값으로 초기화하시겠습니까?</string>
